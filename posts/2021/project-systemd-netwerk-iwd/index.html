@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Systemd | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="Netwerk verbinding met systemd en iwd" />
+    <meta name="keywords" content="systemd, netwerk" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Systemd</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-services">01 Services</a>
+      <ul>
+        <li><a href="#networking">Networking</a></li>
+      </ul>
+    </li>
+    <li><a href="#02-bekabeld">02 Bekabeld</a></li>
+    <li><a href="#03-draadloos">03 draadloos</a></li>
+    <li><a href="#04-iwd-instellen">04 iwd instellen</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/systemd">systemd</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/netwerk">netwerk</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/project">project</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Hoe krijg je netwerk verbinding met alleen iwd en systemd.</p>
+<h2 id="01-services">01 Services</h2>
+<h3 id="networking">Networking</h3>
+<p>Disable networkmanager en dhcpcd services als dat van toepassing is. Later kunnen ze verwijderd worden.
+station wlp3s0 scan
+station wlp3s0 get-networks
+station wlp3s0 connect Ziggo07744
+quit</p>
+<pre><code>sudo systemctl disable NetworkManager
+sudo systemctl disable dhcpcd
+</code></pre>
+<p>Daarna enable de volgende services:</p>
+<pre><code>sudo systemctl enable systemd-networkd
+sudo systemctl enable systemd-resolved
+</code></pre>
+<p>Systemd heeft zijn eigen resolve file, en de oude kan dus verwijderd worden. Sommige programma&rsquo;s hebben dit bestand nodig, dus vervangen we het door een link.</p>
+<pre><code>sudo rm /etc/resolv.conf
+sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
+</code></pre>
+<p>Systemd heeft wel config files nodig.</p>
+<h2 id="02-bekabeld">02 Bekabeld</h2>
+<p>met het volgende comando kun je de netwerk interfaces achterhalen:</p>
+<pre><code>ip -a
+</code></pre>
+<p>Daarna maken we een config aan met:</p>
+<pre><code>nano /etc/systemd/network/50-wired.network
+</code></pre>
+<p>en geef het de volgende inhoud:</p>
+<pre><code>Name=enp*
+
+[Network]
+DHCP=ipv4
+
+[DHCP]
+RouteMetric=10
+</code></pre>
+<h2 id="03-draadloos">03 draadloos</h2>
+<p>Ook voor wireless maken we een config file.</p>
+<pre><code>nano /etc/systemd/network/25-wireless.network
+</code></pre>
+<p>en geef het de volgende inhoud:</p>
+<pre><code>Name=wlp3s0
+
+[Network]
+DHCP=ipv4
+
+[DHCP]
+RouteMetric=20
+</code></pre>
+<p>Een aparte dhcpcd service is nu niet meer nodig,je krijgt je ip direct van systemd!
+Start de services met</p>
+<pre><code>sudo systemctl enable systemd-networkd
+sudo systemctl enable systemd-resolved
+</code></pre>
+<h2 id="04-iwd-instellen">04 iwd instellen</h2>
+<p>Ook de draadloos interface krijgen we aan de praat. Daarvoor hebben we iwd nodig:</p>
+<pre><code>pacman -S iwd
+systemctl enable iwd
+systemctl start iwd
+</code></pre>
+<p>Daarna kun je de instellingen vastleggen met het commando iwctl.
+List de interfaces met</p>
+<pre><code>iwctl
+device list
+</code></pre>
+<p>Scan de netwerken met</p>
+<pre><code>station wlp3s0 scan
+station wlp3s0 get-networks
+station wlp3s0 connect Ziggo07744
+quit
+</code></pre>
+<p>Geef je wachtwoord in als hier omgevraagd wordt.
+De instellingen worden bewaard in /var/lib/iwd.
+De volgende keer zal automatisch geconnect worden met het laastse netwerk.</p>
+<p><a href="https://wiki.archlinux.org/index.php/Systemd-networkd">Arch systemd-networkd</a></p>
+<p><a href="/categories/project">meer projecten</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

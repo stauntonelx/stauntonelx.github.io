@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>arch XFCE4 | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="Installeer Xorg en XFCE4 na een basis intallatie Arch" />
+    <meta name="keywords" content="arch" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>arch XFCE4</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-xorg">01 Xorg</a></li>
+    <li><a href="#02-xfce4">02 XFCE4</a></li>
+    <li><a href="#03-yaourt">03 yaourt</a></li>
+    <li><a href="#04-lightdm">04 Lightdm</a></li>
+    <li><a href="#05-whiskermenu">05 Whiskermenu</a></li>
+    <li><a href="#06-firefox">06 Firefox</a></li>
+    <li><a href="#07-virtualbox">07 Virtualbox</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/arch">arch</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/desktop">desktop</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Installeer Xorg en XFCE4 na een basis intallatie Arch.</p>
+<h2 id="01-xorg">01 Xorg</h2>
+<p>Op de asus laptop:</p>
+<pre><code>pacman -S xorg-server xorg-apps xorg-xinit xf86-input-wacom \
+xf86-video-intel xf86-video-fbdev xf86-video-vesa mesa
+</code></pre>
+<p>De xorg servers die je niet gebruikt kun je overslaan bij installatie.</p>
+<p>Screentearing ga je tegen met:</p>
+<pre><code>nano /etc/X11/xorg.conf.d/20-intel.conf
+</code></pre>
+<p>Geef het bestand de volgende inhoud</p>
+<pre><code>Section &quot;Device&quot;
+Identifier&quot;Intel Graphics&quot;
+Driver&quot;intel&quot;
+Option&quot;TearFree&quot; &quot;true&quot;
+EndSection
+</code></pre>
+<h2 id="02-xfce4">02 XFCE4</h2>
+<pre><code>pacman -S xfce4 xfce4-power-manager xfce4-whiskermenu-plugin xfce4-notifyd \
+numix-gtk-theme gtk-engine-murrine xfce4-sensors-plugin xfce4-pulseaudio-plugin \
+pavucontrol gvfs gst-libav gvfs-google gnome-keyring gnome-session leafpad firefox \
+noto-fonts
+</code></pre>
+<p>Om gebruik te maken van gnome servixes moet je die aanzetten settings &gt; session and startup&gt; andvanced</p>
+<p>Voor de sensorsplugin:</p>
+<pre><code>sensors-detect --auto
+</code></pre>
+<h2 id="03-yaourt">03 yaourt</h2>
+<pre><code>cd Git/
+mkdir yaourt
+cd yaourt/
+git clone https://aur.archlinux.org/package-query.git
+cd package-query
+makepkg -si
+cd ..
+git clone https://aur.archlinux.org/yaourt.git
+cd yaourt
+makepkg -si
+</code></pre>
+<p>Daarna kun je bijvoorbeeld het moka icontheme installeren met:</p>
+<pre><code>yaourt moka
+</code></pre>
+<h2 id="04-lightdm">04 Lightdm</h2>
+<pre><code>pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings light-locker accountsservice
+</code></pre>
+<p>Plaats een achtergrond in:</p>
+<pre><code>/usr/share/pixmaps/
+</code></pre>
+<p>Voor een avator plaats het volgende tekstbestand</p>
+<pre><code>nano /var/lib/AccountsService/users/stauntonel
+</code></pre>
+<p>En geef dit bestand de volgende inhoud:</p>
+<pre><code>[User]
+Language=en_US.utf8
+XSession=xfce
+Icon=/var/lib/AccountsService/icons/stauntonel
+SystemAccount=false
+</code></pre>
+<p>Daarna een png-bestand downloaden van 96x96 pixcels, en plaatsen in</p>
+<pre><code>/var/lib/AccountsService/icons/
+</code></pre>
+<p>De naam aanpassen naar de gebruikersnaam zonder bestandsextensie</p>
+<pre><code>stauntonel
+</code></pre>
+<p>Met lightdm-gtk-greeter-settings kun je lightdm verder tweaken.\<br>
+De config kun je bekijken met:</p>
+<pre><code>ligthdm --show-config
+</code></pre>
+<p>Wil je bij het inloggen een gebruiker kiezen dan kan dat met:</p>
+<pre><code>greeter-hide-users=false
+</code></pre>
+<h2 id="05-whiskermenu">05 Whiskermenu</h2>
+<p>Om lightlocker te gebruiken kun je het volgende commando toevoegen onder &ldquo;commands&rdquo;
+lock screen:</p>
+<pre><code>dm-tool lock
+</code></pre>
+<p>switch user:</p>
+<pre><code>dm-tool switch-to-greeter
+</code></pre>
+<h2 id="06-firefox">06 Firefox</h2>
+<pre><code>nano /usr/share/applications/mimeinfo.cache
+inode/directory=Thunar-folder-handler.desktop
+</code></pre>
+<h2 id="07-virtualbox">07 Virtualbox</h2>
+<p>Op de Host:</p>
+<pre><code>pacman -S virtualbox virtualbox-host-dkms virtualbox-guest-iso
+usermod -a -G vboxusers stauntonel
+</code></pre>
+<p>Zorg wel dat de kernelheaders van de ginstalleerde kernel zijn geinstalleerd</p>
+<p>Maak een aparte directory voor Virtualbox</p>
+<pre><code>mkdir -p /home/stauntonel/Virtualbox
+</code></pre>
+<p>voor btrfs:</p>
+<pre><code>chattr +C /home/stauntonel/Virtualbox
+</code></pre>
+<p>Kernel en virtualbox packages niet meenemen bij updates.
+Het is echt niet nodig om elke nieuwe kernel upgrade uit te voeren.</p>
+<pre><code>nano /etc/pacman.conf
+</code></pre>
+<p>pas de volgende regel aan</p>
+<pre><code>IgnorePkg = linux-lts linux-lts-headers virtualbox virtualbox-host-dkms virtualbox-guest-iso
+</code></pre>
+<p>Daarna opnieuw systeem starten en virtualbox is klaar voor gebruik</p>
+<pre><code>reboot
+</code></pre>
+<p><a href="/categories/desktop">Meer desktop</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

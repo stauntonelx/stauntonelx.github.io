@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>A. Hugo basis | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="Basis voor een nieuwe website." />
+    <meta name="keywords" content="hugo, basis" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>A. Hugo basis</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-basis-mappenstructuur">01 basis mappenstructuur</a>
+      <ul>
+        <li><a href="#hugo-help">hugo help</a></li>
+        <li><a href="#basis-website">basis website</a></li>
+        <li><a href="#basis-thema">basis thema</a></li>
+        <li><a href="#opruimen-bestanden">opruimen bestanden</a></li>
+      </ul>
+    </li>
+    <li><a href="#02-templates">02 templates</a>
+      <ul>
+        <li><a href="#basis-overzicht">basis overzicht</a></li>
+      </ul>
+    </li>
+    <li><a href="#03-baseofhtml">03 baseof.html</a>
+      <ul>
+        <li><a href="#partials">partials</a></li>
+      </ul>
+    </li>
+    <li><a href="#04-indexhtml">04 index.html</a></li>
+    <li><a href="#05-hello-world">05 hello world</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/hugo">hugo</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/basis">basis</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/web">web</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Om een website met hugo te maken kun je kiezen voor een <a href="https://themes.gohugo.io/">theme</a> op de website.
+Of je kunt je website zelf opbouwen zoals we hier gaan doen.</p>
+<h2 id="01-basis-mappenstructuur">01 basis mappenstructuur</h2>
+<p>Om een nieuwe website aan te maken gebruiken we het volgende stappenplan.</p>
+<h3 id="hugo-help">hugo help</h3>
+<p>Hugo heeft een ingebouwde helpfunctie</p>
+<pre><code>hugo --help
+</code></pre>
+<p>Ook kun je voor elk commando extra help krijgen met</p>
+<pre><code>hugo new site --help
+</code></pre>
+<p>Verder is er natuurlijk nog de <a href="https://gohugo.io/documentation/">online documentatie</a>.</p>
+<h3 id="basis-website">basis website</h3>
+<p>We gaan nu een nieuwe site starten met een yaml config file:</p>
+<pre><code>hugo new site -f &quot;yaml&quot; ontwikkel01
+</code></pre>
+<p>We hebben nu een nieuwe mappen structuur voor je website.</p>
+<pre><code>tree ontwikkel01
+</code></pre>
+<p>de structuur ziet er als volgt uit:</p>
+<pre><code>ontwikkel01/
+├── archetypes
+│   └── default.md
+├── config.yaml
+├── content
+├── data
+├── layouts
+├── static
+└── themes
+</code></pre>
+<p>Een lege mappenstructuur met slechts 2 bestanden:</p>
+<dl>
+<dt>config.yaml</dt>
+<dd>configuratiebestand voor de nieuwe website</dd>
+<dt>archetypes/default.md</dt>
+<dd>configuratie bestand voor nieuwe pagina&rsquo;s</dd>
+</dl>
+<h3 id="basis-thema">basis thema</h3>
+<p>Hugo kent ook een commando voor een nieuw thema te maken,</p>
+<pre><code>cd ontwikkel01
+hugo new theme MijnThema
+</code></pre>
+<p>Even checken of het thema is toegevoegd:</p>
+<pre><code>tree themes/MijnThema
+</code></pre>
+<p>Als het goed is heb je nu deze mappenstructuur in de &ldquo;themes&rdquo; map:</p>
+<pre><code>└── MijnThema
+├── archetypes
+│   └── default.md
+├── layouts
+│   ├── 404.html
+│   ├── _default
+│   │   ├── baseof.html
+│   │   ├── list.html
+│   │   └── single.html
+│   ├── index.html
+│   └── partials
+│       ├── footer.html
+│       ├── header.html
+│       └── head.html
+├── LICENSE
+├── static
+│   ├── css
+│   └── js
+└── theme.toml
+</code></pre>
+<h3 id="opruimen-bestanden">opruimen bestanden</h3>
+<p>Omdat we niet met een thema willen werken maar wel de basis van een thema willen overnemen voeren we nu de volgende commando&rsquo;s uit:</p>
+<pre><code>mv themes/MijnThema/layouts .
+mv themes/MijnThema/static .
+rm -rf {themes,resources,data}
+</code></pre>
+<p>Let op! dat je in de hoofdmap van je website staat. (ontwikkel01)
+Je mappenstructuur ziet er nu als vogt uit:</p>
+<pre><code>├── archetypes
+│   └── default.md
+├── config.yaml
+├── content
+├── layouts
+│   ├── 404.html
+│   ├── _default
+│   │   ├── baseof.html
+│   │   ├── list.html
+│   │   └── single.html
+│   ├── index.html
+│   └── partials
+│       ├── footer.html
+│       ├── header.html
+│       └── head.html
+└── static
+    ├── css
+    └── js
+</code></pre>
+<h2 id="02-templates">02 templates</h2>
+<h3 id="basis-overzicht">basis overzicht</h3>
+<p>Hieronder een overzicht van de meest belangrijke templates.</p>
+<dl>
+<dt>baseof.html</dt>
+<dd>Het geraamte van de website</dd>
+<dt>index.html</dt>
+<dd>landingspagina voor de website</dd>
+</dl>
+<h2 id="03-baseofhtml">03 baseof.html</h2>
+<p>Hugo is een programma wat gebruik maakt van de programmeertaal GO.
+Go statements staan tussen {{ }}.</p>
+<pre><code>!DOCTYPE html&gt;
+&lt;html&gt;
+    {{- partial &quot;head.html&quot; . -}}
+    &lt;body&gt;
+        {{- partial &quot;header.html&quot; . -}}
+        &lt;div id=&quot;content&quot;&gt;
+        {{- block &quot;main&quot; . }}{{- end }}
+        &lt;/div&gt;
+        {{- partial &quot;footer.html&quot; . -}}
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="partials">partials</h3>
+<p>In de baseof.html worden een aantal partials aangeroepen.
+Je vind ze in de map <em>layouts/partials</em>.
+Voor nu geven we de aangeroepen partials een minimale vulling om te zien hoe HUGO hier mee om gaat.</p>
+<p><em>head.html</em></p>
+<pre><code>&lt;head&gt;
+    &lt;title&gt;{{ .Title }} | {{ .Site.Title }}&lt;/title&gt;
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot; /&gt;
+    &lt;meta name=&quot;generator&quot; content=&quot;Geany 1.37.1&quot; /&gt;
+&lt;/head&gt;
+</code></pre>
+<p><em>header.html</em></p>
+<pre><code>&lt;header&gt;
+    &lt;p&gt;header&lt;/p&gt;
+    &lt;hr&gt;
+&lt;/header&gt;
+</code></pre>
+<p><em>footer.html</em></p>
+<pre><code>&lt;footer&gt;
+    &lt;hr&gt;
+    &lt;p&gt;footer&lt;/p&gt;
+&lt;/footer&gt;
+</code></pre>
+<h2 id="04-indexhtml">04 index.html</h2>
+<p>Iedere website heeft een landingspagina nodig, de zogenaamde <em>index.html</em></p>
+<pre><code>{{ define &quot;main&quot; }}
+    &lt;h1&gt;Hello world&lt;/h1&gt;
+{{ end }}
+</code></pre>
+<p>Nu hebben we de basis voor een simpele website</p>
+<h2 id="05-hello-world">05 hello world</h2>
+<p>Gefeliciteerd je hebt nu de basis voor je nieuwe website weggezet!
+Je kunt deze oproepen met:</p>
+<pre><code>hugo server
+</code></pre>
+<p>Daarna kun je de pagina oproepen in de browser met <strong>localhost:1313</strong></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

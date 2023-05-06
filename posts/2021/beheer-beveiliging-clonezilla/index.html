@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Clonezilla | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="Tips om je partitie /schijf remote te herstellen" />
+    <meta name="keywords" content="beveiliging" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Clonezilla</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/beveiliging">beveiliging</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/beheer">beheer</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Tips om je schijf / partitie te herstellen vanaf een clonezilla image op een nas met een NFS server.</p>
+<h2 id="01-bestandrechten">01 Bestandrechten</h2>
+<p>Als je de melding krijgt: &ldquo;Permission denied&rdquo; moet je er voor zorgen dat in de map alle rechten openstaan:</p>
+<pre><code>chmod -R 777 map
+</code></pre>
+<p>Doe dit bij voorkeur locaal door in te loggen op de nfs server.</p>
+<h2 id="02-nfs-server">02 NFS server</h2>
+<p>Om te kunnen herstellen heb je allereerst een ip-adres nodig.
+Kies niet voor de optie nfs-server maar voor de handmatige installatie in het menu. Je komt dan in een commandprompt en voert de volgende acties uit:</p>
+<p>Interface achterhalen</p>
+<pre><code>iw dev
+</code></pre>
+<p>wifi instellen</p>
+<pre><code>ip link set wlan0 up
+wpa_passphrase kamer &gt;&gt; /etc/wpa_supplicant.conf
+</code></pre>
+<p>Type nu je wachtwoord in en dan gaan we wpa_supplicant starten</p>
+<pre><code>wpa_supplicant -B -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+dhclient wlan0
+</code></pre>
+<p>Nu moet je nog wel even de clonezilla map mounten op deze manier</p>
+<pre><code>mount 192.168.178.3:/volume1/data/cz /home/partimage
+</code></pre>
+<p>Vervolgens sluiten we de terminal en kunnen we verder met het herstellen/maken van een backup</p>
+<p><a href="/categories/beheer">Meer beheer</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

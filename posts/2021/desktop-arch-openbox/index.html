@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>arch openbox | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="Installeer Openbox na Arch installatie met xorg" />
+    <meta name="keywords" content="arch" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>arch openbox</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-voorbereidingen-in-de-terminal">01 Voorbereidingen in de terminal</a>
+      <ul>
+        <li><a href="#xinit">Xinit</a></li>
+        <li><a href="#configuratiebestanden">Configuratiebestanden</a></li>
+        <li><a href="#gebruikersmappen">Gebruikersmappen</a></li>
+        <li><a href="#achtergrond-instellen">Achtergrond instellen</a></li>
+        <li><a href="#dmenu">Dmenu</a></li>
+        <li><a href="#openbox-menu">Openbox menu</a></li>
+        <li><a href="#obmenu">OBmenu</a></li>
+      </ul>
+    </li>
+    <li><a href="#02-xorg">02 xorg</a>
+      <ul>
+        <li><a href="#gtk-theme">Gtk-theme</a></li>
+        <li><a href="#compositing">Compositing</a></li>
+        <li><a href="#gtk3-settings">Gtk3 settings</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/arch">arch</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/desktop">desktop</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Installeer openbox na basis installatie arch met xorg.</p>
+<h2 id="01-voorbereidingen-in-de-terminal">01 Voorbereidingen in de terminal</h2>
+<h3 id="xinit">Xinit</h3>
+<p>Als gebruiker dus niet als root:</p>
+<pre><code>sudo pacman -S xorg-xinit
+cp /etc/X11/xinit/xinitrc ~/.xinitrc
+nano ~/.xinitrc
+</code></pre>
+<p>Om openbox te openen met startx, voeg de volgende regel toe in het bestand</p>
+<pre><code>exec openbox-session
+</code></pre>
+<h3 id="configuratiebestanden">Configuratiebestanden</h3>
+<p>Configuratiebestanden klaarzetten:</p>
+<pre><code>cp -R /etc/xdg/openbox ~/.config/
+</code></pre>
+<p>De configuratiebestanden zijn:</p>
+<ul>
+<li>autostart, programma&rsquo;s die moeten opstarten met openbox</li>
+<li>rc.xml, voor de keybindings</li>
+<li>menu.xml, voor het openbox menu</li>
+</ul>
+<h3 id="gebruikersmappen">Gebruikersmappen</h3>
+<p>De standaard gebuikersmappen in je home-partitie aanmaken:</p>
+<pre><code>sudo pacman -S pacman -S xdg-user-dirs
+xdg-user-dirs-update
+</code></pre>
+<h3 id="achtergrond-instellen">Achtergrond instellen</h3>
+<p>Zonder achtergrond is openbox een beetje saai:</p>
+<pre><code>mkdir -p ~/Pictures/wallpapers/
+cd ~/Pictures/wallpapers/
+sudo pacman -S feh
+wget http://www.desktopmachine.com/pics/Ford_Mustangxx_2014_01_1920x1080.jpg
+feh --bg-scale ~/Pictures/wallpapers/Ford_Mustangxx_2014_01_1920x1080.jpg
+</code></pre>
+<p>Om de achtergrond vast te houden</p>
+<pre><code>nano ~/.config/openbox/autostart
+</code></pre>
+<p>Voeg de volgende regel toe</p>
+<pre><code>~/.fehbg &amp;
+</code></pre>
+<h3 id="dmenu">Dmenu</h3>
+<p>Omdat het menu van openbox niet echt dynamisch is, installeren we ook Dmenu</p>
+<pre><code>pacman -S dmenu
+cp ~/.config/openbox/rc.xml ~/.config/openbox/rc_sav.xml
+nano ~/.config/openbox/rc.xml
+</code></pre>
+<p>daarna een keybinding aanmaken</p>
+<pre><code>&lt;keybind key=&quot;W-r&quot;&gt;
+  &lt;action name=&quot;Execute&quot;&gt;
+    &lt;startupnotify&gt;
+      &lt;enabled&gt;true&lt;/enabled&gt;
+      &lt;name&gt;dmenu&lt;/name&gt;
+    &lt;/startupnotify&gt;
+    &lt;command&gt;dmenu_run&lt;/command&gt;
+  &lt;/action&gt;
+&lt;/keybind&gt;
+</code></pre>
+<p>Nu kun je met de window -R elk geinstalleerd programma openen.</p>
+<h3 id="openbox-menu">Openbox menu</h3>
+<p>Pas het openbox menu aan, hier een simpel voorbeeld:</p>
+<pre><code>&lt;openbox_menu xmlns=&quot;http://openbox.org/3.4/menu&quot;&gt;
+    &lt;menu id=&quot;system-menu&quot; label=&quot;System&quot;&gt;
+        &lt;item label=&quot;Openbox menu&quot;&gt;
+            &lt;action name=&quot;Execute&quot;&gt;
+                &lt;execute&gt;obmenu&lt;/execute&gt;
+            &lt;/action&gt;
+        &lt;/item&gt;
+        &lt;item label=&quot;Openbox Configuration Manager&quot;&gt;
+            &lt;action name=&quot;Execute&quot;&gt;
+                &lt;command&gt;obconf&lt;/command&gt;
+                &lt;startupnotify&gt;
+                    &lt;enabled&gt;yes&lt;/enabled&gt;
+                &lt;/startupnotify&gt;
+            &lt;/action&gt;
+        &lt;/item&gt;
+        &lt;separator/&gt;
+        &lt;item label=&quot;Reconfigure Openbox&quot;&gt;
+            &lt;action name=&quot;Reconfigure&quot;/&gt;
+        &lt;/item&gt;
+    &lt;/menu&gt;
+    &lt;menu id=&quot;root-menu&quot; label=&quot;Openbox 3&quot;&gt;
+        &lt;item label=&quot;Terminal&quot;&gt;
+            &lt;action name=&quot;Execute&quot;&gt;
+                &lt;execute&gt;termite&lt;/execute&gt;
+            &lt;/action&gt;
+        &lt;/item&gt;
+        &lt;item label=&quot;Firefox&quot;&gt;
+            &lt;action name=&quot;Execute&quot;&gt;
+                &lt;execute&gt;firefox&lt;/execute&gt;
+            &lt;/action&gt;
+        &lt;/item&gt;
+        &lt;menu id=&quot;system-menu&quot;/&gt;
+        &lt;separator/&gt;
+        &lt;item label=&quot;Exit&quot;&gt;
+            &lt;action name=&quot;Execute&quot;&gt;
+                &lt;execute&gt;systemctl poweroff&lt;/execute&gt;
+            &lt;/action&gt;
+        &lt;/item&gt;
+        &lt;item label=&quot;Log Out&quot;&gt;
+            &lt;action name=&quot;Exit&quot;&gt;
+                &lt;prompt&gt;yes&lt;/prompt&gt;
+            &lt;/action&gt;
+        &lt;/item&gt;
+    &lt;/menu&gt;
+&lt;/openbox_menu&gt;
+</code></pre>
+<h3 id="obmenu">OBmenu</h3>
+<p>Om het openbox menu aan te passen naar je eigen wensen kun je gebruik maken van obmenu.</p>
+<pre><code>sudo pacman -S obmenu
+</code></pre>
+<h2 id="02-xorg">02 xorg</h2>
+<h3 id="gtk-theme">Gtk-theme</h3>
+<p>Voor het instellen van themes, icons, lettertype etc. installeer een aantal tools:</p>
+<pre><code>sudo pacman -S lxappearance obconf numix-gtk-theme faenza-icon-theme \
+gtk-engine-murrine
+</code></pre>
+<h3 id="compositing">Compositing</h3>
+<p>Openbox heeft geen eigen compositer dus die moeten we zelf installeren.</p>
+<pre><code>sudo pacman -S compton
+</code></pre>
+<p>Daarna moeten we er voor zorgen dat compton start als we openbox starten.</p>
+<pre><code>nano ~/.config/openbox/autostart
+</code></pre>
+<p>En voeg de volgende regel toe:</p>
+<pre><code>compton -b &amp;
+</code></pre>
+<h3 id="gtk3-settings">Gtk3 settings</h3>
+<p>Met deze settings los je problemen op met gtk3.</p>
+<pre><code>nano ~/.config/gtk-3.0/gtk.css
+</code></pre>
+<p>Zorg dat dit bestand er alsvolgt uitziet:</p>
+<pre><code>.window-frame, .window-frame:backdrop {
+ box-shadow: 0 0 0 black;
+ border-style: none;
+ margin: 0;
+ border-radius: 0;
+}
+
+.titlebar {
+ border-radius: 0;
+}
+
+.window-frame.csd.popup {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.13);
+}
+
+.header-bar {
+  background-image: none;
+  background-color: #ededed;
+  box-shadow: none;
+}
+/* You may want to use this if you don't like the double title.
+GtkLabel.title {
+    opacity: 0;
+}*/
+</code></pre>
+<p>Verder zorg je ervoor dat er geen buttons in de header komen met:</p>
+<pre><code>nano ~/.config/gtk-3.0/settings.ini
+</code></pre>
+<p>Pas deze regel aan:</p>
+<pre><code>gtk-decoration-layout=menu:
+</code></pre>
+<p><a href="/categories/desktop">Meer desktop</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

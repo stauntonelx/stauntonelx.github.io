@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>gpg | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="versleutel en signeer je data met GPG" />
+    <meta name="keywords" content="beveiliging" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>gpg</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-verifieer-je-gedownloade-software">01 verifieer je gedownloade software.</a></li>
+    <li><a href="#02-maak-je-eigen-private-en-publieke-key">02 maak je eigen private en publieke key</a></li>
+    <li><a href="#03-pass">03 pass</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/beveiliging">beveiliging</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/beheer">beheer</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>GPG is een tool waarmee je bestanden kunt versleutelen/ontsleutelen, maar ook kunt ondertekenen of de ondertekening kunnen checken.</p>
+<h2 id="01-verifieer-je-gedownloade-software">01 verifieer je gedownloade software.</h2>
+<p>Op elke zich zelf respecterende site vind je middelen om de inhoud van je download te controleren. Hieronder als voorbeeld een bestand van een debian website. Eerst downloaden we de iso en SHA512SUM en SHA512SUM.sign. Om te checken of de sotware te vertrouwen is gebruiken we dit commando:</p>
+<pre><code>gpg --verify SHA512SUMS.sign
+</code></pre>
+<p>Maar wat doe je als je deze foutmelding krijgt?</p>
+<pre><code>gpg: assuming signed data in 'SHA512SUMS'
+gpg: Signature made Fri 11 Jun 2021 12:46:57 AM CEST
+gpg:                using RSA key DF9B9C49EAA9298432589D76DA87E80D6294BE9B
+gpg: Can't check signature: No public key
+</code></pre>
+<p>Om deze download te verifieren heb je de public key nodig. Voor debian kun je die verkrijgen via de debian keyring server:</p>
+<pre><code>gpg --keyserver keyring.debian.org --recv DF9B9C49EAA9298432589D76DA87E80D6294BE9B
+</code></pre>
+<p>Als alles goed gaat krijg je deze melding:</p>
+<pre><code>gpg: key DA87E80D6294BE9B: public key &quot;Debian CD signing key &lt;debian-cd@lists.debian.org&gt;&quot; imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+</code></pre>
+<p>Nu kun je pas verifieren of de sofware vertrouwd is:</p>
+<pre><code>gpg --verify SHA512SUMS.sign
+</code></pre>
+<p>Je krijgt nu een dergelijke melding:</p>
+<pre><code>gpg: assuming signed data in 'SHA512SUMS'
+gpg: Signature made Fri 11 Jun 2021 12:46:57 AM CEST
+gpg:                using RSA key DF9B9C49EAA9298432589D76DA87E80D6294BE9B
+gpg: Good signature from &quot;Debian CD signing key &lt;debian-cd@lists.debian.org&gt;&quot; [unknown]
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: DF9B 9C49 EAA9 2984 3258  9D76 DA87 E80D 6294 BE9B
+</code></pre>
+<p>&ldquo;good signature&rdquo; en de datum doen vermoeden dat dit een goede download was.
+De fingerprint kun je alleen van de eigenaar krijgen, en het is niet de bedoeling dat elke debian developper die uitwisselt met elke eindgebruiker. :-)</p>
+<p>Bij elke download kan een andere signature gebruikt worden. als dat zo is kun je de oude key weer verwijderen:</p>
+<pre><code>gpg --delete-keys DF9B9C49EAA9298432589D76DA87E80D6294BE9B
+</code></pre>
+<h2 id="02-maak-je-eigen-private-en-publieke-key">02 maak je eigen private en publieke key</h2>
+<p>Om bestanden te kunnen versleutelen heb je een key nodig. De meest gebruikte vorm van versleuteling heet a-synchrone versleuteling. Versleutelen doe je met je private key, degene met wie je het bestand deelt heeft het publieke deel nodig.</p>
+<pre><code>gpg --full-gen-key
+</code></pre>
+<h2 id="03-pass">03 pass</h2>
+<p>Om je wachtwoorden op te slaan kun je gebruik maken van pass. Dit is een programma voor de terminal dat gebruik maakt van gpg versleuteling om je wachtwoorden op te slaan.</p>
+<pre><code>sudo apt install pass
+</code></pre>
+<p>Daarna moet je het programma koppelen aan je secret gpg-key. die vind je met:</p>
+<pre><code>gpg --list-secret-keys --keyid-format LONG
+</code></pre>
+<p>de output ziet er als volgt uit:</p>
+<pre><code>sec   rsa4096/252B4AF5FFCEFE84 2021-07-04 [SC]
+      220BEBE7A3900879E8EADFD1252B4AF5FFCEFE84
+uid                 [ultimate] Jack van Lisdonk (Persoonlijke key van Jack) &lt;jack.en.anja@gmail.com&gt;
+ssb   rsa4096/5D48735A4AA80E02 2021-07-04 [E]
+</code></pre>
+<p>Je gpg-id is in dit geval: <strong>252B4AF5FFCEFE84</strong>. Vervolgens kun je pass initieren met:</p>
+<pre><code>pass init &quot;252B4AF5FFCEFE84&quot;
+</code></pre>
+<p>Een nieuw wachtwoord stel je in met:</p>
+<pre><code>pass insert gmail/stauntonel@gmail.com
+</code></pre>
+<p>Geef vervolgens je wachtwoord in.</p>
+<p><a href="/categories/beheer">Meer beheer</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

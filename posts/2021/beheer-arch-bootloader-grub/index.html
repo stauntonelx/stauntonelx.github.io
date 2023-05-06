@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Grub en UEFI | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="Grub installeren op GTP schijf met UEFI partitie" />
+    <meta name="keywords" content="arch, bootloader" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Grub en UEFI</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-uefi">1. uefi</a>
+      <ul>
+        <li><a href="#uefi-check">uefi check:</a></li>
+        <li><a href="#paritioneren">Paritioneren</a></li>
+        <li><a href="#formatteren">Formatteren</a></li>
+        <li><a href="#fstab">Fstab</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-grub">2. Grub</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/arch">arch</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/bootloader">bootloader</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/beheer">beheer</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Gtp schijf partitioneren met fdisk, UEFI partitie formateren en grub installatie na arch installatie</p>
+<h2 id="1-uefi">1. uefi</h2>
+<h3 id="uefi-check">uefi check:</h3>
+<p>Om grub te installeren, moet je opstarten vanaf het installatie middel in uefi mode! Check na inloggen met dit commando of dat goed gelukt is:</p>
+<pre><code>efivar -l
+</code></pre>
+<p>Als het goed is krijg je dan een lange lijst met codes.</p>
+<h3 id="paritioneren">Paritioneren</h3>
+<p>Partitioneren doen we met fdisk</p>
+<pre><code>gdisk /dev/sda
+</code></pre>
+<p>Kies voor optie <strong>&lsquo;o&rsquo;</strong> om een nieuwe gtp partitie tabel te maken. Zorg er voor dat de eerste partitie ongeveer 1024M groot is en van het type <strong>&lsquo;EF00&rsquo;</strong></p>
+<h3 id="formatteren">Formatteren</h3>
+<p>Formateren kun je op de volgende manier:</p>
+<pre><code>mkfs.fat -F32 /dev/sda1
+</code></pre>
+<h3 id="fstab">Fstab</h3>
+<p>neem de volgende regel op in je /etc/fstab:</p>
+<pre><code>UUID=DC83-4943 /boot vfat rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro	0 2
+</code></pre>
+<p>De UUID vind je met:</p>
+<pre><code>blkid| grep sda1
+</code></pre>
+<h2 id="2-grub">2. Grub</h2>
+<p>Na <a href="https://stauntonel.nl/posts/2021/distro-arch-basis/" title="installeer basis arch zonder X">installeren</a> van Arch kunnen we nu grub configureren</p>
+<pre><code>pacman -Sy grub
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+</code></pre>
+<p>Daarna</p>
+<pre><code>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+<p><a href="/categories/beheer">Meer beheer</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

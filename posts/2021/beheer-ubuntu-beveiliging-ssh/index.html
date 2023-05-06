@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Ubuntu ssh | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="hardening ssh op server en client" />
+    <meta name="keywords" content="ubuntu, beveiliging" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Ubuntu ssh</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-ssh-server">01 ssh server</a></li>
+    <li><a href="#02-ssh-client">02 ssh client</a></li>
+    <li><a href="#03-terug-op-de-server">03 terug op de server</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/ubuntu">ubuntu</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/beveiliging">beveiliging</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/beheer">beheer</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Ssh inrichten op ubuntu server en client zodat alleen met key en als gebruiker kan worden ingelogt.</p>
+<h2 id="01-ssh-server">01 ssh server</h2>
+<p>Installeren op Ubuntu server lts 2020.04</p>
+<pre><code>apt-get install openssh-server
+</code></pre>
+<p>Edit de configfile:</p>
+<pre><code>cp /etc/ssh/sshd_config /etc/ssh/sshd_config_org
+nano /etc/ssh/sshd_config
+</code></pre>
+<p>In de config file zorg je dat de volgende regels zijn aangepast:</p>
+<pre><code>PermitRootLogin no
+PubkeyAuthentication yes
+ClientAliveInterval 60
+TCPKeepAlive yes
+ClientAliveCountMax 5
+</code></pre>
+<p>Restart ssh deamon:</p>
+<pre><code>systemctl restart sshd
+</code></pre>
+<p>Check de status:</p>
+<pre><code>systemctl status sshd
+</code></pre>
+<p>Zorg dat er een gebruiker is die je kunt gebruiken om ssh te starten.
+De gid en uid kun je het best laten aansluiten met de gid en uid op de client, dat maakt het makkelijker om de rechten over te nemen via rsync</p>
+<pre><code>useradd -u 1000 -g 100 -G 29,27 -c &quot;Stauntonel&quot; -m -d /home/stauntonel -s /bin/bash stauntonel
+passwd stauntonel
+id stauntonel
+</code></pre>
+<p>output:</p>
+<pre><code>uid=1000(stauntonel) gid=100(users) groups=100(users),27(sudo),29(audio)
+</code></pre>
+<p>check of je gebruiker sudo rechten heeft:</p>
+<pre><code>visudo
+</code></pre>
+<h2 id="02-ssh-client">02 ssh client</h2>
+<p>check de de gid en uid</p>
+<pre><code>id stauntonel
+</code></pre>
+<p>genereer een key met:</p>
+<pre><code>ssh-keygen -f ~/.ssh/id_virtualbox
+</code></pre>
+<p>kopieer je id naar de server:</p>
+<pre><code>ssh-copy-id -i ~/.ssh/id_virtualbox stauntonel@sshserver
+</code></pre>
+<p>pas je ssh config aan:</p>
+<pre><code>nano ~/.ssh/config
+</code></pre>
+<p>Zet de volgende regels in de config</p>
+<pre><code>VisualHostKey=yes
+host vb
+Hostname sshserver
+User stauntonel
+IdentityFile ~/.ssh/id_virtualbox
+</code></pre>
+<p>Pas de volgende aanpassingen aan in</p>
+<pre><code>nano /etc/ssh/ssh_config
+Host *
+ServerAliveInterval 100
+</code></pre>
+<p>probeer in te loggen</p>
+<pre><code>ssh vb
+</code></pre>
+<h2 id="03-terug-op-de-server">03 terug op de server</h2>
+<p>pas de config opnieuw aan</p>
+<pre><code>nano /etc/ssh/sshd_config
+</code></pre>
+<p>pas de volgende regel aan</p>
+<pre><code>PasswordAuthentication no
+</code></pre>
+<p>Restart ssh deamon:</p>
+<pre><code>systemctl restart sshd
+</code></pre>
+<p>Check de status:</p>
+<pre><code>systemctl status sshd
+</code></pre>
+<p><a href="/categories/beheer">Meer beheer</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

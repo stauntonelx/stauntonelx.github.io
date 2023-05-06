@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Debootstrap installeer Ubuntu | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="Hoe installeer je Ubuntu met behulp van debootstrap" />
+    <meta name="keywords" content="ubuntu, debootstrap" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Debootstrap installeer Ubuntu</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-mount-de-partitie">01 mount de partitie</a></li>
+    <li><a href="#02-installeer-programmas">02 Installeer programma&rsquo;s</a></li>
+    <li><a href="#03-installeer-ubuntu">03 Installeer Ubuntu</a>
+      <ul>
+        <li><a href="#chroot">Chroot</a></li>
+        <li><a href="#symlinks">symlinks</a></li>
+        <li><a href="#toetsenbord">toetsenbord</a></li>
+        <li><a href="#tijd">Tijd</a></li>
+        <li><a href="#locales">locales</a></li>
+        <li><a href="#kernel">kernel</a></li>
+        <li><a href="#wachtwoord">wachtwoord</a></li>
+        <li><a href="#afronden">afronden</a></li>
+      </ul>
+    </li>
+    <li><a href="#04-installeer-debian-vervolg">04 Installeer debian vervolg</a>
+      <ul>
+        <li><a href="#xorg">xorg</a></li>
+        <li><a href="#suckless">suckless</a></li>
+        <li><a href="#media">media</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/ubuntu">ubuntu</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/debootstrap">debootstrap</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/distro">Distro</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Doel is om ubuntu te installeren met debootstrap.
+We starten met een willekeurige arch installatie, of van de arch installatie usb.</p>
+<p>Ik ga er van uit dat je al een partitie hebt geformatteerd, zodat we gelijk aan de slag kunnen.</p>
+<h2 id="01-mount-de-partitie">01 mount de partitie</h2>
+<pre><code>mkdir -p /mnt/debinst
+mount /dev/sda7 /mnt/install
+</code></pre>
+<p>Maak een swap partitie:</p>
+<pre><code>mkswap /dev/sda3
+sync
+swapon /dev/sda3
+</code></pre>
+<h2 id="02-installeer-programmas">02 Installeer programma&rsquo;s</h2>
+<p>pacman -S binutils debootstrap arch-install-scripts ubuntu-keyring</p>
+<h2 id="03-installeer-ubuntu">03 Installeer Ubuntu</h2>
+<pre><code>/usr/sbin/debootstrap --variant=minbase --components=main,restricted,universe\
+,multiverse --include=nano,dialog,bash-completion,tmux,locales,console-setup\
+,gpm,tasksel,sudo,tzdata,links,iputils-ping,apt-utils,gnupg,btrfs-progs,dosfstools\
+,htop,xdg-user-dirs,less,mlocate,autofs,nfs-common,git,iproute2,rfkill,eatmydata\
+,fonts-terminus --arch amd64 focal /mnt/install https://mirror.nl.leaseweb.net/ubuntu/
+</code></pre>
+<h3 id="chroot">Chroot</h3>
+<pre><code>arch-chroot /mnt/install
+export TERM=xterm-color
+source /etc/profile
+source /etc/skel/.bashrc
+</code></pre>
+<h3 id="symlinks">symlinks</h3>
+<pre><code>cd /media
+mkdir cdrom0
+ln -s cdrom0 cdrom
+cd /
+ln -s media/cdrom
+</code></pre>
+<h3 id="toetsenbord">toetsenbord</h3>
+<pre><code>sudo dpkg-reconfigure keyboard-configuration
+sudo dpkg-reconfigure console-setup
+</code></pre>
+<h3 id="tijd">Tijd</h3>
+<pre><code>nano /etc/adjtime
+</code></pre>
+<p>bijvoorbeeld:</p>
+<pre><code>0.0 0 0.0
+0
+UTC
+</code></pre>
+<p>dan:</p>
+<pre><code>sudo dpkg-reconfigure tzdata
+</code></pre>
+<h3 id="locales">locales</h3>
+<pre><code>sudo dpkg-reconfigure locales
+</code></pre>
+<h3 id="kernel">kernel</h3>
+<pre><code>apt search linux-image
+apt install linux-image-generic-hwe-20.04
+</code></pre>
+<h3 id="wachtwoord">wachtwoord</h3>
+<pre><code>passwd
+</code></pre>
+<h3 id="afronden">afronden</h3>
+<p>Optioneel</p>
+<pre><code>tasksel install standard
+</code></pre>
+<p>opruimen</p>
+<pre><code>apt clean
+</code></pre>
+<p>Om de een of andere reden is de initramfs soms corrupt.
+Dan moet je die opnieuw opbouwen met:</p>
+<pre><code>update-initramfs -u -k all
+</code></pre>
+<h2 id="04-installeer-debian-vervolg">04 Installeer debian vervolg</h2>
+<h3 id="xorg">xorg</h3>
+<p>Installeer de minimale xubuntu met tasksel</p>
+<pre><code>tasksel install xubuntu-core
+</code></pre>
+<p>aangevuld met:</p>
+<pre><code>apt install -y --no-install-recommends xfonts-terminus geany
+</code></pre>
+<h3 id="suckless">suckless</h3>
+<pre><code>apt install -y build-essential libx11-dev libxft-dev libxinerama-dev
+</code></pre>
+<h3 id="media">media</h3>
+<pre><code>apt install -y --no-install-recommends mpd mpc ncmpcpp beets pulseaudio alsa-utils shotwell
+</code></pre>
+<p>en met alle recommends</p>
+<pre><code>apt install -y gnome-mpv ffmpeg-doc libdvdcss2
+</code></pre>
+<p><a href="/categories/distro">Meer distro installeren</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

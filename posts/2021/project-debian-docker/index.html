@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Docker installeren debian | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="Installeren docker onder debian en verander data locatie" />
+    <meta name="keywords" content="debian, docker" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Docker installeren debian</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-installeren">01 Installeren</a></li>
+    <li><a href="#02-basislocatie-aanpassen">02 basislocatie aanpassen</a></li>
+    <li><a href="#03-rechten-nieuwe-doelmap">03 Rechten nieuwe doelmap</a></li>
+    <li><a href="#04-kopieer-oude-locatie-naar-nieuwe">04 kopieer oude locatie naar nieuwe</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/debian">debian</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/docker">docker</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/project">project</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Hoe installeer je docker onder debian.</p>
+<h2 id="01-installeren">01 Installeren</h2>
+<p>Eerst gaan we de repos bijwerkern:</p>
+<pre><code>sudo apt update
+</code></pre>
+<p>Daarna installeren we een paar extra programma&rsquo;s</p>
+<pre><code>sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+</code></pre>
+<p>Dan voegen we de GPG key van de docker repo toe.</p>
+<pre><code>curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+</code></pre>
+<p>voeg de repo toe</p>
+<pre><code>sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/debian \
+$(lsb_release -cs) stable&quot;
+</code></pre>
+<p>dan opnieuw een update</p>
+<pre><code>sudo apt update
+</code></pre>
+<p>check of je van de docker repo gaat installeren:</p>
+<pre><code>apt-cache policy docker-ce
+</code></pre>
+<p>Je krijgt dan een lijst met installeerbare versies. Op dit moment is dat bijv. 5:19.03.10~3-0~debian-buster.</p>
+<p>Daarna kunnen we installeren</p>
+<pre><code>sudo apt install docker-ce
+</code></pre>
+<h2 id="02-basislocatie-aanpassen">02 basislocatie aanpassen</h2>
+<p>Omdat ik op mijn lapt niet veel schijfruimte heb, wil ik de basis map voor docker verplaatsen naar een externe harddisk
+Maak een config file aan voor dockerd</p>
+<pre><code>sudo nano /etc/docker/daemon.json
+</code></pre>
+<p>En geef het de volgende inhoud</p>
+<pre><code>{
+    &quot;data-root&quot;: &quot;/mnt/docker-data&quot;,
+    &quot;storage-driver&quot;: &quot;overlay2&quot;
+}
+</code></pre>
+<h2 id="03-rechten-nieuwe-doelmap">03 Rechten nieuwe doelmap</h2>
+<p>Nu moeten we nog de rechten goed zetten:</p>
+<pre><code>chown -R root:root /mnt/docker-data
+chmod 711 /mnt/docker-data
+</code></pre>
+<h2 id="04-kopieer-oude-locatie-naar-nieuwe">04 kopieer oude locatie naar nieuwe</h2>
+<p>Net rsync kopieren we de oude map naar de nieuwe locatie</p>
+<pre><code>rsync -aqxP /var/lib/docker/ /mnt/docker-data
+</code></pre>
+<p><a href="/categories/project">meer projecten</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

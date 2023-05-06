@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bootloader on Stauntonel Blog</title>
+    <link>https://stauntonel.nl/tags/bootloader/</link>
+    <description>Recent content in bootloader on Stauntonel Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>nl-nl</language>
+    <lastBuildDate>Sat, 13 Feb 2021 21:05:58 +0100</lastBuildDate><atom:link href="https://stauntonel.nl/tags/bootloader/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Systemd Boot</title>
+      <link>https://stauntonel.nl/posts/2021/beheer-arch-bootloader-systemd/</link>
+      <pubDate>Sat, 13 Feb 2021 21:05:58 +0100</pubDate>
+      
+      <guid>https://stauntonel.nl/posts/2021/beheer-arch-bootloader-systemd/</guid>
+      <description>&lt;p&gt;Systemd-boot installeren en inrichten, na partitioneren gtp-schijf met UEFI en btrfs partitie.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Grub en UEFI</title>
+      <link>https://stauntonel.nl/posts/2021/beheer-arch-bootloader-grub/</link>
+      <pubDate>Wed, 10 Feb 2021 22:17:59 +0100</pubDate>
+      
+      <guid>https://stauntonel.nl/posts/2021/beheer-arch-bootloader-grub/</guid>
+      <description>&lt;p&gt;Gtp schijf partitioneren met fdisk, UEFI partitie formateren en grub installatie na arch installatie&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Arch installeren op BTRFS | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="Installeer Xorg en XFCE4 na een basis intallatie Arch" />
+    <meta name="keywords" content="arch, btrfs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Arch installeren op BTRFS</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-partitioneren">01 Partitioneren</a></li>
+    <li><a href="#02-mount-btrfs-partitie">02 Mount btrfs partitie</a></li>
+    <li><a href="#03-installeer-arch">03 Installeer arch</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/arch">arch</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/btrfs">btrfs</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/distro">Distro</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p><strong>BTRFS</strong> is een filesysteem waarbij je heel simpel snapshots kunt maken.Snapshots kunnen ook weer als een soort partitie gebruikt worden. Daarmee maak je heel efficent gebruik van je schijfruimte.</p>
+<h2 id="01-partitioneren">01 Partitioneren</h2>
+<p>Omdat de meeste bootloaders nog geen btrfs ondersteunen kunnen we die het best op bijvoorbeeld ext4 formateren. Ook ondersteunt btrfs geen swap dus die houden we ook apart.</p>
+<p>Partitioneer de disk:</p>
+<pre><code>fdisk /dev/sda
+</code></pre>
+<p>Maak 2 partities en formateer ze.</p>
+<pre><code>mkfs.ext4 -L boot /dev/sda1
+mkfs.btrfs -L butter /dev/sda2
+</code></pre>
+<h2 id="02-mount-btrfs-partitie">02 Mount btrfs partitie</h2>
+<pre><code>mount /dev/sda2 /mnt
+cd /mnt
+btrfs subvolume create @
+cd @
+btrfs subvolume create @arch
+cd /
+umount /dev/sda2
+mount -o noatime,compress=lzo,space_cache=v2,subvol=@/@arch /dev/sda2 /mnt
+cd /mnt
+mkdir boot
+mount /dev/sda1 /mnt/boot
+</code></pre>
+<h2 id="03-installeer-arch">03 Installeer arch</h2>
+<pre><code>pacstrap /mnt base base-devel btrfs-progs
+genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab
+nano /mnt/etc/mkinitcpio.conf
+</code></pre>
+<p>De volgende hooks heb je nodig:</p>
+<pre><code>HOOKS=&quot;base udev autodetect modconf block btrfs filesystems keyboard&quot;
+</code></pre>
+<p>Filecheck uitgeschakeld btrfs ondersteund dit niet en btrfs voor de &ldquo;filesystems&rdquo; hook.</p>
+<p><a href="/categories/distro">Meer distro installeren</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Debian beheer | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="Debian beheer tips voor server en desktop" />
+    <meta name="keywords" content="debian" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Debian beheer</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-verwijder-oude-kernels">01 verwijder oude kernels</a></li>
+    <li><a href="#02-auto-completion-bash">02 auto-completion bash</a></li>
+    <li><a href="#03-chroot-arch-from-debian">03 chroot arch from debian</a></li>
+    <li><a href="#04-citrix">04 citrix</a></li>
+    <li><a href="#05-default-terminal-st">05 default terminal st</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/debian">debian</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/beheer">beheer</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Debian beheer tips voor server en desktop</p>
+<h2 id="01-verwijder-oude-kernels">01 verwijder oude kernels</h2>
+<p>Zoek uit welke kernel nu is geinstalleerd, deze willen we namelijk niet verwijderen.</p>
+<pre><code>uname -r
+</code></pre>
+<p>Zoek de headers van geinstalleerde kernels</p>
+<pre><code>dpkg --list | grep linux-image
+</code></pre>
+<p>Daarna kun je oude kernels verwijderen met:</p>
+<pre><code>apt-get --purge remove linux-image-XXX
+</code></pre>
+<p>Dan moeten we grub nog bijwerken met</p>
+<pre><code>update-grub2
+</code></pre>
+<p>Daarna kunnen we testen of alles nog werkt</p>
+<pre><code>reboot
+</code></pre>
+<h2 id="02-auto-completion-bash">02 auto-completion bash</h2>
+<pre><code>apt install bash-completion
+</code></pre>
+<p>Als je ook als root gebruik wil maken van auto completion</p>
+<pre><code>nano ~/.bashrc
+</code></pre>
+<p>voeg deze regel toe:</p>
+<pre><code>if [ -f /etc/bash_completion ]; then
+. /etc/bash_completion
+fi
+</code></pre>
+<h2 id="03-chroot-arch-from-debian">03 chroot arch from debian</h2>
+<p>Mount arch op /mnt/distro</p>
+<pre><code>cd /mnt/distro
+mount -t proc /proc proc/
+mount --rbind /sys sys/
+mount --rbind /dev dev/
+</code></pre>
+<p>optioneel:</p>
+<pre><code>mount --rbind /run run/
+</code></pre>
+<p>Voor internet:</p>
+<pre><code>cp /etc/resolv.conf etc/resolv.conf
+</code></pre>
+<p>en chroot:</p>
+<pre><code>chroot /mnt/distro /bin/bash
+</code></pre>
+<h2 id="04-citrix">04 citrix</h2>
+<p>Op de citrix site kun je de laatste citrix app downloaden.
+Die moet je installeren met sudo</p>
+<pre><code>sudo dpkg -i path_to_deb_file
+</code></pre>
+<p>Als het nodig is</p>
+<pre><code>sudo apt install -f
+</code></pre>
+<p>Daarna moet je nog 1 ding doen:</p>
+<pre><code>rm -Rf /opt/Citrix/ICAClient/keystore/cacerts/
+</code></pre>
+<p>en maak een simlink</p>
+<pre><code>sudo ln -s /etc/ssl/certs /opt/Citrix/ICAClient/keystore/cacerts
+</code></pre>
+<h2 id="05-default-terminal-st">05 default terminal st</h2>
+<p>Zo maak je st de default terminal</p>
+<pre><code>sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 50
+sudo update-alternatives --config x-terminal-emulator
+</code></pre>
+<p>Kies nu voor st als default terminal!</p>
+<p><a href="/categories/beheer">Meer beheer</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

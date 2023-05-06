@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Arch basis installatie | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="Arch installatie vanuit arch / instalatie medium" />
+    <meta name="keywords" content="arch" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Arch basis installatie</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-installeren-basis-arch-distro">01 Installeren basis Arch distro</a></li>
+    <li><a href="#02-chroot-nieuwe-installatie">02 Chroot nieuwe installatie</a></li>
+    <li><a href="#03-reboot-in-nieuwe-omgeving">03 reboot in nieuwe omgeving</a></li>
+    <li><a href="#04-bookmarks">04 Bookmarks</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/arch">arch</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/distro">Distro</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Installeer een basis arch vanuit een bestaande arch installatie of vanaf het installatie medium.</p>
+<h2 id="01-installeren-basis-arch-distro">01 Installeren basis Arch distro</h2>
+<p>tijdzone instellen</p>
+<pre><code>timedatectl set-timezone Europe/Amsterdam
+timedatectl set-ntp true
+</code></pre>
+<p>pas de mirrorlist aan en zet nederlandse / Duitse servers voorop</p>
+<pre><code>nano /etc/pacman.d/mirrorlist
+</code></pre>
+<p>als je installleert vanuit een bestaande arch installatie:</p>
+<pre><code>pacman -Syu
+pacman -S arch-install-scripts
+</code></pre>
+<p>Voor nu ga ik er van uit dat de installatie partitie al is aangemaakt, formateer de partitie:</p>
+<pre><code>mkfs.ext4 -L testarch /dev/sda3
+</code></pre>
+<p>check filesystem</p>
+<pre><code>fsck.ext4 -fn /dev/sda3
+</code></pre>
+<p>mount partitie</p>
+<pre><code>mount /dev/sda3 /mnt/install
+</code></pre>
+<p>installeer de basis arch met pacstrap</p>
+<pre><code>pacstrap -i /mnt/install base linux linux-firmware bash-completion nano
+</code></pre>
+<p>En genereer een fstab:</p>
+<pre><code>genfstab -Up /mnt/install &gt;&gt; /mnt/install/etc/fstab
+</code></pre>
+<p>check fstab</p>
+<pre><code>lsblk -f
+nano /mnt/install/etc/fstab
+</code></pre>
+<h2 id="02-chroot-nieuwe-installatie">02 Chroot nieuwe installatie</h2>
+<pre><code>arch-chroot /mnt/install
+</code></pre>
+<p>extra software installeren</p>
+<pre><code>pacman -S tmux gpm links sudo dosfstools btrfs-progs hdparm autofs nfs-utils openssh \
+reflector ntfs-3g wget iwd git tree rsync wget aria2
+</code></pre>
+<p>aanpassen locale</p>
+<pre><code>nano /etc/locale.gen
+locale-gen
+locale |grep LANG= &gt; /etc/locale.conf
+</code></pre>
+<p>maak ramdisk</p>
+<pre><code>mkinitcpio -p linux
+</code></pre>
+<p>root wachtwoord</p>
+<pre><code>passwd
+</code></pre>
+<p>user stauntonel</p>
+<pre><code>useradd -u 1026 -g users -G wheel,audio -c &quot;Stauntonel&quot; -m -d /home/stauntonel -s /bin/bash stauntonel
+passwd stauntonel
+</code></pre>
+<p>configure sudo</p>
+<pre><code>export EDITOR=nano
+visudo
+</code></pre>
+<p>uncomment:</p>
+<pre><code>%wheel ALL=(ALL) ALL
+</code></pre>
+<p>systemd services</p>
+<pre><code>systemctl enable iwd.service systemd-resolved.service
+</code></pre>
+<p>stel iwd als dhcp server en systemd voor nameresolving:</p>
+<pre><code>mkidr /etc/iwd
+nano /etc/iwd/main.conf
+</code></pre>
+<p>geef dit bestand de volgende inhoud:</p>
+<pre><code>[General]
+EnableNetworkConfiguration=true
+
+[Network]
+NameResolvingService=systemd
+</code></pre>
+<p>mountdirectories</p>
+<pre><code>mkdir -p /mnt/nas
+</code></pre>
+<p>installeer grub voor BIOS partitie</p>
+<pre><code>pacman -S grub
+grub-install --target=i386-pc /dev/sda
+</code></pre>
+<p>installeer grub voor EFI partitie</p>
+<pre><code>grub-install --target=x86_64-efi --efi-directory=esp --bootloader-id=GRUB
+</code></pre>
+<p>grub bijwerken van huidige Arch map</p>
+<pre><code>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+<p>Voor efi kun je ook systemd-boot gebruiken, daarvoor heb je geen extra software nodig</p>
+<p>unmount chroot</p>
+<pre><code>exit
+umount -R /mnt
+</code></pre>
+<h2 id="03-reboot-in-nieuwe-omgeving">03 reboot in nieuwe omgeving</h2>
+<p>Op mijn asus heb ik een spinnig probleem met de harddisk. Om dat op te lossen gebruiK:</p>
+<pre><code>hdparm -B 254 /dev/sda
+</code></pre>
+<p>Maak een bestand /etc/udev/rules.d/50-hdparm.rules<!-- raw HTML omitted -->
+met de volgende inhoud:</p>
+<pre><code>ACTION==&quot;add&quot;, SUBSYSTEM==&quot;block&quot;, KERNEL==&quot;sda&quot;, RUN+=&quot;/usr/bin/hdparm -B 254 -S 0 /dev/sda&quot;
+</code></pre>
+<p>hostname</p>
+<pre><code>hostnamectl set-hostname myhostname
+</code></pre>
+<p>hostname toevoegen aan hosts</p>
+<pre><code>nano /etc/hosts
+</code></pre>
+<p>tijdzone instellen</p>
+<pre><code>timedatectl set-timezone Europe/Amsterdam
+timedatectl set-ntp true
+</code></pre>
+<p>Check of alles gelukt is</p>
+<pre><code>timedatectl
+</code></pre>
+<p>wifi instellen</p>
+<pre><code>nmtui
+</code></pre>
+<p>activeer juiste netwerk</p>
+<p>check of nfs shares bereikbaar zijn:</p>
+<pre><code>mount -t nfs 192.168.178.28:/volume1/data/linux /media/install/
+</code></pre>
+<p>check welke shares aanwezig zijn</p>
+<pre><code>showmount -e 192.168.178.3
+</code></pre>
+<p>netwerk checken of module is geinstallleerd
+driver huiskamer: Kernel driver: r8169</p>
+<pre><code>lspci -v
+dmesg | grep r8169
+ip link
+ping -c 3 google.nl
+</code></pre>
+<p>mirrorlist optimaliseren</p>
+<pre><code>cp -vf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+reflector --verbose --country 'Netherlands' -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist
+</code></pre>
+<p>autofs starten
+copieer alle autofs <a href="https://drive.google.com/open?id=0BwyOuSW748DOZDJYNjNrallUdWc">bestanden</a> naar /etc/autofs</p>
+<pre><code>systemctl enable autofs
+systemctl start autofs
+</code></pre>
+<p>alsa</p>
+<pre><code>pacman -S alsa-utils
+</code></pre>
+<p>Voor de asus laptop:
+maak een bestand aan in de map:<!-- raw HTML omitted -->
+/etc/modprobe.d<!-- raw HTML omitted -->
+met de volgende inhoud:</p>
+<pre><code>options snd-hda-intel id=PCH index=0
+options snd-hda-intel id=HDMI index=1
+</code></pre>
+<p>Check of de kanalen niet dicht staan, en voer een speakertest uit:</p>
+<pre><code>alsamixer 		## unmuting all channels met m-toets
+speaker-test -c 2	## test speakers
+</code></pre>
+<p>als pacman zeurt over keyring:</p>
+<pre><code>pacman-key --init
+pacman-key --populate archlinux
+</code></pre>
+<h2 id="04-bookmarks">04 Bookmarks</h2>
+<p><a href="https://wiki.archlinux.org/index.php/Installation_guide">Arch install guide</a> | <a href="https://youtu.be/5P1B1IzAhdo">Youtube install guide</a></p>
+<p><a href="/categories/distro">Meer distro installeren</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

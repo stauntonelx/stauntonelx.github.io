@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>basis on Stauntonel Blog</title>
+    <link>https://stauntonel.nl/tags/basis/</link>
+    <description>Recent content in basis on Stauntonel Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>nl-nl</language>
+    <lastBuildDate>Sun, 09 Oct 2022 11:19:30 +0200</lastBuildDate><atom:link href="https://stauntonel.nl/tags/basis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A. Hugo basis</title>
+      <link>https://stauntonel.nl/posts/2022/a.-hugo-basis/</link>
+      <pubDate>Sun, 09 Oct 2022 11:19:30 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/posts/2022/a.-hugo-basis/</guid>
+      <description>&lt;p&gt;Om een website met hugo te maken kun je kiezen voor een &lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;theme&lt;/a&gt; op de website.
+Of je kunt je website zelf opbouwen zoals we hier gaan doen.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

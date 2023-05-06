@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Stauntonel Blog</title>
+    <link>https://stauntonel.nl/tags/</link>
+    <description>Recent content in Tags on Stauntonel Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>nl-nl</language>
+    <lastBuildDate>Tue, 11 Oct 2022 22:49:34 +0200</lastBuildDate><atom:link href="https://stauntonel.nl/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hugo</title>
+      <link>https://stauntonel.nl/tags/hugo/</link>
+      <pubDate>Tue, 11 Oct 2022 22:49:34 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>templates</title>
+      <link>https://stauntonel.nl/tags/templates/</link>
+      <pubDate>Tue, 11 Oct 2022 22:49:34 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/templates/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>basis</title>
+      <link>https://stauntonel.nl/tags/basis/</link>
+      <pubDate>Sun, 09 Oct 2022 11:19:30 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/basis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>debian</title>
+      <link>https://stauntonel.nl/tags/debian/</link>
+      <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/debian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>debootstrap</title>
+      <link>https://stauntonel.nl/tags/debootstrap/</link>
+      <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/debootstrap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ubuntu</title>
+      <link>https://stauntonel.nl/tags/ubuntu/</link>
+      <pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>webserver</title>
+      <link>https://stauntonel.nl/tags/webserver/</link>
+      <pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/webserver/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>beveiliging</title>
+      <link>https://stauntonel.nl/tags/beveiliging/</link>
+      <pubDate>Sun, 10 Oct 2021 12:51:47 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/beveiliging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>schijven</title>
+      <link>https://stauntonel.nl/tags/schijven/</link>
+      <pubDate>Sun, 10 Oct 2021 12:51:47 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/schijven/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>markdown</title>
+      <link>https://stauntonel.nl/tags/markdown/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>versleutelen</title>
+      <link>https://stauntonel.nl/tags/versleutelen/</link>
+      <pubDate>Fri, 03 Sep 2021 14:00:27 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/versleutelen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>btrfs</title>
+      <link>https://stauntonel.nl/tags/btrfs/</link>
+      <pubDate>Sun, 29 Aug 2021 21:53:42 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/btrfs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gentoo</title>
+      <link>https://stauntonel.nl/tags/gentoo/</link>
+      <pubDate>Sun, 29 Aug 2021 21:53:42 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/gentoo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>alpine</title>
+      <link>https://stauntonel.nl/tags/alpine/</link>
+      <pubDate>Sun, 29 Aug 2021 21:33:17 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/alpine/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://stauntonel.nl/tags/docker/</link>
+      <pubDate>Thu, 15 Jul 2021 20:15:53 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arch</title>
+      <link>https://stauntonel.nl/tags/arch/</link>
+      <pubDate>Sun, 14 Feb 2021 20:49:19 +0100</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/arch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>muziek</title>
+      <link>https://stauntonel.nl/tags/muziek/</link>
+      <pubDate>Sun, 14 Feb 2021 14:44:45 +0100</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/muziek/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>netwerk</title>
+      <link>https://stauntonel.nl/tags/netwerk/</link>
+      <pubDate>Sat, 13 Feb 2021 23:59:23 +0100</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/netwerk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>systemd</title>
+      <link>https://stauntonel.nl/tags/systemd/</link>
+      <pubDate>Sat, 13 Feb 2021 23:59:23 +0100</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/systemd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bootloader</title>
+      <link>https://stauntonel.nl/tags/bootloader/</link>
+      <pubDate>Sat, 13 Feb 2021 21:05:58 +0100</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/bootloader/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wordpress</title>
+      <link>https://stauntonel.nl/tags/wordpress/</link>
+      <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/wordpress/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

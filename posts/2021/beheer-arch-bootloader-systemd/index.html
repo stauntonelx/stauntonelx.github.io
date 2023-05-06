@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Systemd Boot | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="systemd-boot inrichten op btrfs" />
+    <meta name="keywords" content="arch, bootloader, btrfs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Systemd Boot</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-partitioneren">01 Partitioneren</a></li>
+    <li><a href="#02-esp">02 ESP</a></li>
+    <li><a href="#03-bootloader">03 bootloader</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/arch">arch</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/bootloader">bootloader</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/btrfs">btrfs</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/beheer">beheer</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Systemd-boot installeren en inrichten, na partitioneren gtp-schijf met UEFI en btrfs partitie.</p>
+<h2 id="01-partitioneren">01 Partitioneren</h2>
+<p>Voor systemd-boot kun je het beste gebruik maken van GPT.
+Een voorbeeld van een partitieschema:</p>
+<pre><code>Device       Start      End  Sectors Size Type
+/dev/sda1     2048  2099199  2097152   1G EFI System
+/dev/sda2  2099200 41943006 39843807  19G Linux filesystem
+</code></pre>
+<p>maak de filesystemen:</p>
+<pre><code>mkfs.vfat -F32 -n ESP /dev/sda1
+mkfs.btrfs -L butter /dev/sda2
+</code></pre>
+<p>zet de bootflag aan met parted:</p>
+<pre><code>parted /dev/sda
+set 1 boot on
+q
+</code></pre>
+<h2 id="02-esp">02 ESP</h2>
+<p>Als we de bootloader van sysemd zelf gebruiken hoeven we niets extra te installeren.
+Wel moeten we er voor zorgen dat het esp (mountpoint voor de efi is vastgelegd in fstab.
+Mount eerst de root partitie in dit geval met</p>
+<pre><code>mount -o noatime,compress=lzo,space_cache,subvol=@arch /dev/sda2 /mnt
+</code></pre>
+<p>daarna zorg je ervoor dat de esp wordt gemount;</p>
+<pre><code>cd /mnt
+mkdir -p mnt/esp
+mount /dev/sda1 mnt/esp
+</code></pre>
+<p>Daarna kun je met pactrap arch installeren zoals altijd</p>
+<pre><code>pacstrap /mnt base base-devel dosfstools btrfs-progs
+genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre>
+<p>zie verder de installatie aantekeningen</p>
+<h2 id="03-bootloader">03 bootloader</h2>
+<p>Na de installatie wordt het tijd voor de installatie van de bootloader.
+Het kan soms nodig zijn om de vfat module te downloaden</p>
+<pre><code>nano /etc/modules-load.d/vfat
+</code></pre>
+<p>geef het bestan de volgende inhoud:</p>
+<pre><code>vfat
+</code></pre>
+<p>daarna kan de bootloader geinstalleerd worden met:</p>
+<pre><code>bootctl --path=/mnt/esp install
+cd /mnt/esp
+mkdir -p arch/testing
+</code></pre>
+<p>dan gaan we de bootloader zelf configureren:</p>
+<pre><code>cd /mnt/esp/loader
+nano loader.conf
+</code></pre>
+<p>Geef dit betand de volgende inhoud:</p>
+<pre><code>default	arch
+timeout	4
+editor	0
+</code></pre>
+<p>Daarna gaan we bootenties zelf inrichten:</p>
+<pre><code>cd /mnt/esp/loader/entries
+nano arch.conf
+</code></pre>
+<p>Geef dit bestand de volgende inhoud:</p>
+<pre><code>title          Arch Linux
+linux          /arch/testing/vmlinuz-linux
+initrd         /arch/testing/initramfs-linux.img
+options        root=PARTUUID=afe48ccd-024a-4970-a36c-f4275eb28d33 rw rootflags=subvol=@arch
+</code></pre>
+<p>De boot bestanden copieren we naar /mnt/esp/arch/testing</p>
+<pre><code>mv /boot/* /mnt/esp/arch/testing
+</code></pre>
+<p>Vervolgens voegen we deze regel toe in de fstab:</p>
+<pre><code>/mnt/esp/arch/testing /boot none defaults,bind 0 0
+</code></pre>
+<p>mount alle partities:</p>
+<pre><code>mount -a
+</code></pre>
+<p>daarna kunnen de initramfs opnieuw aanmaken met:</p>
+<pre><code>mkinitcpio -p linux
+</code></pre>
+<p>Exit de chroot en start je nieuw geinstalleerde systeem!</p>
+<p><a href="/categories/beheer">Meer beheer</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

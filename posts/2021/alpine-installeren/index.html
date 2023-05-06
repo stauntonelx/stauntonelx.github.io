@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Alpine installeren | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="Installeer alpine op btrfs subvolume" />
+    <meta name="keywords" content="alpine, btrfs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Alpine installeren</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-usb-maken">01 usb maken</a></li>
+    <li><a href="#02-setup-alpine">02 setup alpine</a></li>
+    <li><a href="#03-grub">03 grub</a></li>
+    <li><a href="#04-btrfs">04 btrfs</a></li>
+    <li><a href="#05-installeer-naar-disk">05 installeer naar disk</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/alpine">alpine</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/btrfs">btrfs</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/distro">Distro</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Installeer alpine vanaf een live usb, verander standaard bootloader naar grub.</p>
+<h2 id="01-usb-maken">01 usb maken</h2>
+<p>Download de standaard iso en kopieer naar usb met dd.</p>
+<pre><code>dd if=alpine.iso of=/dev/sdx &amp;&amp; sync
+</code></pre>
+<h2 id="02-setup-alpine">02 setup alpine</h2>
+<p>Doorloop de alpine setup en skip de laatste stap. (installatie naar disk overslaan)</p>
+<pre><code>setup-alpine
+</code></pre>
+<h2 id="03-grub">03 grub</h2>
+<p>Standaard gebruikt alpine syslinux, wij willen grub.</p>
+<pre><code>export BOOTLOADER=“grub”
+apk add grub
+</code></pre>
+<h2 id="04-btrfs">04 btrfs</h2>
+<p>Omdat we alpine op een btrfs volume willen installeren moeten we het eerst installeren.</p>
+<pre><code>apk add btrfs-progs
+</code></pre>
+<p>Mount de btrfs partitie.</p>
+<pre><code>Mount -t btrfs /dev/sda2 /mnt
+</code></pre>
+<p>Creeer nu het subvolume</p>
+<pre><code>cd /mnt
+Btrfs subvolume create 03_alpine
+</code></pre>
+<p>Unmount partitie</p>
+<pre><code>cd /
+umount /dev/sda2
+</code></pre>
+<p>en mount subvolume</p>
+<pre><code>mount -t btrfs -o subvol=03_alpine /dev/sda2 /mnt
+</code></pre>
+<h2 id="05-installeer-naar-disk">05 installeer naar disk</h2>
+<p>Nu moeten we nog alles naar disk installeren</p>
+<pre><code>setup-disk -v /mnt
+</code></pre>
+<p><a href="/categories/distro">Meer distro installeren</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

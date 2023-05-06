@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Beheer schijven | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="formatteren, versleutelen en veilig verwijderen data" />
+    <meta name="keywords" content="schijven, beveiliging" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Beheer schijven</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-veilig-verwijderen-data">01 Veilig verwijderen data</a>
+      <ul>
+        <li><a href="#harde-schijf">harde schijf</a></li>
+        <li><a href="#ssd-en-nvme">SSD en NVME</a></li>
+      </ul>
+    </li>
+    <li><a href="#02-inrichten-en-formateren-nieuwe-schijf">02 inrichten en formateren nieuwe schijf</a>
+      <ul>
+        <li><a href="#gpt-partitie-tabel">gpt partitie tabel</a></li>
+        <li><a href="#dos-partitie-tabel">DOS partitie tabel</a></li>
+        <li><a href="#type-partites">type partites</a></li>
+        <li><a href="#formateren-partitie">formateren partitie</a></li>
+      </ul>
+    </li>
+    <li><a href="#03-dual-boot-met-windows">03 dual boot met windows</a></li>
+    <li><a href="#04-versleutel-je-data">04 versleutel je data</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/schijven">schijven</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/beveiliging">beveiliging</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/beheer">beheer</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Hoe beheer je een harde schijf of ssd in Linux. Aandacht voor veilig verwijderend data, opnieuw partioneren en versleutelen van partities.</p>
+<h2 id="01-veilig-verwijderen-data">01 Veilig verwijderen data</h2>
+<h3 id="harde-schijf">harde schijf</h3>
+<p><em><strong>Zorg vooraf dat er geen partities gemount zijn!</strong></em>
+Bij een harde schijf kun je het best gebruik maken van de shred utility. Standaard overschrijft het programma de data van gekozen partitie of schijf met random data, die daarna nog eens 4 keer overschreven wordt met nullen.
+Een partitie kun je zo veilig overschrijven:</p>
+<pre><code>shred -vfzn 1 /dev/sdb4
+</code></pre>
+<p>Een hele schijf wissen inclusief de partitiontable gaat als volgt:</p>
+<pre><code>shred -vfzn 3 /dev/sdb
+</code></pre>
+<p><strong>Let op!</strong>
+Bij de partitie wordt de data 2 keer overschreven 1 keer met random data en 1 keer met nullen (n 1) bij de schijf gaan we voor 3 keer met nullen. (n 3)</p>
+<h3 id="ssd-en-nvme">SSD en NVME</h3>
+<p>Het veilig wissen van dit soort schijven vraagt om een heel andere aanpak. Dat komt omdat de opslag techniek heel anders werkt dan bij harde schijven. daarom verwijs ik naar de arch wiki voor meer informatie:</p>
+<p><a href="https://wiki.archlinux.org/title/Solid_state_drive/Memory_cell_clearing">Solid state drive/Memory cell clearing</a></p>
+<h2 id="02-inrichten-en-formateren-nieuwe-schijf">02 inrichten en formateren nieuwe schijf</h2>
+<p>Voor het formateren van harde schijven gebruik ik meestal fdisk, hieronder een paar aantekeningen die je als naslag kunt gebruiken.</p>
+<pre><code>fdisk /dev/sdb
+</code></pre>
+<dl>
+<dt>letter p:</dt>
+<dd>overzicht van huidige partitie tabel</dd>
+</dl>
+<h3 id="gpt-partitie-tabel">gpt partitie tabel</h3>
+<p>Sterk aan te bevelen bij een UEFI BIOS en windows. UEFI is al heel lang de standaard.</p>
+<dl>
+<dt>letter g:</dt>
+<dd>om een nieuwe GPT partitie tabel te maken.</dd>
+</dl>
+<h3 id="dos-partitie-tabel">DOS partitie tabel</h3>
+<p>Voor oude machines, is dit de standaard als ze nog geen UEFI Bios hebben. Wil je alleen linux installeren dan is dit ook een optie bij nieuwere systemen. Maar nogmaals niet aan te bevelen.</p>
+<dl>
+<dt>letter o:</dt>
+<dd>om een nieuwe DOS partitie tabel te maken</dd>
+</dl>
+<h3 id="type-partites">type partites</h3>
+<dl>
+<dt>Letter l:</dt>
+<dd>opsomming van alle mogelijke partitie types</dd>
+</dl>
+<p>Meest gebruikte type partities:</p>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>omschrijving</th>
+<th>uitleg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>EFI System</td>
+<td>nodig voor de bootloader om een UEFI systeem te starten</td>
+</tr>
+<tr>
+<td>19</td>
+<td>SWAP</td>
+<td>gebruik je voor SWAP partition (minimaal 1 x geheugen, max 1,5 geheugen) ook gebruikt bij hybernation</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Linux filesysteem</td>
+<td>HOME en ROOT partition</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Linux LVM</td>
+<td>Gebruiken als je werkt met Logical Volume Management (handig voor snapshots</td>
+</tr>
+</tbody>
+</table>
+<dl>
+<dt>Letter n:</dt>
+<dd>nieuwe partitie toevoegen</dd>
+</dl>
+<p>De beginsector kun je meestal overnemen.
+De eindsector kun je aangeven als vogt:</p>
+<ul>
+<li>+20G partitie wordt 20 Gig groot</li>
+<li>+250M partitie wordt 250 mb</li>
+<li>-50G partitie groeit maar houd 50G vrije ruimte over aan het eind van de schijf</li>
+</ul>
+<h3 id="formateren-partitie">formateren partitie</h3>
+<p>Mijn favorite filsysteem is btrfs, ondanks dat het nog volop in ontwikkeling is heb ik nog nooit problemen gehad.
+Je kunt ook snapshots maken en werken met pools, die je kunt uitbreiden met meerdere schijven /partities. Subvolumes kun je gebruiken als partities waarop je bijvoorbeeld een distro kunt installeren.</p>
+<table>
+<thead>
+<tr>
+<th>filesysteem</th>
+<th>commando</th>
+<th>beschijving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>btrfs</td>
+<td>mkfs -L BTRFS /dev/sda2</td>
+<td>formateer /dev/sda2 als BRTFS met als label: BTRFS</td>
+</tr>
+<tr>
+<td>fat 32 /vfat</td>
+<td>mkfs.vfat -n ESP /dev/sda1</td>
+<td>formateer /dev/sda1 met label ESP voor bijvoorbeeld een Uefi partitie</td>
+</tr>
+<tr>
+<td>ext4</td>
+<td>mkfs.ext4 -L DEBIAN /dev/sda3</td>
+<td>Formateer /dev/sda4 als ext4 met label DEBIAN</td>
+</tr>
+</tbody>
+</table>
+<h2 id="03-dual-boot-met-windows">03 dual boot met windows</h2>
+<h2 id="04-versleutel-je-data">04 versleutel je data</h2>
+<p><a href="/categories/beheer">Meer beheer</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

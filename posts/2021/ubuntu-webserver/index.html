@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Ubuntu lemp | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="nginx,mariadb, php installeren onder ubuntu" />
+    <meta name="keywords" content="ubuntu, webserver" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Ubuntu lemp</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-mariadb">01 mariadb</a></li>
+    <li><a href="#02-nginx">02 nginx</a></li>
+    <li><a href="#03-php">03 php</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/ubuntu">ubuntu</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/webserver">webserver</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/server">server</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Hieronder mijn aantekeningen over het installeren van een lemp onder Ubuntu. Op de server voeren we er eerst een basis installatie uit. Daarna installeren we de lemp software.</p>
+<h2 id="01-mariadb">01 mariadb</h2>
+<pre><code>apt-get install mariadb-server
+mysql_secure_installation
+</code></pre>
+<p>Beantwoord alle vragen van het script met Yes en geef root een wachtwoord.
+Log daarna in met je root wachtwoord:</p>
+<pre><code>mysql -u root -p
+</code></pre>
+<p>Check even de datatabases</p>
+<pre><code>show databases;
+quit;
+</code></pre>
+<p>check onder welke gebruiker de service draait</p>
+<pre><code>ps -aux| grep mysql
+</code></pre>
+<p>Als het goed is, is dat de gebruiker mysql.
+Verder kun je de status checken met:</p>
+<pre><code>systemctl status mysql
+</code></pre>
+<h2 id="02-nginx">02 nginx</h2>
+<pre><code>apt install nginx curl
+</code></pre>
+<p>Als de service goed draait krijg je nu een testpagina op het ip/adres van de server.</p>
+<pre><code>curl ipadres
+systemctl status nginx
+</code></pre>
+<p>Voordat je nginx instellingen gaat aanpassen maken we een kopie</p>
+<pre><code>cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf_org
+</code></pre>
+<p>Met het tree commando krijg je een mooi overzicht van de sites-available, sites-enabled</p>
+<pre><code>apt-get install tree
+cd /etc/nginx
+tree
+</code></pre>
+<p>check onder welke gebruiker nginx draait:</p>
+<pre><code>ps aux| grep nginx
+</code></pre>
+<h2 id="03-php">03 php</h2>
+<p>zie ook dit <a href="https://stauntonel.nl/posts/2021/ubuntu-webserver/" title="wordprees onder arch">arch wordpress</a></p>
+<p><a href="/categories/server">Meer server</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

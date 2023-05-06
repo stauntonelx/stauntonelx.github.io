@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Uncomplicated Firewall | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="UFW: basic regels voor ssh ping uitzetten en fail2ban" />
+    <meta name="keywords" content="Debian, beveiliging" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Uncomplicated Firewall</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/debian">Debian</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/beveiliging">beveiliging</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/beheer">beheer</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Beveilig je server met UFW, fail2ban installatie en het uitzetten ping.</p>
+<h2 id="01-uncomplecated-firewall-ufw">01 Uncomplecated Firewall (UFW)</h2>
+<p>Eerst zorgen we voor een extra protectie voor botnet attacks:</p>
+<pre><code>apt-get install fail2ban
+</code></pre>
+<p>Daarna installeren we de firewall:</p>
+<pre><code>apt-get install ufw
+</code></pre>
+<p>Check de status:</p>
+<pre><code>ufw status
+</code></pre>
+<p>Als het goed is zegt de firewall dat de status inactive is.
+Voor we hem aanzetten moeten we toestemming geven voor SSH op poort 22</p>
+<pre><code>ufw default deny incoming
+ufw default allow outgoing
+ufw allow 22/tcp
+ufw allow http
+</code></pre>
+<p>Nu kunnen we de firewall inschakelen zonder dat de ssh-sessie word beeindigd.</p>
+<pre><code>sudo ufw enable
+</code></pre>
+<p>Check nu de status:</p>
+<pre><code>ufw status numbered
+</code></pre>
+<p>Je krijgt dan een dergelijke output:</p>
+<pre><code>      To                         Action      From
+     --                         ------      ----
+[ 1] 22/tcp                     ALLOW IN    Anywhere
+[ 2] 22/tcp (v6)                ALLOW IN    Anywhere (v6)
+</code></pre>
+<p>Je kunt ook een app profile gebruiken, lijst daarvoor eerst de aanwezige app&rsquo;s uit.</p>
+<pre><code>ufw app list
+ufw allow &quot;Nginx-Full&quot;
+</code></pre>
+<h2 id="02-disable-ping">02 disable ping</h2>
+<p>Poortscanning gebeurd vaak door een ip / poort te pingen. Op de volgende wijze
+kun je pingen uitzetten:</p>
+<pre><code>nano /etc/ufw/before.rules
+</code></pre>
+<p>Voor alle regels met &ldquo;&ndash;icmp&rdquo; verander ACCEPT in DROP.
+Daarna kun je de firewall opnieuw starten door:</p>
+<pre><code>ufw reload
+</code></pre>
+<p><a href="/categories/beheer">Meer beheer</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

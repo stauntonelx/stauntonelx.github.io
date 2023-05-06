@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>B. Hugo hello world | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="rondje langs diverse templates van je hugo website." />
+    <meta name="keywords" content="hugo, templates" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>B. Hugo hello world</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-listhtml">01 list.html</a></li>
+    <li><a href="#02-singlehtml">02 single.html</a></li>
+    <li><a href="#03-eerste-blogpost">03 eerste blogpost</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/hugo">hugo</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/templates">templates</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/web">web</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Hugo maakt gebruik van diverste templates. De belangrijkste komen hier aan bod.</p>
+<h2 id="01-listhtml">01 list.html</h2>
+<p>Om een idee te krijgen hoe je de list pagina kunt oproepen geef je die de volgende inhoud:</p>
+<pre><code>{{ define &quot;main&quot; }}
+  &lt;p&gt;list page&lt;/p&gt;
+{{ end }}
+</code></pre>
+<h2 id="02-singlehtml">02 single.html</h2>
+<p>Dat doen we ook voor single pagina</p>
+<pre><code>{{ define &quot;main&quot; }}
+  &lt;p&gt;single page&lt;/p&gt;
+    {{ .Content}}
+{{ end }}
+</code></pre>
+<h2 id="03-eerste-blogpost">03 eerste blogpost</h2>
+<p>Nu maken we onze eerste blogpost met:</p>
+<pre><code>hugo new blog/hello_world.md
+</code></pre>
+<p>Daarna kunnen we met markdown onze eerste post maken:</p>
+<pre><code>nano content/blog/hello_world.md
+</code></pre>
+<p>Om te testen voeren we onderaan de volgende inhoud toe:</p>
+<pre><code>## Mijn eerste Post!
+
+Hello world !
+</code></pre>
+<p>Vergeet niet om je blog vrij te geven voor je website:</p>
+<pre><code>draft: false
+</code></pre>
+<dl>
+<dt>single page roep je aan met:</dt>
+<dd><a href="http://localhost:1313/blog/hello_world/">http://localhost:1313/blog/hello_world/</a></dd>
+<dt>Een voorbeeld van de listpage:</dt>
+<dd><a href="http://localhost:1313/blog/">http://localhost:1313/blog/</a></dd>
+</dl>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>mpd, ncmpcpp, mpc en icecast | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="mpd en ncmpcpp installeren" />
+    <meta name="keywords" content="debian, muziek" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>mpd, ncmpcpp, mpc en icecast</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-mpd-op-desktop">01 MPD op desktop</a>
+      <ul>
+        <li><a href="#mpd-installeren">MPD installeren</a></li>
+        <li><a href="#xdg">xdg</a></li>
+        <li><a href="#mpd-configureren">MPD configureren</a></li>
+        <li><a href="#mpd-automatisch-opstarten">MPD automatisch opstarten</a></li>
+        <li><a href="#ncmpcpp">ncmpcpp</a></li>
+      </ul>
+    </li>
+    <li><a href="#02-mpd-met-icecaste-op-server">02 Mpd met icecaste op server</a>
+      <ul>
+        <li><a href="#icecast-deamon">Icecast deamon</a></li>
+        <li><a href="#mpd">mpd</a></li>
+        <li><a href="#mpc">mpc</a></li>
+        <li><a href="#afspelen">afspelen</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/debian">debian</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/muziek">muziek</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/project">project</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Music playing deamon is een deamon waarmee je complete muziek collecties kunt organiseren, en afspelen met een client, zoals ncmpcpp. Ook kun met een server mpd en icecast je eigen internet radio starten.</p>
+<h2 id="01-mpd-op-desktop">01 MPD op desktop</h2>
+<h3 id="mpd-installeren">MPD installeren</h3>
+<p>Installeer MPD onder een gewone gebruikeren een client, in dit geval ncmpc:</p>
+<pre><code>sudo apt install mpd ncmpcpp xdg-user-dirs
+xdg-user-dirs-update
+mkdir -p /home/stauntonel/Music/mpd/playlists
+</code></pre>
+<p>Van mijn arch git repo kun je het configbestand kopieren naar je homedir</p>
+<h3 id="xdg">xdg</h3>
+<p>Of je kunt met xdg je config file in de .config map zetten. Daarvoor moet je wel even de volgende aktie uitvoeren:</p>
+<pre><code>mkdir /home/stauntonel/.config/mpd
+sudo nano /etc/profile
+</code></pre>
+<p>Op het einde van het bestand voeg je de volgende regel toe:</p>
+<pre><code>export XDG_CONFIG_HOME=&quot;$HOME/.config&quot;
+</code></pre>
+<h3 id="mpd-configureren">MPD configureren</h3>
+<p>Kopieer de config-file naar /home/stauntonel/.config/mpd/mpd.conf. Check vooraf nog even de paden in de config. Voorbeeld config:</p>
+<pre><code>music_directory     &quot;~/Music&quot;
+playlist_directory  &quot;~/Music/mpd/playlists&quot;
+db_file             &quot;~/Music/mpd/database&quot;
+log_file            &quot;~/Music/mpd/log&quot;
+pid_file            &quot;~/Music/mpd/pid&quot;
+state_file          &quot;~/Music/mpd/state&quot;
+sticker_file        &quot;~/Music/mpd/sticker.sql&quot;
+
+input {
+        plugin &quot;curl&quot;
+}
+
+audio_output {
+	type		&quot;pulse&quot;
+	name		&quot;My Pulse Output&quot;
+}
+
+audio_output {
+    type                    &quot;fifo&quot;
+    name                    &quot;my_fifo&quot;
+    path                    &quot;/tmp/mpd.fifo&quot;
+    format                  &quot;44100:16:2&quot;
+}
+</code></pre>
+<h3 id="mpd-automatisch-opstarten">MPD automatisch opstarten</h3>
+<p>Dan kunnen we de mpd service starten met:</p>
+<pre><code>sudo systemctl stop mpd
+sudo systemctl disable mpd
+systemctl --user enable mpd
+systemctl --user start mpd
+</code></pre>
+<h3 id="ncmpcpp">ncmpcpp</h3>
+<p>Met deze client kun je prima music afspelen in de terminal! Maak een map in $XDG_CONFIG_HOME:</p>
+<pre><code>cd $XDG_CONFIG_HOME
+mkdir ncmpcpp
+cd ncmpcpp
+nano config
+</code></pre>
+<p>Geef het bestand de volgende inhoud:</p>
+<pre><code>ncmpcpp_directory = ~/.config/ncmpcpp
+mpd_host = localhost
+mpd_port = 6600
+mpd_music_dir = ~/music
+visualizer_fifo_path = /tmp/mpd.fifo
+visualizer_output_name = &quot;my_fifo&quot;
+visualizer_in_stereo = yes
+visualizer_sync_interval = 30
+visualizer_type = &quot;spectrum&quot;
+visualizer_look = ●▮
+visualizer_color = 41, 83, 119, 155, 185, 215, 209, 203, 197, 161
+</code></pre>
+<h2 id="02-mpd-met-icecaste-op-server">02 Mpd met icecaste op server</h2>
+<h3 id="icecast-deamon">Icecast deamon</h3>
+<p>Installeer mpd op ubuntu server 16.04 LTS</p>
+<pre><code>apt-get install --no-install-recommends mpd lame flac mpc ncmpcpp icecast2
+</code></pre>
+<p>verander de wachtwoorden in /etc/icecast2/icecast.xml</p>
+<pre><code>&lt;authentication&gt;
+      &lt;!-- Sources log in with username 'source' --&gt;
+      &lt;source-password&gt;########&lt;/source-password&gt;
+      &lt;!-- Relays log in with username 'relay' --&gt;
+      &lt;relay-password&gt;hackme&lt;/relay-password&gt;
+
+      &lt;!-- Admin logs in with the username given below --&gt;
+      &lt;admin-user&gt;stauntonel&lt;/admin-user&gt;
+      &lt;admin-password&gt;########&lt;/admin-password&gt;
+&lt;/authentication&gt;
+</code></pre>
+<p>Activeer nu de icecast deamon:
+nano /etc/default/icecast2:</p>
+<pre><code>ENABLE=true
+</code></pre>
+<p>restart de deamon, en check de status</p>
+<pre><code>systemctl restart icecast2
+systemctl status icecast2
+</code></pre>
+<p>check of de deamon draait onder de icecase2 gebruiker, niet als root!</p>
+<pre><code>ps -aux| grep icecast
+</code></pre>
+<h3 id="mpd">mpd</h3>
+<p>check of de user stauntonel lid is van de audio groep</p>
+<pre><code>id stauntonel
+</code></pre>
+<p>Als dat niet zo is maak stauntonel lid van group audio</p>
+<pre><code>usermod -a -G audio stauntonel
+</code></pre>
+<p>check of gebruiker mpd lid is van de group audio</p>
+<pre><code>id mpd
+</code></pre>
+<p>Maak een map voor de music collection:</p>
+<pre><code>mkdir -p /home/stauntonel/Music
+chown -R stauntonel:audio /home/stauntonel/Music/
+find /home/stauntonel/Music -type d -exec chmod 770 {} +
+find /home/stauntonel/Music -type f -exec chmod 660 {} +
+chmod 3770 /home/stauntonel/Music
+</code></pre>
+<p>aanpassen mpd instellingen nano /etc/mpd.conf:</p>
+<pre><code>music_directory         &quot;/home/stauntonel/Music&quot;
+bind_to_address         &quot;127.0.0.1&quot;
+#audio_output {
+##       type            &quot;alsa&quot;
+##       name            &quot;My ALSA Device&quot;
+##       device          &quot;hw:0,0&quot;        ## optional
+##       mixer_type      &quot;hardware&quot;      ## optional
+##       mixer_device    &quot;default&quot;       ## optional
+##       mixer_control   &quot;PCM&quot;           ## optional
+##       mixer_index     &quot;0&quot;             ## optional
+#}
+audio_output {
+        type            &quot;shout&quot;
+##       encoding        &quot;ogg&quot;                   ## optional
+        name            &quot;StauntonelRadio&quot;
+        host            &quot;localhost&quot;
+        port            &quot;8000&quot;
+        mount           &quot;/radio&quot;
+        password        &quot;########&quot;
+        quality         &quot;5.0&quot;
+##       bitrate         &quot;128&quot;
+        format          &quot;44100:16:2&quot;
+        protocol        &quot;icecast2&quot;              ## optional
+        user            &quot;source&quot;                ## optional
+        description     &quot;Radio stauntonel&quot;      ## optional
+##       url             &quot;http://example.com&quot;    ## optional
+##       genre           &quot;jazz&quot;                  ## optional
+        public          &quot;no&quot;                    ## optional
+##       timeout         &quot;2&quot;                     ## optional
+##       mixer_type      &quot;software&quot;              ## optional
+}
+</code></pre>
+<h3 id="mpc">mpc</h3>
+<p>instellingen:</p>
+<pre><code>mpc help
+mpc random on
+mpc repeat on
+mpc ls | mpd add
+mpc play
+</code></pre>
+<h3 id="afspelen">afspelen</h3>
+<p>met elke player: url http://192.168.178.26:8000/radio</p>
+<p><a href="/categories/project">meer projecten</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

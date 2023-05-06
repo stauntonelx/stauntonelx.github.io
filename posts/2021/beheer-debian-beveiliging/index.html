@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Debian beveiliging | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="Extra beveiliging op debian server en desktop" />
+    <meta name="keywords" content="debian, beveiliging" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Debian beveiliging</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-lock-root">01 lock root</a></li>
+    <li><a href="#02-umask">02 Umask</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/debian">debian</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/beveiliging">beveiliging</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/beheer">beheer</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Extra beveiligingstips voor debian server of desktop.</p>
+<h2 id="01-lock-root">01 lock root</h2>
+<p>Alle gebruikers die kunnen inloggen, zijn natuurlijk per definitie een beveiligings issue. Daarom locken we het root account met:</p>
+<pre><code>sudo passwd -l root
+</code></pre>
+<p>Mocht je spijt krijgen dan kun je altijd het account weer vrijgeven met:</p>
+<pre><code>sudo passwd
+</code></pre>
+<p>In de tussentijd kun je natuurijk nog wel root zijn met:</p>
+<pre><code>sudo su
+</code></pre>
+<h2 id="02-umask">02 Umask</h2>
+<p>Bij Debian is de standaard umask ingesteld op 022. Elk bestand krijgt standaard 777 als rechten. Met een umask van 022 wordt dat 777 - 022 = 755. Voor een server adviseer ik een umask van 027. Dat regel je door de volgende bestanden aan te passen:</p>
+<pre><code>sudo nano /etc/pam.d/common-session
+</code></pre>
+<p>voeg de volgende regel toe als die niet al opgenomen is.</p>
+<pre><code>session optional pam_umask.so
+</code></pre>
+<p>Verder moet we dit bestand aanpassen</p>
+<pre><code>sudo nano /etc/login.defs
+</code></pre>
+<p>Verander de regel</p>
+<pre><code>UMASK 027
+</code></pre>
+<p><a href="/categories/beheer">Meer beheer</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

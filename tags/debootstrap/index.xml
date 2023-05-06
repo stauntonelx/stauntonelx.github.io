@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>debootstrap on Stauntonel Blog</title>
+    <link>https://stauntonel.nl/tags/debootstrap/</link>
+    <description>Recent content in debootstrap on Stauntonel Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>nl-nl</language>
+    <lastBuildDate>Thu, 30 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://stauntonel.nl/tags/debootstrap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debootstrap Installeer Debian</title>
+      <link>https://stauntonel.nl/posts/2022/distro-debian-debootstrap/</link>
+      <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://stauntonel.nl/posts/2022/distro-debian-debootstrap/</guid>
+      <description>&lt;p&gt;Doel is om debian te installeren met debootstrap. We starten met een willekeurige arch installatie, of van het arch installatie medium.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Debootstrap installeer Ubuntu</title>
+      <link>https://stauntonel.nl/posts/2021/distro-ubuntu-debootstrap/</link>
+      <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://stauntonel.nl/posts/2021/distro-ubuntu-debootstrap/</guid>
+      <description>&lt;p&gt;Doel is om ubuntu te installeren met debootstrap.
+We starten met een willekeurige arch installatie, of van de arch installatie usb.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

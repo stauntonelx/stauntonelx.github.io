@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>alpine on Stauntonel Blog</title>
+    <link>https://stauntonel.nl/tags/alpine/</link>
+    <description>Recent content in alpine on Stauntonel Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>nl-nl</language>
+    <lastBuildDate>Sun, 29 Aug 2021 21:33:17 +0200</lastBuildDate><atom:link href="https://stauntonel.nl/tags/alpine/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Alpine installeren</title>
+      <link>https://stauntonel.nl/posts/2021/alpine-installeren/</link>
+      <pubDate>Sun, 29 Aug 2021 21:33:17 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/posts/2021/alpine-installeren/</guid>
+      <description>&lt;p&gt;Installeer alpine vanaf een live usb, verander standaard bootloader naar grub.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

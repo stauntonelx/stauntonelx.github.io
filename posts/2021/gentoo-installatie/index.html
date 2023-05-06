@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Gentoo installatie | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="basis installatie van gentoo op btrfs" />
+    <meta name="keywords" content="gentoo, btrfs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Gentoo installatie</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-btrfs-subvolume-maken">01 BTRFS subvolume maken</a>
+      <ul>
+        <li><a href="#mount">Mount</a></li>
+        <li><a href="#download">Download</a></li>
+        <li><a href="#uitpakken">Uitpakken</a></li>
+        <li><a href="#compileer-instellingen">Compileer instellingen</a></li>
+        <li><a href="#portage">portage</a></li>
+      </ul>
+    </li>
+    <li><a href="#02-chroot">02 chroot</a>
+      <ul>
+        <li><a href="#tijdzone-instellen">Tijdzone instellen</a></li>
+        <li><a href="#locale">Locale</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/gentoo">gentoo</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/btrfs">btrfs</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/distro">Distro</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Installeren Gentoo op BTRFS vanuit een arch distributie.</p>
+<h2 id="01-btrfs-subvolume-maken">01 BTRFS subvolume maken</h2>
+<p>De btrfs partitie bevind zich in dit geval op /dev/sda4. Al mijn subvolumes zijn gemount in de map /btrfs. In deze map is een subvolume aangemaakt voor de root volumes van alle geinstalleerde distributies. Maak een nieuw subvolume aan voor de root van Gentoo:</p>
+<pre><code>btrfs subvolume create /btrfs/@/@gentoo
+</code></pre>
+<h3 id="mount">Mount</h3>
+<p>Mount dit subvolume als volgt:</p>
+<pre><code>mkdir -p /mnt/gentoo
+mount -o noatime,comress=lzo,space_cache,subvol=/@/@gentoo /dev/sda4 /mnt/gentoo
+cd /mnt/gentoo
+</code></pre>
+<h3 id="download">Download</h3>
+<p>Nu moeten we de stage3 tarball downloaden via een Nederlandse <a href="https://www.gentoo.org/downloads/mirrors/#NL">mirror</a>: Let op dat je de juiste architectuur kies, en de voor de systemd versie.</p>
+<pre><code>wget http://mirror.leaseweb.com/gentoo/releases/amd64/autobuilds/current-stage3-amd64-systemd/stage3-amd64-systemd-20180103.tar.bz2
+wget http://mirror.leaseweb.com/gentoo/releases/amd64/autobuilds/current-stage3-amd64-systemd/stage3-amd64-systemd-20180103.tar.bz2.DIGESTS
+</code></pre>
+<p>check de checksum:</p>
+<pre><code>sha512sum stage3-amd64-systemd-20180103.tar.bz2
+</code></pre>
+<h3 id="uitpakken">Uitpakken</h3>
+<pre><code>tar xpf stage3-amd64-systemd-20180103.tar.bz2 --xattrs-include='*.*' --numeric-owner
+rm stage3*
+</code></pre>
+<h3 id="compileer-instellingen">Compileer instellingen</h3>
+<p>De compileer instellingen kun je vastleggen met:</p>
+<pre><code>nano -w /mnt/gentoo/etc/portage/make.conf
+</code></pre>
+<p>Pas het aantal cores aan (werkelijk aantal +1)</p>
+<pre><code>MAKEOPTS=&quot;-j5&quot;
+</code></pre>
+<p>De architectuur laten we automatisch bepalen door gcc</p>
+<pre><code>CFLAGS=&quot;-march=native -O2 -pipe&quot;
+</code></pre>
+<p>De global useflags zijn belangrijk voor de compilatie, let op dat je deze niet te uitgebreid maakt!</p>
+<pre><code>USE=&quot;-consolekit -kde -qt4 -qt5 btrfs ffmpeg gnome gtk lzo policykit systemd&quot;
+</code></pre>
+<p>Kies een 2-tal mirrors</p>
+<pre><code>GENTOO_MIRRORS=&quot;http://ftp.snt.utwente.nl/pub/os/linux/gentoo/ http://mirror.leaseweb.com/gentoo/&quot;
+</code></pre>
+<h3 id="portage">portage</h3>
+<p>Het is aangeraden de standaard instellingen niet aan te passen.</p>
+<pre><code>mkdir --parents /mnt/gentoo/etc/portage/repos.conf
+cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+</code></pre>
+<h2 id="02-chroot">02 chroot</h2>
+<p>Nu kunnen we de omgeving in met:</p>
+<pre><code>mount -t proc none /mnt/gentoo/proc
+mount --rbind /sys /mnt/gentoo/sys
+mount --make-rslave /mnt/gentoo/sys
+mount --rbind /dev /mnt/gentoo/dev
+mount --make-rslave /mnt/gentoo/dev
+cp /etc/resolv.conf etc
+chroot /mnt/gentoo /bin/bash
+source /etc/profile
+</code></pre>
+<h3 id="tijdzone-instellen">Tijdzone instellen</h3>
+<pre><code>echo &quot;Europe/Amsterdam&quot; &gt; /etc/timezone
+emerge --config sys-libs/timezone-data
+</code></pre>
+<h3 id="locale">Locale</h3>
+<pre><code>nano /etc/locale.gen
+locale-gen
+eselect locale list
+eselect locale set
+env-update &amp;&amp; source /etc/profile
+</code></pre>
+<p><a href="/categories/distro">Meer distro installeren</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

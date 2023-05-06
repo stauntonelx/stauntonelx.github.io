@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  	<title>Versleutelde usb installatie | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  	<meta name="generator" content="Geany 1.37.1" />
+  	<meta name="description" content="debian op versleutelde usb" />
+    <meta name="keywords" content="debian, versleutelen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  	<link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Versleutelde usb installatie</h2>
+  <h5 class="date">Laatst gewijzigd: 06-05-2023</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#01-partitioneren">01 partitioneren</a></li>
+    <li><a href="#02-encryption">02 encryption</a></li>
+    <li><a href="#03-formateren">03 formateren</a></li>
+    <li><a href="#04-fstab">04 fstab</a></li>
+    <li><a href="#05-installeer-grub">05 installeer grub</a></li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/debian">debian</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/versleutelen">versleutelen</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/distro">distro</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Installeer een distro op een versleutelde usb met grub als bootloader.</p>
+<h2 id="01-partitioneren">01 partitioneren</h2>
+<p>We willen dat de usb gebruikt kan worden met efi en met bios.
+Daarvoor gebruiken we gdisk en kies voor o (nieuwe GPT table).
+Dan partitioneren we de disk als volgt:</p>
+<pre><code>Number  Start (sector)    End (sector)  Size     Code  Name
+ 1            2048           22527   10.0 MiB    EF02  BIOS boot partition
+ 2           22528          432127   200.0 MiB   EF00  EFI system partition
+ 3          432128          841727   200.0 MiB   8300  Linux filesystem
+ 4          841728         7884766   3.4 GiB     8300  Linux filesystem
+</code></pre>
+<p>Partitie 1: bios partitie hoeven we niet te formateren.
+Partitie 2: de esp partitie voor EFI systeem (fat)
+Partitie 3: de eigenlijke boot partitie (ext2) nodig voor debian
+Partitie 4: root partitie, deze gaan we met luks encrypten (ext4)</p>
+<h2 id="02-encryption">02 encryption</h2>
+<p>Maak cryptdevice:</p>
+<pre><code>cryptsetup -y -v luksFormat /dev/sdb4
+</code></pre>
+<p>Open het device</p>
+<pre><code>cryptsetup open /dev/sdb4 cryptusb
+</code></pre>
+<p>En maak /etc/crypttab met de volgende inhoud:</p>
+<pre><code>cryptusb UUID=fcccb37e-4b30-4671-8610-be80cb37fb6c none luks
+</code></pre>
+<p>gebruikte de UUID van de root partitie</p>
+<h2 id="03-formateren">03 formateren</h2>
+<p>Formateer nu je partities:</p>
+<pre><code>mkfs.fat -F32 -n ESP /dev/sdb2
+mkfs.ext2 -L BOOT /dev/sdb3
+mkfs.ext4 -L ROOT /dev/mapper/cryptusb
+</code></pre>
+<p>Controleer met lsblk:</p>
+<pre><code>lsblk -f
+</code></pre>
+<p>als het goed is ziet het er nu zo uit:</p>
+<pre><code>NAME         FSTYPE      LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+sdb
+├─sdb1
+├─sdb2       vfat        ESP   122B-38A4                             192.1M     2% /boot/efi
+├─sdb3       ext2        BOOT  e879de6d-13ee-45cc-b184-c2020fe5756a  129.1M    28% /boot
+  └─sdb4       crypto_LUKS       fcccb37e-4b30-4671-8610-be80cb37fb6c
+  └─cryptusb ext4        ROOT  9b27aec1-3fdb-4bf1-abac-fa8cb6e4690c    1.9G    35% /
+</code></pre>
+<h2 id="04-fstab">04 fstab</h2>
+<p>Na installatie ziet je /etc/fstab er zo uit:</p>
+<pre><code># /dev/mapper/cryptusb LABEL=ROOT
+UUID=9b27aec1-3fdb-4bf1-abac-fa8cb6e4690c / ext4 rw,relatime 0 1
+# /dev/sdb3 LABEL=BOOT
+UUID=e879de6d-13ee-45cc-b184-c2020fe5756a /boot ext2 rw,relatime 0 2
+# /dev/sdb2 LABEL=ESP
+UUID=122B-38A4 /boot/efi vfat rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro 0 2
+</code></pre>
+<h2 id="05-installeer-grub">05 installeer grub</h2>
+<p><strong>DEBIAN:</strong></p>
+<pre><code>apt install grub2 grub-efi-amd64 cryptsetup-initramfs
+</code></pre>
+<p>Installeer grub voor BIOS</p>
+<pre><code>grub-install --target=i386-pc --boot-directory /boot /dev/sdb
+</code></pre>
+<p>Installeer grub voor efi</p>
+<pre><code>grub-install --target=x86_64-efi --efi-directory /boot/efi --boot-directory /boot --removable
+</code></pre>
+<p>Pas de /etc/default/grub aan</p>
+<pre><code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;cryptdevice=UUID=fcccb37e-4b30-4671-8610-be80cb37fb6c root=/dev/mapper/cryptusb&quot;
+</code></pre>
+<p>Maak een nieuwe initram:</p>
+<pre><code>update-initramfs -u -k all
+</code></pre>
+<p>update grub:</p>
+<pre><code>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+<p><a href="/categories/distro">meer distro installeren</a></p>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2022 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>

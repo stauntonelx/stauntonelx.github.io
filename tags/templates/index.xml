@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>templates on Stauntonel Blog</title>
+    <link>https://stauntonel.nl/tags/templates/</link>
+    <description>Recent content in templates on Stauntonel Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>nl-nl</language>
+    <lastBuildDate>Tue, 11 Oct 2022 22:49:34 +0200</lastBuildDate><atom:link href="https://stauntonel.nl/tags/templates/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>B. Hugo hello world</title>
+      <link>https://stauntonel.nl/posts/2022/b.-hugo-hello-world/</link>
+      <pubDate>Tue, 11 Oct 2022 22:49:34 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/posts/2022/b.-hugo-hello-world/</guid>
+      <description>&lt;p&gt;Hugo maakt gebruik van diverste templates. De belangrijkste komen hier aan bod.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
