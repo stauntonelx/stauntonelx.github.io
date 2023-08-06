@@ -1,7 +1,7 @@
 :root {
-  --clr-primary--300: 231, 44%, 92%;
-  --clr-primary--500: 231, 44%, 56%;
-  --clr-primary--700: 233, 57%, 37%;
+  --clr-primary--300: 0, 0%, 92%;
+  --clr-primary--500: 199, 98%, 35%;
+  --clr-primary--700: 199, 98%, 26%;
 }
 
 body {
