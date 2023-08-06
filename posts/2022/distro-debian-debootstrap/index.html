@@ -42,7 +42,7 @@
   <div class="singlegrid">
     <div class="box meta">
   <h2>Debootstrap Installeer Debian</h2>
-  <h5 class="date">Laatst gewijzigd: 07-05-2023</h5>
+  <h5 class="date">Laatst gewijzigd: 06-08-2023</h5>
 </div>
 
     <aside class="box">
@@ -54,7 +54,6 @@
     <li><a href="#03-installeer-debian">03 Installeer debian</a>
       <ul>
         <li><a href="#chroot">Chroot</a></li>
-        <li><a href="#symlinks">symlinks</a></li>
         <li><a href="#tijd">Tijd</a></li>
         <li><a href="#locales">locales</a></li>
         <li><a href="#toetsenbord">toetsenbord</a></li>
@@ -113,117 +112,81 @@
       <p>Het doel is om debian te installeren met debootstrap. We starten met een willekeurige arch installatie, of van het arch installatie medium.</p>
 <p>Ik ga er van uit dat je al een partitie hebt geformatteerd, zodat we gelijk aan de slag kunnen.</p>
 <h2 id="01-mount-de-partitie">01 mount de partitie</h2>
-<pre><code>mkdir -p /mnt/debinst
+<pre tabindex="0"><code>mkdir -p /mnt/debinst
 mount /dev/sda7 /mnt/debinst
-</code></pre>
-<p>Maak een swap partitie:</p>
-<pre><code>mkswap /dev/sda3
+</code></pre><p>Maak een swap partitie:</p>
+<pre tabindex="0"><code>mkswap /dev/sda3
 sync
 swapon /dev/sda3
-</code></pre>
-<h2 id="02-installeer-programmas">02 Installeer programma&rsquo;s</h2>
-<pre><code>pacman -S binutils debootstrap arch-install-scripts
-</code></pre>
-<h2 id="03-installeer-debian">03 Installeer debian</h2>
-<pre><code>/usr/sbin/debootstrap --variant=minbase --components=main,contrib,non-free \
+</code></pre><h2 id="02-installeer-programmas">02 Installeer programma&rsquo;s</h2>
+<pre tabindex="0"><code>pacman -S binutils debootstrap arch-install-scripts
+</code></pre><h2 id="03-installeer-debian">03 Installeer debian</h2>
+<pre tabindex="0"><code>/usr/sbin/debootstrap --variant=minbase --components=main,contrib,non-free,non-free-firmware \
 --include=nano,dialog,bash-completion,tmux,locales,console-setup,tasksel,\
-,dosfstools,btrfs-progs,links,network-manager,sudo \
---arch amd64 bullseye /mnt/debinst http://ftp.nl.debian.org/debian/
-</code></pre>
-<h3 id="chroot">Chroot</h3>
-<pre><code>arch-chroot /mnt/debinst
+dosfstools,btrfs-progs,links,network-manager,sudo,git,tree,cryptsetup,cryptsetup-initramfs \
+--arch amd64 bookworm /mnt/debinst http://ftp.nl.debian.org/debian/
+</code></pre><h3 id="chroot">Chroot</h3>
+<pre tabindex="0"><code>arch-chroot /mnt/debinst
 export TERM=xterm-color
 source /etc/profile
 source /etc/skel/.bashrc
-</code></pre>
-<h3 id="symlinks">symlinks</h3>
-<pre><code>cd /media
-mkdir cdrom0
-ln -s cdrom0 cdrom
-cd /
-ln -s media/cdrom
-</code></pre>
-<h3 id="tijd">Tijd</h3>
-<pre><code>nano /etc/adjtime
-</code></pre>
-<p>bijvoorbeeld:</p>
-<pre><code>0.0 0 0.0
+</code></pre><h3 id="tijd">Tijd</h3>
+<pre tabindex="0"><code>nano /etc/adjtime
+</code></pre><p>geef dit bestand de volgende inhoud:</p>
+<pre tabindex="0"><code>0.0 0 0.0
 0
 UTC
-</code></pre>
-<p>dan:</p>
-<pre><code>dpkg-reconfigure tzdata
-</code></pre>
-<h3 id="locales">locales</h3>
-<pre><code>dpkg-reconfigure locales
-</code></pre>
-<h3 id="toetsenbord">toetsenbord</h3>
-<pre><code>dpkg-reconfigure keyboard-configuration
-</code></pre>
-<p>Voor goede utf ondersteuning</p>
-<pre><code>dpkg-reconfigure console-setup
-</code></pre>
-<h3 id="sourceslist">sources.list</h3>
-<pre><code>nano /etc/apt/sources.list
-</code></pre>
-<p>Zorg dat deze er als volg uitziet:</p>
-<pre><code>deb http://ftp.nl.debian.org/debian bullseye main contrib non-free
-deb http://deb.debian.org/debian/ bullseye-updates main contrib non-free
-deb http://deb.debian.org/debian-security bullseye-security main contrib non-free
-</code></pre>
-<p>Daarna</p>
-<pre><code>apt update &amp;&amp; apt upgrade
-</code></pre>
-<h3 id="standaard-software">standaard software</h3>
-<pre><code>tasksel install standard laptop
-</code></pre>
-<h3 id="firmware">firmware</h3>
-<pre><code>apt install -y firmware-linux-nonfree firmware-realtek firmware-iwlwifi rfkill
-</code></pre>
-<h3 id="kernel">kernel</h3>
-<pre><code>apt install -y linux-image-amd64
-</code></pre>
-<h3 id="wachtwoord">wachtwoord</h3>
-<pre><code>passwd
-</code></pre>
-<h3 id="gebruiker-opvoeren">gebruiker opvoeren</h3>
-<pre><code>useradd -u 1026 -g users -G sudo,audio -c &quot;Stauntonel&quot; -m -d /home/stauntonel -s /bin/bash stauntonel
+</code></pre><p>dan:</p>
+<pre tabindex="0"><code>dpkg-reconfigure tzdata
+</code></pre><h3 id="locales">locales</h3>
+<pre tabindex="0"><code>dpkg-reconfigure locales
+</code></pre><h3 id="toetsenbord">toetsenbord</h3>
+<pre tabindex="0"><code>dpkg-reconfigure keyboard-configuration
+</code></pre><p>Voor goede utf ondersteuning</p>
+<pre tabindex="0"><code>dpkg-reconfigure console-setup
+</code></pre><h3 id="sourceslist">sources.list</h3>
+<pre tabindex="0"><code>nano /etc/apt/sources.list
+</code></pre><p>Zorg dat deze er als volg uitziet:</p>
+<pre tabindex="0"><code>deb http://ftp.nl.debian.org/debian bookworm main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free
+deb http://deb.debian.org/debian-security bookworm-security main contrib non-free
+</code></pre><p>Daarna</p>
+<pre tabindex="0"><code>apt update &amp;&amp; apt upgrade
+</code></pre><h3 id="standaard-software">standaard software</h3>
+<pre tabindex="0"><code>tasksel install standard laptop
+</code></pre><h3 id="firmware">firmware</h3>
+<pre tabindex="0"><code>apt install -y firmware-linux-nonfree firmware-realtek firmware-iwlwifi bluez-firmware rfkill
+</code></pre><h3 id="kernel">kernel</h3>
+<pre tabindex="0"><code>apt install -y linux-image-amd64
+</code></pre><h3 id="wachtwoord">wachtwoord</h3>
+<pre tabindex="0"><code>passwd
+</code></pre><h3 id="gebruiker-opvoeren">gebruiker opvoeren</h3>
+<pre tabindex="0"><code>useradd -u 1026 -g users -G sudo,audio -c &#34;Stauntonel&#34; -m -d /home/stauntonel -s /bin/bash stauntonel
 passwd stauntonel
-</code></pre>
-<h3 id="afronden">afronden</h3>
+</code></pre><h3 id="afronden">afronden</h3>
 <p>opruimen cache (optioneel)</p>
-<pre><code>apt clean
-</code></pre>
-<p>Om de een of andere reden is de initramfs soms corrupt.
-Dan moet je die opnieuw opbouwen met:</p>
-<pre><code>update-initramfs -u -k all
-</code></pre>
-<h2 id="04-installeer-debian-vervolg">04 Installeer debian vervolg</h2>
+<pre tabindex="0"><code>apt clean
+</code></pre><p>Om de een of andere reden is de initramfs soms corrupt. Dan moet je die opnieuw opbouwen met:</p>
+<pre tabindex="0"><code>update-initramfs -u -k all
+</code></pre><h2 id="04-installeer-debian-vervolg">04 Installeer debian vervolg</h2>
 <h3 id="desktop">desktop</h3>
-<pre><code>apt install -y --no-install-recommends \
-task-xfce-desktop xfce4-terminal mousepad xfce4-power-manager-plugins xfce4-whiskermenu-plugin gnome-themes-extra papirus-icon-theme xfce4-notifyd gvfs gvfs-backends gvfs-fuse thunar-archive-plugin thunar-volman
-</code></pre>
-<p>firefox met alle recommends:</p>
-<pre><code>apt install -y firefox-esr
-</code></pre>
-<h3 id="suckless">suckless</h3>
-<pre><code>apt install -y build-essential libx11-dev libxft-dev libxext-dev libxinerama-dev
-</code></pre>
-<h3 id="media">media</h3>
-<pre><code>apt install -y --no-install-recommends \
-mpd mpc ncmpcpp beets pulseaudio alsa-utils shotwell
-</code></pre>
-<p>en met alle recommends</p>
-<pre><code>apt install -y gnome-mpv ffmpeg-doc libdvdcss2
-</code></pre>
-<h3 id="fstab-in-orde-maken">fstab in orde maken</h3>
+<pre tabindex="0"><code>apt install -y --no-install-recommends \
+task-xfce-desktop xfce4-terminal mousepad xfce4-power-manager-plugins xfce4-whiskermenu-plugin gnome-themes-extra papirus-icon-theme xfce4-notifyd gvfs gvfs-backends gvfs-fuse thunar-archive-plugin thunar-volman mugshot policykit-1-gnome light-locker menulibre dbus-x11 plymouth plymouth-themes network-manager-gnome pavucontrol gnome-keyring blueman
+</code></pre><p>firefox met alle recommends:</p>
+<pre tabindex="0"><code>apt install -y firefox-esr
+</code></pre><h3 id="suckless">suckless</h3>
+<pre tabindex="0"><code>apt install -y build-essential libx11-dev libxft-dev libxext-dev libxinerama-dev
+</code></pre><h3 id="media">media</h3>
+<pre tabindex="0"><code>apt install -y --no-install-recommends \
+mpd mpc ncmpcpp beets pulseaudio pulseaudio-module-bluetooth
+</code></pre><p>en met alle recommends</p>
+<pre tabindex="0"><code>apt install -y parole lollypop shotwell
+</code></pre><h3 id="fstab-in-orde-maken">fstab in orde maken</h3>
 <p>Mount eerst alle partities en ga dan uit de chroot</p>
-<pre><code>exit
-</code></pre>
-<p>Dan gaan genereren we een fstab met</p>
-<pre><code>genfstab -Up /mnt/debinst &gt;&gt; /mnt/debinst/etc/fstab
-</code></pre>
-<h3 id="bootloader">bootloader</h3>
+<pre tabindex="0"><code>exit
+</code></pre><p>Dan gaan genereren we een fstab met</p>
+<pre tabindex="0"><code>genfstab -Up /mnt/debinst &gt;&gt; /mnt/debinst/etc/fstab
+</code></pre><h3 id="bootloader">bootloader</h3>
 <p>Installeer een <a href="/tags/bootloader">bootloader</a> naar keuze.</p>
 <p><a href="/categories/distro">Meer distro installeren</a></p>
     </div>
