@@ -26,6 +26,24 @@
     </item>
     
     <item>
+      <title>debian</title>
+      <link>https://stauntonel.nl/tags/debian/</link>
+      <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/debian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>debootstrap</title>
+      <link>https://stauntonel.nl/tags/debootstrap/</link>
+      <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/debootstrap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>hugo</title>
       <link>https://stauntonel.nl/tags/hugo/</link>
       <pubDate>Tue, 11 Oct 2022 22:49:34 +0200</pubDate>
@@ -49,24 +67,6 @@
       <pubDate>Sun, 09 Oct 2022 11:19:30 +0200</pubDate>
       
       <guid>https://stauntonel.nl/tags/basis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>debian</title>
-      <link>https://stauntonel.nl/tags/debian/</link>
-      <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://stauntonel.nl/tags/debian/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>debootstrap</title>
-      <link>https://stauntonel.nl/tags/debootstrap/</link>
-      <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://stauntonel.nl/tags/debootstrap/</guid>
       <description></description>
     </item>
     
