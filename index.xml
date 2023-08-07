@@ -25,6 +25,15 @@
     </item>
     
     <item>
+      <title>Beheer schijven</title>
+      <link>https://stauntonel.nl/posts/2023/beheer-schijven/</link>
+      <pubDate>Mon, 07 Aug 2023 12:51:47 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/posts/2023/beheer-schijven/</guid>
+      <description>&lt;p&gt;Hoe beheer je een harde schijf of ssd in Linux. Aandacht voor veilig verwijderend data, opnieuw partioneren en versleutelen van partities.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>B. Hugo hello world</title>
       <link>https://stauntonel.nl/posts/2022/b.-hugo-hello-world/</link>
       <pubDate>Tue, 11 Oct 2022 22:49:34 +0200</pubDate>
@@ -52,15 +61,6 @@ Of je kunt je website zelf opbouwen zoals we hier gaan doen.&lt;/p&gt;</descript
       <description>&lt;p&gt;Na het opnieuw installeren van de server kun je de volgende acties ondernemen.
 Daarbij aandacht voor beveiliging (firewall, ssh etc.), opvoeren gebruikers en nog veel meer.
 Onderstaande aantekeningen zijn getest met Ubuntu lts 2020.4.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Beheer schijven</title>
-      <link>https://stauntonel.nl/posts/2021/beheer-schijven/</link>
-      <pubDate>Sun, 10 Oct 2021 12:51:47 +0200</pubDate>
-      
-      <guid>https://stauntonel.nl/posts/2021/beheer-schijven/</guid>
-      <description>&lt;p&gt;Hoe beheer je een harde schijf of ssd in Linux. Aandacht voor veilig verwijderend data, opnieuw partioneren en versleutelen van partities.&lt;/p&gt;</description>
     </item>
     
     <item>

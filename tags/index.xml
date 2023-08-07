@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Stauntonel Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>nl-nl</language>
-    <lastBuildDate>Tue, 11 Oct 2022 22:49:34 +0200</lastBuildDate><atom:link href="https://stauntonel.nl/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Aug 2023 12:51:47 +0200</lastBuildDate><atom:link href="https://stauntonel.nl/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>beveiliging</title>
+      <link>https://stauntonel.nl/tags/beveiliging/</link>
+      <pubDate>Mon, 07 Aug 2023 12:51:47 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/beveiliging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>schijven</title>
+      <link>https://stauntonel.nl/tags/schijven/</link>
+      <pubDate>Mon, 07 Aug 2023 12:51:47 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/schijven/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>hugo</title>
       <link>https://stauntonel.nl/tags/hugo/</link>
@@ -67,24 +85,6 @@
       <pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://stauntonel.nl/tags/webserver/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>beveiliging</title>
-      <link>https://stauntonel.nl/tags/beveiliging/</link>
-      <pubDate>Sun, 10 Oct 2021 12:51:47 +0200</pubDate>
-      
-      <guid>https://stauntonel.nl/tags/beveiliging/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>schijven</title>
-      <link>https://stauntonel.nl/tags/schijven/</link>
-      <pubDate>Sun, 10 Oct 2021 12:51:47 +0200</pubDate>
-      
-      <guid>https://stauntonel.nl/tags/schijven/</guid>
       <description></description>
     </item>
     
