@@ -3,189 +3,189 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://stauntonel.nl/posts/2022/distro-debian-debootstrap/</loc>
-    <lastmod>2023-08-06T09:04:31+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/distro-arch-basis/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2022/b.-hugo-hello-world/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/categories/</loc>
-    <lastmod>2023-08-06T09:04:31+02:00</lastmod>
+    <lastmod>2023-08-07T12:58:16+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/hugo/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/</loc>
-    <lastmod>2023-08-06T09:04:31+02:00</lastmod>
+    <lastmod>2023-08-07T12:58:16+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/</loc>
-    <lastmod>2023-08-06T09:04:31+02:00</lastmod>
+    <lastmod>2023-08-07T12:58:16+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/templates/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/categories/web/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2022/a.-hugo-basis/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/basis/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/debian/</loc>
-    <lastmod>2023-08-06T09:04:31+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/debootstrap/</loc>
-    <lastmod>2023-08-06T09:04:31+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/categories/distro/</loc>
-    <lastmod>2023-08-06T09:04:31+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2022/ubuntu-webserver-initieel/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/categories/server/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/ubuntu/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/webserver/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/categories/beheer/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T12:58:16+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/beheer-schijven/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T12:58:16+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/beveiliging/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T12:58:16+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/schijven/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T12:58:16+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/markdown/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/notes/markdown/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/categories/notes/</loc>
-    <lastmod>2023-05-07T11:13:22+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/notes/</loc>
-    <lastmod>2023-05-07T11:13:22+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/versleutelde-usb-installatie/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/versleutelen/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/btrfs/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/gentoo/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/gentoo-installatie/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/alpine/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/alpine-installeren/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/docker/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/project-debian-docker/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/categories/project/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/beheer-beveiliging/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/notes/todo/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/arch/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/desktop-arch-openbox/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/categories/desktop/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/project-debian-muziek-mpd/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/muziek/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/netwerk/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/systemd/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/project-systemd-netwerk-iwd/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/beheer-beveiliging-clonezilla/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/beheer-debian/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/beheer-debian-beveiliging/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/bootloader/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/beheer-arch-bootloader-systemd/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/beheer-arch-bootloader-grub/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/beheer-ubuntu-beveiliging-ssh/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/beheer-debian-beveiliging-ufw/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/notes/bookmarks/</loc>
-    <lastmod>2023-05-07T11:13:22+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/distro-arch-btrfs/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/ubuntu-webserver/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/arch-webserver-wordpress/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/wordpress/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/desktop-arch-xfce4/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/distro-ubuntu-debootstrap/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/</loc>
-    <lastmod>2023-05-06T21:27:07+02:00</lastmod>
+    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url>
 </urlset>
