@@ -8,21 +8,21 @@
     <language>nl-nl</language>
     <lastBuildDate>Tue, 11 Oct 2022 22:49:34 +0200</lastBuildDate><atom:link href="https://stauntonel.nl/categories/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>A. Hugo basis</title>
-      <link>https://stauntonel.nl/posts/2022/a.-hugo-basis/</link>
+      <title>A. Hugo Hello world</title>
+      <link>https://stauntonel.nl/posts/2022/a.-hugo-hello-world/</link>
       <pubDate>Sun, 09 Oct 2022 11:19:30 +0200</pubDate>
       
-      <guid>https://stauntonel.nl/posts/2022/a.-hugo-basis/</guid>
+      <guid>https://stauntonel.nl/posts/2022/a.-hugo-hello-world/</guid>
       <description>&lt;p&gt;Om een website met hugo te maken kun je kiezen voor een &lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;theme&lt;/a&gt; op de website.
 Of je kunt je website zelf opbouwen zoals we hier gaan doen.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>B. Hugo hello world</title>
-      <link>https://stauntonel.nl/posts/2022/b.-hugo-hello-world/</link>
+      <title>B. Hugo templates</title>
+      <link>https://stauntonel.nl/posts/2022/b.-hugo-templates/</link>
       <pubDate>Tue, 11 Oct 2022 22:49:34 +0200</pubDate>
       
-      <guid>https://stauntonel.nl/posts/2022/b.-hugo-hello-world/</guid>
+      <guid>https://stauntonel.nl/posts/2022/b.-hugo-templates/</guid>
       <description>&lt;p&gt;Hugo maakt gebruik van diverste templates. De belangrijkste komen hier aan bod.&lt;/p&gt;</description>
     </item>
     

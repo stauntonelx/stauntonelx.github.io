@@ -17,11 +17,20 @@
     </item>
     
     <item>
-      <title>schijven</title>
-      <link>https://stauntonel.nl/tags/schijven/</link>
+      <title>bootloader</title>
+      <link>https://stauntonel.nl/tags/bootloader/</link>
       <pubDate>Mon, 07 Aug 2023 12:51:47 +0200</pubDate>
       
-      <guid>https://stauntonel.nl/tags/schijven/</guid>
+      <guid>https://stauntonel.nl/tags/bootloader/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>versleutelen</title>
+      <link>https://stauntonel.nl/tags/versleutelen/</link>
+      <pubDate>Mon, 07 Aug 2023 12:51:47 +0200</pubDate>
+      
+      <guid>https://stauntonel.nl/tags/versleutelen/</guid>
       <description></description>
     </item>
     
@@ -53,24 +62,6 @@
     </item>
     
     <item>
-      <title>templates</title>
-      <link>https://stauntonel.nl/tags/templates/</link>
-      <pubDate>Tue, 11 Oct 2022 22:49:34 +0200</pubDate>
-      
-      <guid>https://stauntonel.nl/tags/templates/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>basis</title>
-      <link>https://stauntonel.nl/tags/basis/</link>
-      <pubDate>Sun, 09 Oct 2022 11:19:30 +0200</pubDate>
-      
-      <guid>https://stauntonel.nl/tags/basis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>ubuntu</title>
       <link>https://stauntonel.nl/tags/ubuntu/</link>
       <pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate>
@@ -94,15 +85,6 @@
       <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://stauntonel.nl/tags/markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>versleutelen</title>
-      <link>https://stauntonel.nl/tags/versleutelen/</link>
-      <pubDate>Fri, 03 Sep 2021 14:00:27 +0200</pubDate>
-      
-      <guid>https://stauntonel.nl/tags/versleutelen/</guid>
       <description></description>
     </item>
     
@@ -175,15 +157,6 @@
       <pubDate>Sat, 13 Feb 2021 23:59:23 +0100</pubDate>
       
       <guid>https://stauntonel.nl/tags/systemd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>bootloader</title>
-      <link>https://stauntonel.nl/tags/bootloader/</link>
-      <pubDate>Sat, 13 Feb 2021 21:05:58 +0100</pubDate>
-      
-      <guid>https://stauntonel.nl/tags/bootloader/</guid>
       <description></description>
     </item>
     

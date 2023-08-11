@@ -5,7 +5,7 @@
   	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
   	<meta name="generator" content="Geany 1.37.1" />
   	<meta name="description" content="formatteren, versleutelen en veilig verwijderen data" />
-    <meta name="keywords" content="schijven, beveiliging" />
+    <meta name="keywords" content="versleutelen, beveiliging, bootloader" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/color.css" />
@@ -42,7 +42,7 @@
   <div class="singlegrid">
     <div class="box meta">
   <h2>Beheer schijven</h2>
-  <h5 class="date">Laatst gewijzigd: 07-08-2023</h5>
+  <h5 class="date">Laatst gewijzigd: 11-08-2023</h5>
 </div>
 
     <aside class="box">
@@ -69,7 +69,7 @@
       </ul>
     </li>
     <li><a href="#04-formateren-partities">04 formateren partities</a></li>
-    <li><a href="#05-auto-mount-encrypted-partitie">05 auto mount encrypted partitie</a></li>
+    <li><a href="#05-boot-van-versleutelde-partitie">05 boot van versleutelde partitie</a></li>
     <li><a href="#06-systemd-boot">06 systemd-boot</a>
       <ul>
         <li><a href="#mount-efi">mount efi</a></li>
@@ -87,10 +87,13 @@
     
     
     
-      <li><a href="https://stauntonel.nl/tags/schijven">schijven</a></li>
+      <li><a href="https://stauntonel.nl/tags/versleutelen">versleutelen</a></li>
     
     
       <li><a href="https://stauntonel.nl/tags/beveiliging">beveiliging</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/bootloader">bootloader</a></li>
     
     
   </ul>
@@ -251,7 +254,7 @@ Je kunt ook snapshots maken en werken met pools, die je kunt uitbreiden met meer
 <pre><code>sudo mount -o /dev/mapper/btrfs /mnt
 sudo btrfs subvolume create @
 </code></pre>
-<h2 id="05-auto-mount-encrypted-partitie">05 auto mount encrypted partitie</h2>
+<h2 id="05-boot-van-versleutelde-partitie">05 boot van versleutelde partitie</h2>
 <p>Bepaal eerst de UUID van /dev/sdb3, de partitie die het versleutelde block device bevat.</p>
 <pre><code>sudo blkid -s UUID -o value /dev/sdb3
 </code></pre>
