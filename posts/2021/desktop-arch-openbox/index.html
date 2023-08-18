@@ -42,7 +42,7 @@
   <div class="singlegrid">
     <div class="box meta">
   <h2>arch openbox</h2>
-  <h5 class="date">Laatst gewijzigd: 07-08-2023</h5>
+  <h5 class="date">Laatst gewijzigd: 18-08-2023</h5>
 </div>
 
     <aside class="box">
@@ -145,66 +145,64 @@ cp ~/.config/openbox/rc.xml ~/.config/openbox/rc_sav.xml
 nano ~/.config/openbox/rc.xml
 </code></pre>
 <p>daarna een keybinding aanmaken</p>
-<pre><code>&lt;keybind key=&quot;W-r&quot;&gt;
-  &lt;action name=&quot;Execute&quot;&gt;
-    &lt;startupnotify&gt;
-      &lt;enabled&gt;true&lt;/enabled&gt;
-      &lt;name&gt;dmenu&lt;/name&gt;
-    &lt;/startupnotify&gt;
-    &lt;command&gt;dmenu_run&lt;/command&gt;
-  &lt;/action&gt;
-&lt;/keybind&gt;
-</code></pre>
-<p>Nu kun je met de window -R elk geinstalleerd programma openen.</p>
+<div class="highlight"><pre tabindex="0" style="color:#fe640b;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">1</span><span><span style="color:#8839ef">&lt;keybind</span> <span style="color:#df8e1d">key=</span><span style="color:#40a02b">&#34;W-r&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">2</span><span>  <span style="color:#8839ef">&lt;action</span> <span style="color:#df8e1d">name=</span><span style="color:#40a02b">&#34;Execute&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">3</span><span>    <span style="color:#8839ef">&lt;startupnotify&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">4</span><span>      <span style="color:#8839ef">&lt;enabled&gt;</span>true<span style="color:#8839ef">&lt;/enabled&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">5</span><span>      <span style="color:#8839ef">&lt;name&gt;</span>dmenu<span style="color:#8839ef">&lt;/name&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">6</span><span>    <span style="color:#8839ef">&lt;/startupnotify&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">7</span><span>    <span style="color:#8839ef">&lt;command&gt;</span>dmenu_run<span style="color:#8839ef">&lt;/command&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">8</span><span>  <span style="color:#8839ef">&lt;/action&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">9</span><span><span style="color:#8839ef">&lt;/keybind&gt;</span>
+</span></span></code></pre></div><p>Nu kun je met de window -R elk geinstalleerd programma openen.</p>
 <h3 id="openbox-menu">Openbox menu</h3>
 <p>Pas het openbox menu aan, hier een simpel voorbeeld:</p>
-<pre><code>&lt;openbox_menu xmlns=&quot;http://openbox.org/3.4/menu&quot;&gt;
-    &lt;menu id=&quot;system-menu&quot; label=&quot;System&quot;&gt;
-        &lt;item label=&quot;Openbox menu&quot;&gt;
-            &lt;action name=&quot;Execute&quot;&gt;
-                &lt;execute&gt;obmenu&lt;/execute&gt;
-            &lt;/action&gt;
-        &lt;/item&gt;
-        &lt;item label=&quot;Openbox Configuration Manager&quot;&gt;
-            &lt;action name=&quot;Execute&quot;&gt;
-                &lt;command&gt;obconf&lt;/command&gt;
-                &lt;startupnotify&gt;
-                    &lt;enabled&gt;yes&lt;/enabled&gt;
-                &lt;/startupnotify&gt;
-            &lt;/action&gt;
-        &lt;/item&gt;
-        &lt;separator/&gt;
-        &lt;item label=&quot;Reconfigure Openbox&quot;&gt;
-            &lt;action name=&quot;Reconfigure&quot;/&gt;
-        &lt;/item&gt;
-    &lt;/menu&gt;
-    &lt;menu id=&quot;root-menu&quot; label=&quot;Openbox 3&quot;&gt;
-        &lt;item label=&quot;Terminal&quot;&gt;
-            &lt;action name=&quot;Execute&quot;&gt;
-                &lt;execute&gt;termite&lt;/execute&gt;
-            &lt;/action&gt;
-        &lt;/item&gt;
-        &lt;item label=&quot;Firefox&quot;&gt;
-            &lt;action name=&quot;Execute&quot;&gt;
-                &lt;execute&gt;firefox&lt;/execute&gt;
-            &lt;/action&gt;
-        &lt;/item&gt;
-        &lt;menu id=&quot;system-menu&quot;/&gt;
-        &lt;separator/&gt;
-        &lt;item label=&quot;Exit&quot;&gt;
-            &lt;action name=&quot;Execute&quot;&gt;
-                &lt;execute&gt;systemctl poweroff&lt;/execute&gt;
-            &lt;/action&gt;
-        &lt;/item&gt;
-        &lt;item label=&quot;Log Out&quot;&gt;
-            &lt;action name=&quot;Exit&quot;&gt;
-                &lt;prompt&gt;yes&lt;/prompt&gt;
-            &lt;/action&gt;
-        &lt;/item&gt;
-    &lt;/menu&gt;
-&lt;/openbox_menu&gt;
-</code></pre>
-<h3 id="obmenu">OBmenu</h3>
+<div class="highlight"><pre tabindex="0" style="color:#fe640b;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 1</span><span><span style="color:#8839ef">&lt;openbox_menu</span> <span style="color:#df8e1d">xmlns=</span><span style="color:#40a02b">&#34;http://openbox.org/3.4/menu&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 2</span><span>    <span style="color:#8839ef">&lt;menu</span> <span style="color:#df8e1d">id=</span><span style="color:#40a02b">&#34;system-menu&#34;</span> <span style="color:#df8e1d">label=</span><span style="color:#40a02b">&#34;System&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 3</span><span>        <span style="color:#8839ef">&lt;item</span> <span style="color:#df8e1d">label=</span><span style="color:#40a02b">&#34;Openbox menu&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 4</span><span>            <span style="color:#8839ef">&lt;action</span> <span style="color:#df8e1d">name=</span><span style="color:#40a02b">&#34;Execute&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 5</span><span>                <span style="color:#8839ef">&lt;execute&gt;</span>obmenu<span style="color:#8839ef">&lt;/execute&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 6</span><span>            <span style="color:#8839ef">&lt;/action&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 7</span><span>        <span style="color:#8839ef">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 8</span><span>        <span style="color:#8839ef">&lt;item</span> <span style="color:#df8e1d">label=</span><span style="color:#40a02b">&#34;Openbox Configuration Manager&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 9</span><span>            <span style="color:#8839ef">&lt;action</span> <span style="color:#df8e1d">name=</span><span style="color:#40a02b">&#34;Execute&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">10</span><span>                <span style="color:#8839ef">&lt;command&gt;</span>obconf<span style="color:#8839ef">&lt;/command&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">11</span><span>                <span style="color:#8839ef">&lt;startupnotify&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">12</span><span>                    <span style="color:#8839ef">&lt;enabled&gt;</span>yes<span style="color:#8839ef">&lt;/enabled&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">13</span><span>                <span style="color:#8839ef">&lt;/startupnotify&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">14</span><span>            <span style="color:#8839ef">&lt;/action&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">15</span><span>        <span style="color:#8839ef">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">16</span><span>        <span style="color:#8839ef">&lt;separator/&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">17</span><span>        <span style="color:#8839ef">&lt;item</span> <span style="color:#df8e1d">label=</span><span style="color:#40a02b">&#34;Reconfigure Openbox&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">18</span><span>            <span style="color:#8839ef">&lt;action</span> <span style="color:#df8e1d">name=</span><span style="color:#40a02b">&#34;Reconfigure&#34;</span><span style="color:#8839ef">/&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">19</span><span>        <span style="color:#8839ef">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">20</span><span>    <span style="color:#8839ef">&lt;/menu&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">21</span><span>    <span style="color:#8839ef">&lt;menu</span> <span style="color:#df8e1d">id=</span><span style="color:#40a02b">&#34;root-menu&#34;</span> <span style="color:#df8e1d">label=</span><span style="color:#40a02b">&#34;Openbox 3&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">22</span><span>        <span style="color:#8839ef">&lt;item</span> <span style="color:#df8e1d">label=</span><span style="color:#40a02b">&#34;Terminal&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">23</span><span>            <span style="color:#8839ef">&lt;action</span> <span style="color:#df8e1d">name=</span><span style="color:#40a02b">&#34;Execute&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">24</span><span>                <span style="color:#8839ef">&lt;execute&gt;</span>termite<span style="color:#8839ef">&lt;/execute&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">25</span><span>            <span style="color:#8839ef">&lt;/action&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">26</span><span>        <span style="color:#8839ef">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">27</span><span>        <span style="color:#8839ef">&lt;item</span> <span style="color:#df8e1d">label=</span><span style="color:#40a02b">&#34;Firefox&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">28</span><span>            <span style="color:#8839ef">&lt;action</span> <span style="color:#df8e1d">name=</span><span style="color:#40a02b">&#34;Execute&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">29</span><span>                <span style="color:#8839ef">&lt;execute&gt;</span>firefox<span style="color:#8839ef">&lt;/execute&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">30</span><span>            <span style="color:#8839ef">&lt;/action&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">31</span><span>        <span style="color:#8839ef">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">32</span><span>        <span style="color:#8839ef">&lt;menu</span> <span style="color:#df8e1d">id=</span><span style="color:#40a02b">&#34;system-menu&#34;</span><span style="color:#8839ef">/&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">33</span><span>        <span style="color:#8839ef">&lt;separator/&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">34</span><span>        <span style="color:#8839ef">&lt;item</span> <span style="color:#df8e1d">label=</span><span style="color:#40a02b">&#34;Exit&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">35</span><span>            <span style="color:#8839ef">&lt;action</span> <span style="color:#df8e1d">name=</span><span style="color:#40a02b">&#34;Execute&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">36</span><span>                <span style="color:#8839ef">&lt;execute&gt;</span>systemctl poweroff<span style="color:#8839ef">&lt;/execute&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">37</span><span>            <span style="color:#8839ef">&lt;/action&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">38</span><span>        <span style="color:#8839ef">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">39</span><span>        <span style="color:#8839ef">&lt;item</span> <span style="color:#df8e1d">label=</span><span style="color:#40a02b">&#34;Log Out&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">40</span><span>            <span style="color:#8839ef">&lt;action</span> <span style="color:#df8e1d">name=</span><span style="color:#40a02b">&#34;Exit&#34;</span><span style="color:#8839ef">&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">41</span><span>                <span style="color:#8839ef">&lt;prompt&gt;</span>yes<span style="color:#8839ef">&lt;/prompt&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">42</span><span>            <span style="color:#8839ef">&lt;/action&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">43</span><span>        <span style="color:#8839ef">&lt;/item&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">44</span><span>    <span style="color:#8839ef">&lt;/menu&gt;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">45</span><span><span style="color:#8839ef">&lt;/openbox_menu&gt;</span>
+</span></span></code></pre></div><h3 id="obmenu">OBmenu</h3>
 <p>Om het openbox menu aan te passen naar je eigen wensen kun je gebruik maken van obmenu.</p>
 <pre><code>sudo pacman -S obmenu
 </code></pre>
@@ -229,32 +227,31 @@ gtk-engine-murrine
 <pre><code>nano ~/.config/gtk-3.0/gtk.css
 </code></pre>
 <p>Zorg dat dit bestand er alsvolgt uitziet:</p>
-<pre><code>.window-frame, .window-frame:backdrop {
- box-shadow: 0 0 0 black;
- border-style: none;
- margin: 0;
- border-radius: 0;
-}
-
-.titlebar {
- border-radius: 0;
-}
-
-.window-frame.csd.popup {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.13);
-}
-
-.header-bar {
-  background-image: none;
-  background-color: #ededed;
-  box-shadow: none;
-}
-/* You may want to use this if you don't like the double title.
-GtkLabel.title {
-    opacity: 0;
-}*/
-</code></pre>
-<p>Verder zorg je ervoor dat er geen buttons in de header komen met:</p>
+<div class="highlight"><pre tabindex="0" style="color:#fe640b;background-color:#eff1f5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 1</span><span><span style="color:#4c4f69">.</span><span style="color:#df8e1d">window-frame</span><span style="color:#04a5e5">,</span> <span style="color:#4c4f69">.</span><span style="color:#df8e1d">window-frame</span><span style="color:#4c4f69">:</span><span style="color:#ea76cb">backdrop</span> <span style="color:#4c4f69">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 2</span><span> <span style="color:#8839ef">box-shadow</span><span style="color:#4c4f69">:</span> 0 0 0 <span style="color:#8839ef;font-style:italic">black</span><span style="color:#4c4f69">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 3</span><span> <span style="color:#8839ef">border-style</span><span style="color:#4c4f69">:</span> <span style="color:#8839ef;font-style:italic">none</span><span style="color:#4c4f69">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 4</span><span> <span style="color:#8839ef">margin</span><span style="color:#4c4f69">:</span> 0<span style="color:#4c4f69">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 5</span><span> <span style="color:#8839ef">border-radius</span><span style="color:#4c4f69">:</span> 0<span style="color:#4c4f69">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 6</span><span><span style="color:#4c4f69">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 8</span><span><span style="color:#4c4f69">.</span><span style="color:#df8e1d">titlebar</span> <span style="color:#4c4f69">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185"> 9</span><span> <span style="color:#8839ef">border-radius</span><span style="color:#4c4f69">:</span> 0<span style="color:#4c4f69">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">10</span><span><span style="color:#4c4f69">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">11</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">12</span><span><span style="color:#4c4f69">.</span><span style="color:#df8e1d">window-frame</span><span style="color:#4c4f69">.</span><span style="color:#df8e1d">csd</span><span style="color:#4c4f69">.</span><span style="color:#df8e1d">popup</span> <span style="color:#4c4f69">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">13</span><span>  <span style="color:#8839ef">box-shadow</span><span style="color:#4c4f69">:</span> 0 1<span style="color:#df8e1d">px</span> 2<span style="color:#df8e1d">px</span> <span style="font-style:italic">rgba</span><span style="color:#4c4f69">(</span>0<span style="color:#4c4f69">,</span> 0<span style="color:#4c4f69">,</span> 0<span style="color:#4c4f69">,</span> 0.2<span style="color:#4c4f69">),</span> 0 0 0 1<span style="color:#df8e1d">px</span> <span style="font-style:italic">rgba</span><span style="color:#4c4f69">(</span>0<span style="color:#4c4f69">,</span> 0<span style="color:#4c4f69">,</span> 0<span style="color:#4c4f69">,</span> 0.13<span style="color:#4c4f69">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">14</span><span><span style="color:#4c4f69">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">15</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">16</span><span><span style="color:#4c4f69">.</span><span style="color:#df8e1d">header-bar</span> <span style="color:#4c4f69">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">17</span><span>  <span style="color:#8839ef">background-image</span><span style="color:#4c4f69">:</span> <span style="color:#8839ef;font-style:italic">none</span><span style="color:#4c4f69">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">18</span><span>  <span style="color:#8839ef">background-color</span><span style="color:#4c4f69">:</span> #ededed<span style="color:#4c4f69">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">19</span><span>  <span style="color:#8839ef">box-shadow</span><span style="color:#4c4f69">:</span> <span style="color:#8839ef;font-style:italic">none</span><span style="color:#4c4f69">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">20</span><span><span style="color:#4c4f69">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">21</span><span><span style="color:#acb0be;font-style:italic">/* You may want to use this if you don&#39;t like the double title.
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">22</span><span><span style="color:#acb0be;font-style:italic">GtkLabel.title {
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">23</span><span><span style="color:#acb0be;font-style:italic">    opacity: 0;
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#feb185">24</span><span><span style="color:#acb0be;font-style:italic">}*/</span> 
+</span></span></code></pre></div><p>Verder zorg je ervoor dat er geen buttons in de header komen met:</p>
 <pre><code>nano ~/.config/gtk-3.0/settings.ini
 </code></pre>
 <p>Pas deze regel aan:</p>
