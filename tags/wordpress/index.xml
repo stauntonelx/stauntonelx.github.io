@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>wordpress on Stauntonel Blog</title>
+    <title>Wordpress on Stauntonel Blog</title>
     <link>https://stauntonel.nl/tags/wordpress/</link>
-    <description>Recent content in wordpress on Stauntonel Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://stauntonel.nl/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Wordpress on Stauntonel Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 07 Aug 2023 00:25:35 +0200</lastBuildDate>
+    <atom:link href="https://stauntonel.nl/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Arch Nginx en wordpress</title>
       <link>https://stauntonel.nl/posts/2021/arch-webserver-wordpress/</link>
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/arch-webserver-wordpress/</guid>
       <description>&lt;p&gt;Hoe installeer wordpress op een arch lemp server.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

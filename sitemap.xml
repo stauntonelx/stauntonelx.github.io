@@ -2,8 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://stauntonel.nl/posts/2023/distro-debian-debootstrap/</loc>
-    <lastmod>2023-08-07T13:58:47+02:00</lastmod>
+    <loc>https://stauntonel.nl/posts/2025/distro-debian-debootstrap/</loc>
+    <lastmod>2025-12-28T00:19:46+01:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2023/beheer-schijven/</loc>
     <lastmod>2023-08-11T20:07:14+02:00</lastmod>
@@ -17,6 +17,33 @@
     <loc>https://stauntonel.nl/posts/2021/distro-arch-basis/</loc>
     <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
+    <loc>https://stauntonel.nl/categories/</loc>
+    <lastmod>2025-12-28T00:19:46+01:00</lastmod>
+  </url><url>
+    <loc>https://stauntonel.nl/tags/debian/</loc>
+    <lastmod>2025-12-28T00:19:46+01:00</lastmod>
+  </url><url>
+    <loc>https://stauntonel.nl/tags/debootstrap/</loc>
+    <lastmod>2025-12-28T00:19:46+01:00</lastmod>
+  </url><url>
+    <loc>https://stauntonel.nl/categories/distro/</loc>
+    <lastmod>2025-12-28T00:19:46+01:00</lastmod>
+  </url><url>
+    <loc>https://stauntonel.nl/posts/</loc>
+    <lastmod>2025-12-28T00:19:46+01:00</lastmod>
+  </url><url>
+    <loc>https://stauntonel.nl/tags/samba/</loc>
+    <lastmod>2025-12-28T00:19:46+01:00</lastmod>
+  </url><url>
+    <loc>https://stauntonel.nl/posts/2025/server-debian-samba/</loc>
+    <lastmod>2025-12-28T00:19:46+01:00</lastmod>
+  </url><url>
+    <loc>https://stauntonel.nl/categories/server/</loc>
+    <lastmod>2025-12-28T00:19:46+01:00</lastmod>
+  </url><url>
+    <loc>https://stauntonel.nl/tags/</loc>
+    <lastmod>2025-12-28T00:19:46+01:00</lastmod>
+  </url><url>
     <loc>https://stauntonel.nl/categories/beheer/</loc>
     <lastmod>2023-08-11T20:07:14+02:00</lastmod>
   </url><url>
@@ -26,26 +53,8 @@
     <loc>https://stauntonel.nl/tags/bootloader/</loc>
     <lastmod>2023-08-11T20:07:14+02:00</lastmod>
   </url><url>
-    <loc>https://stauntonel.nl/categories/</loc>
-    <lastmod>2023-08-18T21:54:18+02:00</lastmod>
-  </url><url>
-    <loc>https://stauntonel.nl/posts/</loc>
-    <lastmod>2023-08-18T21:54:18+02:00</lastmod>
-  </url><url>
-    <loc>https://stauntonel.nl/tags/</loc>
-    <lastmod>2023-08-18T21:54:18+02:00</lastmod>
-  </url><url>
     <loc>https://stauntonel.nl/tags/versleutelen/</loc>
     <lastmod>2023-08-11T20:07:14+02:00</lastmod>
-  </url><url>
-    <loc>https://stauntonel.nl/tags/debian/</loc>
-    <lastmod>2023-08-07T13:58:47+02:00</lastmod>
-  </url><url>
-    <loc>https://stauntonel.nl/tags/debootstrap/</loc>
-    <lastmod>2023-08-07T13:58:47+02:00</lastmod>
-  </url><url>
-    <loc>https://stauntonel.nl/categories/distro/</loc>
-    <lastmod>2023-08-07T13:58:47+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/hugo/</loc>
     <lastmod>2023-08-11T20:07:14+02:00</lastmod>
@@ -54,9 +63,6 @@
     <lastmod>2023-08-11T20:07:14+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2022/ubuntu-webserver-initieel/</loc>
-    <lastmod>2023-08-07T00:25:35+02:00</lastmod>
-  </url><url>
-    <loc>https://stauntonel.nl/categories/server/</loc>
     <lastmod>2023-08-07T00:25:35+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/tags/ubuntu/</loc>
@@ -71,10 +77,10 @@
     <loc>https://stauntonel.nl/notes/markdown/</loc>
     <lastmod>2023-08-18T21:54:18+02:00</lastmod>
   </url><url>
-    <loc>https://stauntonel.nl/categories/notes/</loc>
+    <loc>https://stauntonel.nl/notes/</loc>
     <lastmod>2023-08-18T21:54:18+02:00</lastmod>
   </url><url>
-    <loc>https://stauntonel.nl/notes/</loc>
+    <loc>https://stauntonel.nl/categories/notes/</loc>
     <lastmod>2023-08-18T21:54:18+02:00</lastmod>
   </url><url>
     <loc>https://stauntonel.nl/posts/2021/versleutelde-usb-installatie/</loc>

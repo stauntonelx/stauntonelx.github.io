@@ -4,70 +4,58 @@
     <title>Categories on Stauntonel Blog</title>
     <link>https://stauntonel.nl/categories/</link>
     <description>Recent content in Categories on Stauntonel Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 07 Aug 2023 12:51:47 +0200</lastBuildDate><atom:link href="https://stauntonel.nl/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>beheer</title>
-      <link>https://stauntonel.nl/categories/beheer/</link>
-      <pubDate>Mon, 07 Aug 2023 12:51:47 +0200</pubDate>
-      
-      <guid>https://stauntonel.nl/categories/beheer/</guid>
-      <description></description>
-    </item>
-    
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 28 Dec 2025 00:19:46 +0100</lastBuildDate>
+    <atom:link href="https://stauntonel.nl/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Distro</title>
       <link>https://stauntonel.nl/categories/distro/</link>
-      <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
-      
+      <pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
       <guid>https://stauntonel.nl/categories/distro/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>web</title>
-      <link>https://stauntonel.nl/categories/web/</link>
-      <pubDate>Tue, 11 Oct 2022 22:49:34 +0200</pubDate>
-      
-      <guid>https://stauntonel.nl/categories/web/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>Server</title>
       <link>https://stauntonel.nl/categories/server/</link>
-      <pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate>
-      
+      <pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
       <guid>https://stauntonel.nl/categories/server/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>Beheer</title>
+      <link>https://stauntonel.nl/categories/beheer/</link>
+      <pubDate>Mon, 07 Aug 2023 12:51:47 +0200</pubDate>
+      <guid>https://stauntonel.nl/categories/beheer/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Web</title>
+      <link>https://stauntonel.nl/categories/web/</link>
+      <pubDate>Tue, 11 Oct 2022 22:49:34 +0200</pubDate>
+      <guid>https://stauntonel.nl/categories/web/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Notes</title>
       <link>https://stauntonel.nl/categories/notes/</link>
       <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/categories/notes/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>project</title>
+      <title>Project</title>
       <link>https://stauntonel.nl/categories/project/</link>
       <pubDate>Thu, 15 Jul 2021 20:15:53 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/categories/project/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>desktop</title>
+      <title>Desktop</title>
       <link>https://stauntonel.nl/categories/desktop/</link>
       <pubDate>Sun, 14 Feb 2021 20:49:19 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/categories/desktop/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

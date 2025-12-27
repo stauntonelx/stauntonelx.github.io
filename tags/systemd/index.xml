@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>systemd on Stauntonel Blog</title>
+    <title>Systemd on Stauntonel Blog</title>
     <link>https://stauntonel.nl/tags/systemd/</link>
-    <description>Recent content in systemd on Stauntonel Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 13 Feb 2021 23:59:23 +0100</lastBuildDate><atom:link href="https://stauntonel.nl/tags/systemd/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Systemd on Stauntonel Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 07 Aug 2023 00:25:35 +0200</lastBuildDate>
+    <atom:link href="https://stauntonel.nl/tags/systemd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Systemd</title>
       <link>https://stauntonel.nl/posts/2021/project-systemd-netwerk-iwd/</link>
       <pubDate>Sat, 13 Feb 2021 23:59:23 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/project-systemd-netwerk-iwd/</guid>
       <description>&lt;p&gt;Hoe krijg je netwerk verbinding met alleen iwd en systemd.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

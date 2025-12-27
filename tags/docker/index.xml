@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docker on Stauntonel Blog</title>
+    <title>Docker on Stauntonel Blog</title>
     <link>https://stauntonel.nl/tags/docker/</link>
-    <description>Recent content in docker on Stauntonel Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 15 Jul 2021 20:15:53 +0200</lastBuildDate><atom:link href="https://stauntonel.nl/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Docker on Stauntonel Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 07 Aug 2023 00:25:35 +0200</lastBuildDate>
+    <atom:link href="https://stauntonel.nl/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker installeren debian</title>
       <link>https://stauntonel.nl/posts/2021/project-debian-docker/</link>
       <pubDate>Thu, 15 Jul 2021 20:15:53 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/project-debian-docker/</guid>
       <description>&lt;p&gt;Hoe installeer je docker onder debian.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

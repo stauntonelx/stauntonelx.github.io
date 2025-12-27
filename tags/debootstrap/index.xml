@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>debootstrap on Stauntonel Blog</title>
+    <title>Debootstrap on Stauntonel Blog</title>
     <link>https://stauntonel.nl/tags/debootstrap/</link>
-    <description>Recent content in debootstrap on Stauntonel Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 06 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://stauntonel.nl/tags/debootstrap/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Debootstrap on Stauntonel Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 28 Dec 2025 00:19:46 +0100</lastBuildDate>
+    <atom:link href="https://stauntonel.nl/tags/debootstrap/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Debootstrap Installeer Debian</title>
-      <link>https://stauntonel.nl/posts/2023/distro-debian-debootstrap/</link>
-      <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://stauntonel.nl/posts/2023/distro-debian-debootstrap/</guid>
+      <link>https://stauntonel.nl/posts/2025/distro-debian-debootstrap/</link>
+      <pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://stauntonel.nl/posts/2025/distro-debian-debootstrap/</guid>
       <description>&lt;p&gt;Het doel is om debian te installeren met debootstrap. We starten met een willekeurige arch installatie, of van het arch installatie medium.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Debootstrap installeer Ubuntu</title>
       <link>https://stauntonel.nl/posts/2021/distro-ubuntu-debootstrap/</link>
       <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/distro-ubuntu-debootstrap/</guid>
-      <description>&lt;p&gt;Doel is om ubuntu te installeren met debootstrap.
-We starten met een willekeurige arch installatie, of van de arch installatie usb.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Doel is om ubuntu te installeren met debootstrap.&#xA;We starten met een willekeurige arch installatie, of van de arch installatie usb.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

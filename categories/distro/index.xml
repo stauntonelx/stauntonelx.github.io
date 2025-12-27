@@ -4,71 +4,58 @@
     <title>Distro on Stauntonel Blog</title>
     <link>https://stauntonel.nl/categories/distro/</link>
     <description>Recent content in Distro on Stauntonel Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 06 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://stauntonel.nl/categories/distro/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 28 Dec 2025 00:19:46 +0100</lastBuildDate>
+    <atom:link href="https://stauntonel.nl/categories/distro/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Debootstrap Installeer Debian</title>
-      <link>https://stauntonel.nl/posts/2023/distro-debian-debootstrap/</link>
-      <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://stauntonel.nl/posts/2023/distro-debian-debootstrap/</guid>
+      <link>https://stauntonel.nl/posts/2025/distro-debian-debootstrap/</link>
+      <pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://stauntonel.nl/posts/2025/distro-debian-debootstrap/</guid>
       <description>&lt;p&gt;Het doel is om debian te installeren met debootstrap. We starten met een willekeurige arch installatie, of van het arch installatie medium.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Arch basis installatie</title>
       <link>https://stauntonel.nl/posts/2021/distro-arch-basis/</link>
       <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/distro-arch-basis/</guid>
       <description>&lt;p&gt;Installeer een basis arch vanuit een bestaande arch installatie of vanaf het installatie medium.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Versleutelde usb installatie</title>
       <link>https://stauntonel.nl/posts/2021/versleutelde-usb-installatie/</link>
       <pubDate>Fri, 03 Sep 2021 14:00:27 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/versleutelde-usb-installatie/</guid>
       <description>&lt;p&gt;Installeer een distro op een versleutelde usb met grub als bootloader.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Gentoo installatie</title>
       <link>https://stauntonel.nl/posts/2021/gentoo-installatie/</link>
       <pubDate>Sun, 29 Aug 2021 21:53:42 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/gentoo-installatie/</guid>
       <description>&lt;p&gt;Installeren Gentoo op BTRFS vanuit een arch distributie.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Alpine installeren</title>
       <link>https://stauntonel.nl/posts/2021/alpine-installeren/</link>
       <pubDate>Sun, 29 Aug 2021 21:33:17 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/alpine-installeren/</guid>
       <description>&lt;p&gt;Installeer alpine vanaf een live usb, verander standaard bootloader naar grub.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Arch installeren op BTRFS</title>
       <link>https://stauntonel.nl/posts/2021/distro-arch-btrfs/</link>
       <pubDate>Tue, 26 Jan 2021 23:25:04 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/distro-arch-btrfs/</guid>
       <description>&lt;p&gt;&lt;strong&gt;BTRFS&lt;/strong&gt; is een filesysteem waarbij je heel simpel snapshots kunt maken.Snapshots kunnen ook weer als een soort partitie gebruikt worden. Daarmee maak je heel efficent gebruik van je schijfruimte.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Debootstrap installeer Ubuntu</title>
       <link>https://stauntonel.nl/posts/2021/distro-ubuntu-debootstrap/</link>
       <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/distro-ubuntu-debootstrap/</guid>
-      <description>&lt;p&gt;Doel is om ubuntu te installeren met debootstrap.
-We starten met een willekeurige arch installatie, of van de arch installatie usb.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Doel is om ubuntu te installeren met debootstrap.&#xA;We starten met een willekeurige arch installatie, of van de arch installatie usb.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

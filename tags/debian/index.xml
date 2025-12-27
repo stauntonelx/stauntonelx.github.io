@@ -1,73 +1,68 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>debian on Stauntonel Blog</title>
+    <title>Debian on Stauntonel Blog</title>
     <link>https://stauntonel.nl/tags/debian/</link>
-    <description>Recent content in debian on Stauntonel Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 06 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://stauntonel.nl/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Debian on Stauntonel Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 28 Dec 2025 00:19:46 +0100</lastBuildDate>
+    <atom:link href="https://stauntonel.nl/tags/debian/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Debootstrap Installeer Debian</title>
-      <link>https://stauntonel.nl/posts/2023/distro-debian-debootstrap/</link>
-      <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://stauntonel.nl/posts/2023/distro-debian-debootstrap/</guid>
+      <link>https://stauntonel.nl/posts/2025/distro-debian-debootstrap/</link>
+      <pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://stauntonel.nl/posts/2025/distro-debian-debootstrap/</guid>
       <description>&lt;p&gt;Het doel is om debian te installeren met debootstrap. We starten met een willekeurige arch installatie, of van het arch installatie medium.&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title>Samba server</title>
+      <link>https://stauntonel.nl/posts/2025/server-debian-samba/</link>
+      <pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://stauntonel.nl/posts/2025/server-debian-samba/</guid>
+      <description>&lt;p&gt;Installeer een smb op een debian trixie server.&#xA;Configureer samba mount op client&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Versleutelde usb installatie</title>
       <link>https://stauntonel.nl/posts/2021/versleutelde-usb-installatie/</link>
       <pubDate>Fri, 03 Sep 2021 14:00:27 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/versleutelde-usb-installatie/</guid>
       <description>&lt;p&gt;Installeer een distro op een versleutelde usb met grub als bootloader.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Docker installeren debian</title>
       <link>https://stauntonel.nl/posts/2021/project-debian-docker/</link>
       <pubDate>Thu, 15 Jul 2021 20:15:53 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/project-debian-docker/</guid>
       <description>&lt;p&gt;Hoe installeer je docker onder debian.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>mpd, ncmpcpp, mpc en icecast</title>
       <link>https://stauntonel.nl/posts/2021/project-debian-muziek-mpd/</link>
       <pubDate>Sun, 14 Feb 2021 14:44:45 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/project-debian-muziek-mpd/</guid>
       <description>&lt;p&gt;Music playing deamon is een deamon waarmee je complete muziek collecties kunt organiseren, en afspelen met een client, zoals ncmpcpp. Ook kun met een server mpd en icecast je eigen internet radio starten.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Debian beheer</title>
       <link>https://stauntonel.nl/posts/2021/beheer-debian/</link>
       <pubDate>Sat, 13 Feb 2021 22:43:18 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/beheer-debian/</guid>
       <description>&lt;p&gt;Debian beheer tips voor server en desktop&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Debian beveiliging</title>
       <link>https://stauntonel.nl/posts/2021/beheer-debian-beveiliging/</link>
       <pubDate>Sat, 13 Feb 2021 21:25:09 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/beheer-debian-beveiliging/</guid>
       <description>&lt;p&gt;Extra beveiligingstips voor debian server of desktop.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Uncomplicated Firewall</title>
       <link>https://stauntonel.nl/posts/2021/beheer-debian-beveiliging-ufw/</link>
       <pubDate>Mon, 08 Feb 2021 23:07:47 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/beheer-debian-beveiliging-ufw/</guid>
       <description>&lt;p&gt;Beveilig je server met UFW, fail2ban installatie en het uitzetten ping.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

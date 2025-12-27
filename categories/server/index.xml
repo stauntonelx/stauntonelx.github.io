@@ -4,36 +4,37 @@
     <title>Server on Stauntonel Blog</title>
     <link>https://stauntonel.nl/categories/server/</link>
     <description>Recent content in Server on Stauntonel Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 15 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://stauntonel.nl/categories/server/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 28 Dec 2025 00:19:46 +0100</lastBuildDate>
+    <atom:link href="https://stauntonel.nl/categories/server/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Samba server</title>
+      <link>https://stauntonel.nl/posts/2025/server-debian-samba/</link>
+      <pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://stauntonel.nl/posts/2025/server-debian-samba/</guid>
+      <description>&lt;p&gt;Installeer een smb op een debian trixie server.&#xA;Configureer samba mount op client&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Initiele server inrichting</title>
       <link>https://stauntonel.nl/posts/2022/ubuntu-webserver-initieel/</link>
       <pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2022/ubuntu-webserver-initieel/</guid>
-      <description>&lt;p&gt;Na het opnieuw installeren van de server kun je de volgende acties ondernemen.
-Daarbij aandacht voor beveiliging (firewall, ssh etc.), opvoeren gebruikers en nog veel meer.
-Onderstaande aantekeningen zijn getest met Ubuntu lts 2020.4.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Na het opnieuw installeren van de server kun je de volgende acties ondernemen.&#xA;Daarbij aandacht voor beveiliging (firewall, ssh etc.), opvoeren gebruikers en nog veel meer.&#xA;Onderstaande aantekeningen zijn getest met Ubuntu lts 2020.4.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Ubuntu lemp</title>
       <link>https://stauntonel.nl/posts/2021/ubuntu-webserver/</link>
       <pubDate>Mon, 25 Jan 2021 21:15:09 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/ubuntu-webserver/</guid>
       <description>&lt;p&gt;Hieronder mijn aantekeningen over het installeren van een lemp onder Ubuntu. Op de server voeren we er eerst een basis installatie uit. Daarna installeren we de lemp software.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Arch Nginx en wordpress</title>
       <link>https://stauntonel.nl/posts/2021/arch-webserver-wordpress/</link>
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/arch-webserver-wordpress/</guid>
       <description>&lt;p&gt;Hoe installeer wordpress op een arch lemp server.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

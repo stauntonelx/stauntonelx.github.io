@@ -4,35 +4,30 @@
     <title>Notes on Stauntonel Blog</title>
     <link>https://stauntonel.nl/categories/notes/</link>
     <description>Recent content in Notes on Stauntonel Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 07 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://stauntonel.nl/categories/notes/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 18 Aug 2023 21:54:18 +0200</lastBuildDate>
+    <atom:link href="https://stauntonel.nl/categories/notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Markdown Cheat sheet</title>
       <link>https://stauntonel.nl/notes/markdown/</link>
       <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/notes/markdown/</guid>
-      <description>&lt;p&gt;Thanks for visiting &lt;a href=&#34;https://www.markdownguide.org&#34;&gt;The Markdown Guide&lt;/a&gt;!&lt;/p&gt;
-&lt;p&gt;This Markdown cheat sheet provides a quick overview of all the Markdown syntax elements. It can’t cover every edge case, so if you need more information about any of these elements, refer to the reference guides for &lt;a href=&#34;https://www.markdownguide.org/basic-syntax&#34;&gt;basic syntax&lt;/a&gt; and &lt;a href=&#34;https://www.markdownguide.org/extended-syntax&#34;&gt;extended syntax&lt;/a&gt;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Thanks for visiting &lt;a href=&#34;https://www.markdownguide.org&#34;&gt;The Markdown Guide&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;p&gt;This Markdown cheat sheet provides a quick overview of all the Markdown syntax elements. It can’t cover every edge case, so if you need more information about any of these elements, refer to the reference guides for &lt;a href=&#34;https://www.markdownguide.org/basic-syntax&#34;&gt;basic syntax&lt;/a&gt; and &lt;a href=&#34;https://www.markdownguide.org/extended-syntax&#34;&gt;extended syntax&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Todo</title>
       <link>https://stauntonel.nl/notes/todo/</link>
       <pubDate>Sun, 04 Jul 2021 11:14:04 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/notes/todo/</guid>
       <description>&lt;p&gt;Onderwerpen om later verder uit te werken:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Bookmarks</title>
       <link>https://stauntonel.nl/notes/bookmarks/</link>
       <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/notes/bookmarks/</guid>
       <description>&lt;p&gt;Meest gebruikte bookmarks.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

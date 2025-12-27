@@ -1,46 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>btrfs on Stauntonel Blog</title>
+    <title>Btrfs on Stauntonel Blog</title>
     <link>https://stauntonel.nl/tags/btrfs/</link>
-    <description>Recent content in btrfs on Stauntonel Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 29 Aug 2021 21:53:42 +0200</lastBuildDate><atom:link href="https://stauntonel.nl/tags/btrfs/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Btrfs on Stauntonel Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 11 Aug 2023 20:07:14 +0200</lastBuildDate>
+    <atom:link href="https://stauntonel.nl/tags/btrfs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Gentoo installatie</title>
       <link>https://stauntonel.nl/posts/2021/gentoo-installatie/</link>
       <pubDate>Sun, 29 Aug 2021 21:53:42 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/gentoo-installatie/</guid>
       <description>&lt;p&gt;Installeren Gentoo op BTRFS vanuit een arch distributie.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Alpine installeren</title>
       <link>https://stauntonel.nl/posts/2021/alpine-installeren/</link>
       <pubDate>Sun, 29 Aug 2021 21:33:17 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/alpine-installeren/</guid>
       <description>&lt;p&gt;Installeer alpine vanaf een live usb, verander standaard bootloader naar grub.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Systemd Boot</title>
       <link>https://stauntonel.nl/posts/2021/beheer-arch-bootloader-systemd/</link>
       <pubDate>Sat, 13 Feb 2021 21:05:58 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/beheer-arch-bootloader-systemd/</guid>
       <description>&lt;p&gt;Systemd-boot installeren en inrichten, na partitioneren gtp-schijf met UEFI en btrfs partitie.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Arch installeren op BTRFS</title>
       <link>https://stauntonel.nl/posts/2021/distro-arch-btrfs/</link>
       <pubDate>Tue, 26 Jan 2021 23:25:04 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/distro-arch-btrfs/</guid>
       <description>&lt;p&gt;&lt;strong&gt;BTRFS&lt;/strong&gt; is een filesysteem waarbij je heel simpel snapshots kunt maken.Snapshots kunnen ook weer als een soort partitie gebruikt worden. Daarmee maak je heel efficent gebruik van je schijfruimte.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

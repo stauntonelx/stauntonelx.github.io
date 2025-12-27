@@ -4,272 +4,218 @@
     <title>Home on Stauntonel Blog</title>
     <link>https://stauntonel.nl/</link>
     <description>Recent content in Home on Stauntonel Blog</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://stauntonel.nl/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://stauntonel.nl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Debootstrap Installeer Debian</title>
-      <link>https://stauntonel.nl/posts/2023/distro-debian-debootstrap/</link>
-      <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://stauntonel.nl/posts/2023/distro-debian-debootstrap/</guid>
+      <link>https://stauntonel.nl/posts/2025/distro-debian-debootstrap/</link>
+      <pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://stauntonel.nl/posts/2025/distro-debian-debootstrap/</guid>
       <description>&lt;p&gt;Het doel is om debian te installeren met debootstrap. We starten met een willekeurige arch installatie, of van het arch installatie medium.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Beheer schijven</title>
       <link>https://stauntonel.nl/posts/2023/beheer-schijven/</link>
       <pubDate>Mon, 07 Aug 2023 12:51:47 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2023/beheer-schijven/</guid>
       <description>&lt;p&gt;Hoe beheer je een harde schijf of ssd in Linux. Aandacht voor veilig verwijderend data, opnieuw partioneren en versleutelen van partities.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A. Hugo Hello world</title>
       <link>https://stauntonel.nl/posts/2022/a.-hugo-hello-world/</link>
       <pubDate>Sun, 09 Oct 2022 11:19:30 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2022/a.-hugo-hello-world/</guid>
-      <description>&lt;p&gt;Om een website met hugo te maken kun je kiezen voor een &lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;theme&lt;/a&gt; op de website.
-Of je kunt je website zelf opbouwen zoals we hier gaan doen.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Om een website met hugo te maken kun je kiezen voor een &lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;theme&lt;/a&gt; op de website.&#xA;Of je kunt je website zelf opbouwen zoals we hier gaan doen.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>B. Hugo templates</title>
       <link>https://stauntonel.nl/posts/2022/b.-hugo-templates/</link>
       <pubDate>Tue, 11 Oct 2022 22:49:34 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2022/b.-hugo-templates/</guid>
       <description>&lt;p&gt;Hugo maakt gebruik van diverste templates. De belangrijkste komen hier aan bod.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Arch basis installatie</title>
       <link>https://stauntonel.nl/posts/2021/distro-arch-basis/</link>
       <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/distro-arch-basis/</guid>
       <description>&lt;p&gt;Installeer een basis arch vanuit een bestaande arch installatie of vanaf het installatie medium.&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title>Samba server</title>
+      <link>https://stauntonel.nl/posts/2025/server-debian-samba/</link>
+      <pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://stauntonel.nl/posts/2025/server-debian-samba/</guid>
+      <description>&lt;p&gt;Installeer een smb op een debian trixie server.&#xA;Configureer samba mount op client&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Initiele server inrichting</title>
       <link>https://stauntonel.nl/posts/2022/ubuntu-webserver-initieel/</link>
       <pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2022/ubuntu-webserver-initieel/</guid>
-      <description>&lt;p&gt;Na het opnieuw installeren van de server kun je de volgende acties ondernemen.
-Daarbij aandacht voor beveiliging (firewall, ssh etc.), opvoeren gebruikers en nog veel meer.
-Onderstaande aantekeningen zijn getest met Ubuntu lts 2020.4.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Na het opnieuw installeren van de server kun je de volgende acties ondernemen.&#xA;Daarbij aandacht voor beveiliging (firewall, ssh etc.), opvoeren gebruikers en nog veel meer.&#xA;Onderstaande aantekeningen zijn getest met Ubuntu lts 2020.4.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Markdown Cheat sheet</title>
       <link>https://stauntonel.nl/notes/markdown/</link>
       <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/notes/markdown/</guid>
-      <description>&lt;p&gt;Thanks for visiting &lt;a href=&#34;https://www.markdownguide.org&#34;&gt;The Markdown Guide&lt;/a&gt;!&lt;/p&gt;
-&lt;p&gt;This Markdown cheat sheet provides a quick overview of all the Markdown syntax elements. It can’t cover every edge case, so if you need more information about any of these elements, refer to the reference guides for &lt;a href=&#34;https://www.markdownguide.org/basic-syntax&#34;&gt;basic syntax&lt;/a&gt; and &lt;a href=&#34;https://www.markdownguide.org/extended-syntax&#34;&gt;extended syntax&lt;/a&gt;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Thanks for visiting &lt;a href=&#34;https://www.markdownguide.org&#34;&gt;The Markdown Guide&lt;/a&gt;!&lt;/p&gt;&#xA;&lt;p&gt;This Markdown cheat sheet provides a quick overview of all the Markdown syntax elements. It can’t cover every edge case, so if you need more information about any of these elements, refer to the reference guides for &lt;a href=&#34;https://www.markdownguide.org/basic-syntax&#34;&gt;basic syntax&lt;/a&gt; and &lt;a href=&#34;https://www.markdownguide.org/extended-syntax&#34;&gt;extended syntax&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Versleutelde usb installatie</title>
       <link>https://stauntonel.nl/posts/2021/versleutelde-usb-installatie/</link>
       <pubDate>Fri, 03 Sep 2021 14:00:27 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/versleutelde-usb-installatie/</guid>
       <description>&lt;p&gt;Installeer een distro op een versleutelde usb met grub als bootloader.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Gentoo installatie</title>
       <link>https://stauntonel.nl/posts/2021/gentoo-installatie/</link>
       <pubDate>Sun, 29 Aug 2021 21:53:42 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/gentoo-installatie/</guid>
       <description>&lt;p&gt;Installeren Gentoo op BTRFS vanuit een arch distributie.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Alpine installeren</title>
       <link>https://stauntonel.nl/posts/2021/alpine-installeren/</link>
       <pubDate>Sun, 29 Aug 2021 21:33:17 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/alpine-installeren/</guid>
       <description>&lt;p&gt;Installeer alpine vanaf een live usb, verander standaard bootloader naar grub.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Docker installeren debian</title>
       <link>https://stauntonel.nl/posts/2021/project-debian-docker/</link>
       <pubDate>Thu, 15 Jul 2021 20:15:53 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/project-debian-docker/</guid>
       <description>&lt;p&gt;Hoe installeer je docker onder debian.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>gpg</title>
       <link>https://stauntonel.nl/posts/2021/beheer-beveiliging/</link>
       <pubDate>Sun, 04 Jul 2021 17:35:07 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/beheer-beveiliging/</guid>
       <description>&lt;p&gt;GPG is een tool waarmee je bestanden kunt versleutelen/ontsleutelen, maar ook kunt ondertekenen of de ondertekening kunnen checken.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Todo</title>
       <link>https://stauntonel.nl/notes/todo/</link>
       <pubDate>Sun, 04 Jul 2021 11:14:04 +0200</pubDate>
-      
       <guid>https://stauntonel.nl/notes/todo/</guid>
       <description>&lt;p&gt;Onderwerpen om later verder uit te werken:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>arch openbox</title>
       <link>https://stauntonel.nl/posts/2021/desktop-arch-openbox/</link>
       <pubDate>Sun, 14 Feb 2021 20:49:19 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/desktop-arch-openbox/</guid>
       <description>&lt;p&gt;Installeer openbox na basis installatie arch met xorg.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>mpd, ncmpcpp, mpc en icecast</title>
       <link>https://stauntonel.nl/posts/2021/project-debian-muziek-mpd/</link>
       <pubDate>Sun, 14 Feb 2021 14:44:45 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/project-debian-muziek-mpd/</guid>
       <description>&lt;p&gt;Music playing deamon is een deamon waarmee je complete muziek collecties kunt organiseren, en afspelen met een client, zoals ncmpcpp. Ook kun met een server mpd en icecast je eigen internet radio starten.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Systemd</title>
       <link>https://stauntonel.nl/posts/2021/project-systemd-netwerk-iwd/</link>
       <pubDate>Sat, 13 Feb 2021 23:59:23 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/project-systemd-netwerk-iwd/</guid>
       <description>&lt;p&gt;Hoe krijg je netwerk verbinding met alleen iwd en systemd.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Clonezilla</title>
       <link>https://stauntonel.nl/posts/2021/beheer-beveiliging-clonezilla/</link>
       <pubDate>Sat, 13 Feb 2021 23:02:53 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/beheer-beveiliging-clonezilla/</guid>
       <description>&lt;p&gt;Tips om je schijf / partitie te herstellen vanaf een clonezilla image op een nas met een NFS server.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Debian beheer</title>
       <link>https://stauntonel.nl/posts/2021/beheer-debian/</link>
       <pubDate>Sat, 13 Feb 2021 22:43:18 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/beheer-debian/</guid>
       <description>&lt;p&gt;Debian beheer tips voor server en desktop&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Debian beveiliging</title>
       <link>https://stauntonel.nl/posts/2021/beheer-debian-beveiliging/</link>
       <pubDate>Sat, 13 Feb 2021 21:25:09 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/beheer-debian-beveiliging/</guid>
       <description>&lt;p&gt;Extra beveiligingstips voor debian server of desktop.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Systemd Boot</title>
       <link>https://stauntonel.nl/posts/2021/beheer-arch-bootloader-systemd/</link>
       <pubDate>Sat, 13 Feb 2021 21:05:58 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/beheer-arch-bootloader-systemd/</guid>
       <description>&lt;p&gt;Systemd-boot installeren en inrichten, na partitioneren gtp-schijf met UEFI en btrfs partitie.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Grub en UEFI</title>
       <link>https://stauntonel.nl/posts/2021/beheer-arch-bootloader-grub/</link>
       <pubDate>Wed, 10 Feb 2021 22:17:59 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/beheer-arch-bootloader-grub/</guid>
       <description>&lt;p&gt;Gtp schijf partitioneren met fdisk, UEFI partitie formateren en grub installatie na arch installatie&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Ubuntu ssh</title>
       <link>https://stauntonel.nl/posts/2021/beheer-ubuntu-beveiliging-ssh/</link>
       <pubDate>Wed, 10 Feb 2021 22:05:51 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/beheer-ubuntu-beveiliging-ssh/</guid>
       <description>&lt;p&gt;Ssh inrichten op ubuntu server en client zodat alleen met key en als gebruiker kan worden ingelogt.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Uncomplicated Firewall</title>
       <link>https://stauntonel.nl/posts/2021/beheer-debian-beveiliging-ufw/</link>
       <pubDate>Mon, 08 Feb 2021 23:07:47 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/beheer-debian-beveiliging-ufw/</guid>
       <description>&lt;p&gt;Beveilig je server met UFW, fail2ban installatie en het uitzetten ping.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Bookmarks</title>
       <link>https://stauntonel.nl/notes/bookmarks/</link>
       <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/notes/bookmarks/</guid>
       <description>&lt;p&gt;Meest gebruikte bookmarks.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Arch installeren op BTRFS</title>
       <link>https://stauntonel.nl/posts/2021/distro-arch-btrfs/</link>
       <pubDate>Tue, 26 Jan 2021 23:25:04 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/distro-arch-btrfs/</guid>
       <description>&lt;p&gt;&lt;strong&gt;BTRFS&lt;/strong&gt; is een filesysteem waarbij je heel simpel snapshots kunt maken.Snapshots kunnen ook weer als een soort partitie gebruikt worden. Daarmee maak je heel efficent gebruik van je schijfruimte.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Ubuntu lemp</title>
       <link>https://stauntonel.nl/posts/2021/ubuntu-webserver/</link>
       <pubDate>Mon, 25 Jan 2021 21:15:09 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/ubuntu-webserver/</guid>
       <description>&lt;p&gt;Hieronder mijn aantekeningen over het installeren van een lemp onder Ubuntu. Op de server voeren we er eerst een basis installatie uit. Daarna installeren we de lemp software.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Arch Nginx en wordpress</title>
       <link>https://stauntonel.nl/posts/2021/arch-webserver-wordpress/</link>
       <pubDate>Mon, 25 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/arch-webserver-wordpress/</guid>
       <description>&lt;p&gt;Hoe installeer wordpress op een arch lemp server.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>arch XFCE4</title>
       <link>https://stauntonel.nl/posts/2021/desktop-arch-xfce4/</link>
       <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/desktop-arch-xfce4/</guid>
       <description>&lt;p&gt;Installeer Xorg en XFCE4 na een basis intallatie Arch.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Debootstrap installeer Ubuntu</title>
       <link>https://stauntonel.nl/posts/2021/distro-ubuntu-debootstrap/</link>
       <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/distro-ubuntu-debootstrap/</guid>
-      <description>&lt;p&gt;Doel is om ubuntu te installeren met debootstrap.
-We starten met een willekeurige arch installatie, of van de arch installatie usb.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Doel is om ubuntu te installeren met debootstrap.&#xA;We starten met een willekeurige arch installatie, of van de arch installatie usb.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

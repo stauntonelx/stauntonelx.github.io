@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>muziek on Stauntonel Blog</title>
+    <title>Muziek on Stauntonel Blog</title>
     <link>https://stauntonel.nl/tags/muziek/</link>
-    <description>Recent content in muziek on Stauntonel Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 14 Feb 2021 14:44:45 +0100</lastBuildDate><atom:link href="https://stauntonel.nl/tags/muziek/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Muziek on Stauntonel Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 07 Aug 2023 00:25:35 +0200</lastBuildDate>
+    <atom:link href="https://stauntonel.nl/tags/muziek/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>mpd, ncmpcpp, mpc en icecast</title>
       <link>https://stauntonel.nl/posts/2021/project-debian-muziek-mpd/</link>
       <pubDate>Sun, 14 Feb 2021 14:44:45 +0100</pubDate>
-      
       <guid>https://stauntonel.nl/posts/2021/project-debian-muziek-mpd/</guid>
       <description>&lt;p&gt;Music playing deamon is een deamon waarmee je complete muziek collecties kunt organiseren, en afspelen met een client, zoals ncmpcpp. Ook kun met een server mpd en icecast je eigen internet radio starten.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

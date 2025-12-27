@@ -42,7 +42,7 @@
   <div class="singlegrid">
     <div class="box meta">
   <h2>Debootstrap Installeer Debian</h2>
-  <h5 class="date">Laatst gewijzigd: 07-08-2023</h5>
+  <h5 class="date">Laatst gewijzigd: 28-12-2025</h5>
 </div>
 
     <aside class="box">
@@ -122,8 +122,8 @@ swapon /dev/sda3
 <pre tabindex="0"><code>pacman -S binutils debootstrap arch-install-scripts
 </code></pre><h2 id="03-installeer-debian">03 Installeer debian</h2>
 <pre tabindex="0"><code>/usr/sbin/debootstrap --variant=minbase --components=main,contrib,non-free,non-free-firmware \
---include=nano,dialog,bash-completion,tmux,locales,console-setup,tasksel,\
-dosfstools,btrfs-progs,links,network-manager,sudo,git,tree,cryptsetup,cryptsetup-initramfs \
+--include=nano,dialog,bash-completion,tmux,locales,console-setup,tasksel,zstd,\
+dosfstools,btrfs-progs,links,sudo,git,tree,htop,cryptsetup,cryptsetup-initramfs \
 --arch amd64 bookworm /mnt/debinst http://ftp.nl.debian.org/debian/
 </code></pre><h3 id="chroot">Chroot</h3>
 <pre tabindex="0"><code>arch-chroot /mnt/debinst
@@ -131,12 +131,6 @@ export TERM=xterm-color
 source /etc/profile
 source /etc/skel/.bashrc
 </code></pre><h3 id="tijd">Tijd</h3>
-<pre tabindex="0"><code>nano /etc/adjtime
-</code></pre><p>geef dit bestand de volgende inhoud:</p>
-<pre tabindex="0"><code>0.0 0 0.0
-0
-UTC
-</code></pre><p>dan:</p>
 <pre tabindex="0"><code>dpkg-reconfigure tzdata
 </code></pre><h3 id="locales">locales</h3>
 <pre tabindex="0"><code>dpkg-reconfigure locales
@@ -147,15 +141,15 @@ UTC
 </code></pre><h3 id="sourceslist">sources.list</h3>
 <pre tabindex="0"><code>nano /etc/apt/sources.list
 </code></pre><p>Zorg dat deze er als volg uitziet:</p>
-<pre tabindex="0"><code>deb http://ftp.nl.debian.org/debian bookworm main contrib non-free non-free-firmware
-deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free
-deb http://deb.debian.org/debian-security bookworm-security main contrib non-free
+<pre tabindex="0"><code>deb http://ftp.nl.debian.org/debian trixie main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian/ trixie-updates main contrib non-free
+deb http://deb.debian.org/debian-security trixie-security main contrib non-free
 </code></pre><p>Daarna</p>
 <pre tabindex="0"><code>apt update &amp;&amp; apt upgrade
 </code></pre><h3 id="standaard-software">standaard software</h3>
 <pre tabindex="0"><code>tasksel install standard laptop
 </code></pre><h3 id="firmware">firmware</h3>
-<pre tabindex="0"><code>apt install -y firmware-linux-nonfree firmware-realtek firmware-iwlwifi bluez-firmware rfkill
+<pre tabindex="0"><code>apt install -y firmware-linux-nonfree firmware-realtek firmware-iwlwifi bluez-firmware rfkill network-manager
 </code></pre><h3 id="kernel">kernel</h3>
 <pre tabindex="0"><code>apt install -y linux-image-amd64
 </code></pre><h3 id="wachtwoord">wachtwoord</h3>
@@ -171,7 +165,7 @@ passwd stauntonel
 </code></pre><h2 id="04-installeer-debian-vervolg">04 Installeer debian vervolg</h2>
 <h3 id="desktop">desktop</h3>
 <pre tabindex="0"><code>apt install -y --no-install-recommends \
-task-xfce-desktop xfce4-terminal mousepad xfce4-power-manager-plugins xfce4-whiskermenu-plugin gnome-themes-extra papirus-icon-theme xfce4-notifyd gvfs gvfs-backends gvfs-fuse thunar-archive-plugin thunar-volman mugshot policykit-1-gnome light-locker menulibre dbus-x11 plymouth plymouth-themes network-manager-gnome pavucontrol gnome-keyring blueman
+task-xfce-desktop xfce4-terminal mousepad xfce4-power-manager-plugins xfce4-whiskermenu-plugin gnome-themes-extra papirus-icon-theme xfce4-notifyd gvfs gvfs-backends gvfs-fuse thunar-archive-plugin thunar-volman mugshot light-locker menulibre dbus-x11 plymouth plymouth-themes network-manager-gnome pavucontrol gnome-keyring blueman
 </code></pre><p>firefox met alle recommends:</p>
 <pre tabindex="0"><code>apt install -y firefox-esr
 </code></pre><h3 id="suckless">suckless</h3>

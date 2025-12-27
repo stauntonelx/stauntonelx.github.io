@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+  	<title>Samba server | Stauntonel Blog</title>
+  	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+  	<meta name="generator" content="Geany 1.37.1">
+  	<meta name="description" content="Samba server">
+    <meta name="keywords" content="Debian, samba">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/color.css">
+  	<link rel="stylesheet" href="/css/fonts.css">
+  </head>
+
+  <body>
+    <script>0</script>
+    <header>
+  <div class="headergrid">
+    <div class="logo">
+  <a href="/"><h1>Stauntonel Blog</h1></a>
+</div>
+
+    <nav>
+  <ul class="inline">
+    
+    <li><a href="/categories/">Categorie</a></li>
+    
+    <li><a href="/tags/">Tags</a></li>
+    
+    <li><a href="/notes/">Notitie</a></li>
+    
+    <li><a href="/posts/">Archief</a></li>
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+    <main>
+      
+  <div class="singlegrid">
+    <div class="box meta">
+  <h2>Samba server</h2>
+  <h5 class="date">Laatst gewijzigd: 28-12-2025</h5>
+</div>
+
+    <aside class="box">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-software">1. software</a></li>
+    <li><a href="#2-configuratie">2. configuratie</a>
+      <ul>
+        <li><a href="#voorbereidingen">Voorbereidingen</a></li>
+        <li><a href="#global-sessie">Global sessie</a></li>
+        <li><a href="#shares">Shares</a></li>
+        <li><a href="#herstart">Herstart</a></li>
+      </ul>
+    </li>
+    <li><a href="#03-mount-op-client">03 Mount op client</a>
+      <ul>
+        <li><a href="#filemanager">Filemanager</a></li>
+        <li><a href="#fstab">fstab</a></li>
+        <li><a href="#rclone">rclone</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+
+  <p><strong>tags:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/tags/debian">Debian</a></li>
+    
+    
+      <li><a href="https://stauntonel.nl/tags/samba">samba</a></li>
+    
+    
+  </ul>
+
+
+
+  <p><strong>categorie:</strong></p>
+  <ul class="inline">
+    
+    
+    
+      <li><a href="https://stauntonel.nl/categories/server">server</a></li>
+    
+    
+  </ul>
+
+</aside>
+
+    <div class="box article">
+      <p>Installeer een smb op een debian trixie server.
+Configureer samba mount op client</p>
+<h2 id="1-software">1. software</h2>
+<p>Installeer de volgende software:</p>
+<pre tabindex="0"><code>sudo apt install samba smbclient cifs-utils
+</code></pre><h2 id="2-configuratie">2. configuratie</h2>
+<h3 id="voorbereidingen">Voorbereidingen</h3>
+<p>allereerst stoppen we de service.</p>
+<pre tabindex="0"><code>sudo systemctl restart smbd nmbd
+</code></pre><p>Daarna gaan we een gebruiker en mappenstructuur aanmaken.</p>
+<pre tabindex="0"><code>sudo useradd -M -s /sbin/nologin smbuser
+sudo usermod -aG sambashare smbuser
+sudo mkdir -p /srv/samba/LinuxShare/
+sudo chown -R smbuser:sambashare /srv/samba/
+sudo chmod -R 2770 /srv/samba/
+sudo smbpasswd -a smbuser
+sudo smbpasswd -e smbuser
+</code></pre><p>smbshare: groep die we gebruiken voor de share.
+smbuser: systeem gebruiker (-M) zonder login shell
+share map: /srv/samba met de juiste rechten (gebruiker en groep)
+smppasswd:</p>
+<ul>
+<li>
+<p>-a geef de gebruiker een smb wachtwoord</p>
+</li>
+<li>
+<p>-e activeer de gebruiker</p>
+</li>
+</ul>
+<h3 id="global-sessie">Global sessie</h3>
+<p>Open het config bestand met je favoriete editor</p>
+<pre tabindex="0"><code>sudo systemct restart smbd nmbd
+sudo nano /etc/samba/smb.conf
+</code></pre><p>en geeft het de volgende inhoud:</p>
+<pre tabindex="0"><code>[global]
+
+   workgroup = WORKGROUP
+   log file = /var/log/samba/log.%J
+   max log size = 1000
+   logging = file
+   panic action = /usr/share/samba/panic-action %d
+   server role = standalone server
+   map to guest = Never
+</code></pre><p>workgroup: alle computers moeten deel uitmaken van deze werkproep
+logging: naar /var/log/samba lognaam log.%J  -&gt; ip_nummer als extensie
+panic action: als smb crasht vind je hier meer info
+server role: standalone -&gt; share gebonden aan gebruiker / wachtwoord
+map to guest: Als wachtwoord niet juist is dan weiger toegang</p>
+<h3 id="shares">Shares</h3>
+<pre tabindex="0"><code>#======================= Share Definitions =======================
+
+[LinuxShare]
+    comment = share voor linux data
+    path = /srv/samba/LinuxShare
+    read only = no
+    guest ok = no
+    writable = yes
+    valid users = smbuser @sambashare
+    write list = smbuser @sambashare
+    create mask = 0664
+    directory mask = 0775
+    force create mode = 0664
+    force directory mode = 2775
+    force group = sambashare
+    inherit permissions = yes
+</code></pre><p>Check of alles in orde is met</p>
+<pre tabindex="0"><code>testparm -s
+</code></pre><h3 id="herstart">Herstart</h3>
+<p>Nadat het opslaan van de config moet we de service herstarten.</p>
+<pre tabindex="0"><code>sudo systemctl restart smbd nmbd
+</code></pre><h2 id="03-mount-op-client">03 Mount op client</h2>
+<h3 id="filemanager">Filemanager</h3>
+<p>Zelf gebruik ik thunar. In de adresbalk geef je dit in:</p>
+<pre tabindex="0"><code>smb://dock03/linuxshare/
+</code></pre><p>Geef daarna de smb credentials in van smbuser.</p>
+<h3 id="fstab">fstab</h3>
+<h3 id="rclone">rclone</h3>
+    </div>
+  </div>
+
+    </main>
+    <footer>
+  © Stauntonel 2023 | <a href="https://gohugo.io/documentation">HUGO</a> | <a href="https://github.com/yihui/hugo-xmin">XMIN</a>
+</footer>
+
+  </body>
+</html>
