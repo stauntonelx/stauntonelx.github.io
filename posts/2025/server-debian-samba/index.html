@@ -61,7 +61,6 @@
     <li><a href="#03-mount-op-client">03 Mount op client</a>
       <ul>
         <li><a href="#filemanager">Filemanager</a></li>
-        <li><a href="#fstab">fstab</a></li>
         <li><a href="#rclone">rclone</a></li>
       </ul>
     </li>
@@ -174,8 +173,21 @@ map to guest: Als wachtwoord niet juist is dan weiger toegang</p>
 <p>Zelf gebruik ik thunar. In de adresbalk geef je dit in:</p>
 <pre tabindex="0"><code>smb://dock03/linuxshare/
 </code></pre><p>Geef daarna de smb credentials in van smbuser.</p>
-<h3 id="fstab">fstab</h3>
 <h3 id="rclone">rclone</h3>
+<p>Configureer rclone remote</p>
+<pre tabindex="0"><code>rclone config
+</code></pre><p>Kies voor smb en volg de instructie op het scherm.
+Check daarna <em>~/.config/rclone/rclone.conf</em> die ziet er ongeveer zo uit:</p>
+<pre tabindex="0"><code>[dock03_smb]
+type = smb
+host = dock03.home
+user = smbuser
+pass = ***************
+</code></pre><p>Met dit commando raadpleeg je welke shares er zijn:</p>
+<pre tabindex="0"><code>rclone lsd dock03_smb:
+</code></pre><p>mount de share in terminal met:</p>
+<pre tabindex="0"><code>rclone mount dock03_smb:/home/jack/Share/LinuxShare --daemon
+</code></pre><p>Als je wilt kun je met systemd een opstart unit maken.</p>
     </div>
   </div>
 
