@@ -6,13 +6,13 @@
     <description>Recent content in Debian on Stauntonel Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 28 Dec 2025 00:19:46 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 28 Dec 2025 00:54:45 +0100</lastBuildDate>
     <atom:link href="https://stauntonel.nl/tags/debian/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Debootstrap Installeer Debian</title>
-      <link>https://stauntonel.nl/posts/2025/distro-debian-debootstrap/</link>
-      <pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>https://stauntonel.nl/posts/2025/distro-debian-debootstrap/</guid>
+      <link>https://stauntonel.nl/posts/2023/distro-debian-debootstrap/</link>
+      <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>https://stauntonel.nl/posts/2023/distro-debian-debootstrap/</guid>
       <description>&lt;p&gt;Het doel is om debian te installeren met debootstrap. We starten met een willekeurige arch installatie, of van het arch installatie medium.&lt;/p&gt;</description>
     </item>
     <item>

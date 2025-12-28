@@ -124,7 +124,7 @@ swapon /dev/sda3
 <pre tabindex="0"><code>/usr/sbin/debootstrap --variant=minbase --components=main,contrib,non-free,non-free-firmware \
 --include=nano,dialog,bash-completion,tmux,locales,console-setup,tasksel,zstd,\
 dosfstools,btrfs-progs,links,sudo,git,tree,htop,cryptsetup,cryptsetup-initramfs \
---arch amd64 bookworm /mnt/debinst http://ftp.nl.debian.org/debian/
+--arch amd64 trixie /mnt/debinst http://ftp.nl.debian.org/debian/
 </code></pre><h3 id="chroot">Chroot</h3>
 <pre tabindex="0"><code>arch-chroot /mnt/debinst
 export TERM=xterm-color
@@ -165,7 +165,7 @@ passwd stauntonel
 </code></pre><h2 id="04-installeer-debian-vervolg">04 Installeer debian vervolg</h2>
 <h3 id="desktop">desktop</h3>
 <pre tabindex="0"><code>apt install -y --no-install-recommends \
-task-xfce-desktop xfce4-terminal mousepad xfce4-power-manager-plugins xfce4-whiskermenu-plugin gnome-themes-extra papirus-icon-theme xfce4-notifyd gvfs gvfs-backends gvfs-fuse thunar-archive-plugin thunar-volman mugshot light-locker menulibre dbus-x11 plymouth plymouth-themes network-manager-gnome pavucontrol gnome-keyring blueman
+task-xfce-desktop xfce4-terminal mousepad xfce4-power-manager-plugins xfce4-whiskermenu-plugin gnome-themes-extra papirus-icon-theme xfce4-notifyd gvfs gvfs-backends gvfs-fuse thunar-archive-plugin thunar-volman mugshot policykit-1-gnome light-locker menulibre dbus-x11 plymouth plymouth-themes network-manager-gnome pavucontrol gnome-keyring blueman
 </code></pre><p>firefox met alle recommends:</p>
 <pre tabindex="0"><code>apt install -y firefox-esr
 </code></pre><h3 id="suckless">suckless</h3>
